@@ -2,11 +2,62 @@
 """
 Open-Meteo Weather Data Downloader v2 - With Rate Limiting Protection
 
-Fixed version that handles 429 rate limiting errors properly with:
-- Exponential backoff retry logic
-- Progress saving and resuming
-- Sequential requests (no parallel)
-- Longer delays between requests
+This script downloads historical weather data for Eastern Africa markets using Open-Meteo Archive API.
+
+KEY FEATURES:
+- Country-specific downloads (choose one country at a time to save time)
+- Extended date range (automatically downloads from 1 year before WFP data start date)
+- Rate limiting protection with exponential backoff
+- Progress saving and resuming (can stop and continue anytime)
+- Descriptive filenames with country and exact date range
+
+USAGE:
+    Method 1 - Command line with country filter (RECOMMENDED):
+        python openmeteo_weather_downloader_v2.py --country KEN
+        python openmeteo_weather_downloader_v2.py --country ETH
+        
+    Method 2 - In Python code:
+        from openmeteo_weather_downloader_v2 import main
+        main(country_filter='KEN')
+        
+    Method 3 - Download all countries (NOT RECOMMENDED - takes very long):
+        python openmeteo_weather_downloader_v2.py
+
+AVAILABLE COUNTRY CODES:
+    KEN - Kenya          RWA - Rwanda         BDI - Burundi
+    ETH - Ethiopia       TZA - Tanzania       DJI - Djibouti
+    UGA - Uganda         SOM - Somalia        ERI - Eritrea
+    SSD - South Sudan
+
+OUTPUT FILENAME FORMAT:
+    weather_{COUNTRY}_{START-DATE}_to_{END-DATE}_{N}markets_{M}records.csv
+    
+    Example: weather_KEN_2018-01-08_to_2025-02-28_57markets_146723records.csv
+
+DOWNLOADED WEATHER VARIABLES (Daily):
+    - temperature_2m_max/min: Daily max/min temperature (°C)
+    - precipitation_sum: Daily total precipitation (mm)
+    - snowfall_sum: Daily total snowfall (cm)
+    - weather_code: WMO weather code
+    - daylight_duration: Daylight duration (seconds)
+    + Derived variables: mean temperature, temperature range, daylight hours
+
+TIMING:
+    - ~3-5 seconds per market (with rate limiting protection)
+    - Kenya (~57 markets): ~3-5 minutes
+    - Ethiopia (~50 markets): ~3-5 minutes
+    - Smaller countries: ~2-3 minutes
+
+RESUME SUPPORT:
+    If download is interrupted, simply run the same command again.
+    Progress is saved every 10 markets in 'download_progress.json'.
+
+TECHNICAL DETAILS:
+    - API: Open-Meteo Archive API (https://archive-api.open-meteo.com)
+    - Rate limiting: 2 second base delay between requests
+    - Retry logic: Up to 5 attempts with exponential backoff
+    - Data resolution: Daily
+    - Timezone: Auto-detected for each location
 """
 
 import requests
@@ -47,13 +98,30 @@ class OpenMeteoWeatherDownloaderV2:
         self.backoff_factor = 2.0      # Exponential backoff multiplier
         self.progress_save_interval = 10  # Save progress every N markets
 
-    def extract_market_locations(self, wfp_file_path):
-        """Extract unique market locations from WFP data"""
+    def extract_market_locations(self, wfp_file_path, country_filter=None):
+        """
+        Extract unique market locations from WFP data
+        
+        Args:
+            wfp_file_path: Path to WFP CSV file
+            country_filter: ISO3 country code to filter (e.g., 'KEN', 'ETH') or None for all
+        """
         logger.info(f"Extracting market locations from {wfp_file_path}")
+        if country_filter:
+            logger.info(f"Filtering for country: {country_filter}")
 
         try:
             df = pd.read_csv(wfp_file_path, low_memory=False)
             df['date'] = pd.to_datetime(df['date'])
+
+            # Filter by country if specified
+            if country_filter:
+                df = df[df['countryiso3'] == country_filter.upper()]
+                if df.empty:
+                    logger.error(f"No data found for country: {country_filter}")
+                    available_countries = pd.read_csv(wfp_file_path)['countryiso3'].unique()
+                    logger.info(f"Available countries: {', '.join(available_countries)}")
+                    return pd.DataFrame(), None, None
 
             # Get unique market locations
             markets = df[['market', 'market_id', 'countryiso3', 'latitude', 'longitude']].drop_duplicates()
@@ -65,13 +133,18 @@ class OpenMeteoWeatherDownloaderV2:
             markets = markets.reset_index(drop=True)
             markets['download_index'] = markets.index
 
+            # Get date range and extend 1 year before
             min_date = df['date'].min().date()
             max_date = df['date'].max().date()
+            
+            # Extend start date by 1 year
+            min_date_extended = min_date.replace(year=min_date.year - 1)
 
             logger.info(f"Found {len(markets)} unique markets")
-            logger.info(f"Date range: {min_date} to {max_date}")
+            logger.info(f"Original date range: {min_date} to {max_date}")
+            logger.info(f"Extended date range (1 year before): {min_date_extended} to {max_date}")
 
-            return markets, min_date, max_date
+            return markets, min_date_extended, max_date
 
         except Exception as e:
             logger.error(f"Error extracting market locations: {e}")
@@ -161,14 +234,28 @@ class OpenMeteoWeatherDownloaderV2:
         logger.error(f"Failed to download weather for {location_info['market']} after {self.max_retries} attempts")
         return pd.DataFrame()
 
-    def save_progress(self, weather_data_list, completed_indices, output_file):
-        """Save current progress"""
+    def save_progress(self, weather_data_list, completed_indices, output_file, country_code=None):
+        """
+        Save current progress with country-specific filenames
+        
+        Args:
+            weather_data_list: List of weather dataframes
+            completed_indices: Set of completed market indices
+            output_file: Path to temporary output CSV file
+            country_code: Country ISO3 code for filename (e.g., 'KEN')
+        """
         if weather_data_list:
             combined_df = pd.concat(weather_data_list, ignore_index=True)
             combined_df.to_csv(output_file, index=False)
 
-            progress_file = self.output_dir / "download_progress.json"
+            # Country-specific progress filename
+            if country_code:
+                progress_file = self.output_dir / f"download_progress_{country_code}.json"
+            else:
+                progress_file = self.output_dir / "download_progress.json"
+                
             progress = {
+                'country': country_code,
                 'completed_indices': completed_indices,
                 'last_updated': datetime.now().isoformat(),
                 'records_downloaded': len(combined_df),
@@ -179,13 +266,26 @@ class OpenMeteoWeatherDownloaderV2:
 
             logger.info(f"Progress saved: {len(weather_data_list)} markets, {len(combined_df)} records")
 
-    def load_progress(self):
-        """Load previous progress if exists"""
-        progress_file = self.output_dir / "download_progress.json"
+    def load_progress(self, country_code=None):
+        """
+        Load previous progress if exists
+        
+        Args:
+            country_code: Country ISO3 code for filename (e.g., 'KEN')
+            
+        Returns:
+            Set of completed market indices
+        """
+        # Country-specific progress filename
+        if country_code:
+            progress_file = self.output_dir / f"download_progress_{country_code}.json"
+        else:
+            progress_file = self.output_dir / "download_progress.json"
+            
         if progress_file.exists():
             with open(progress_file, 'r') as f:
                 progress = json.load(f)
-            logger.info(f"Found previous progress: {progress['markets_completed']} markets completed")
+            logger.info(f"Found previous progress for {country_code}: {progress['markets_completed']} markets completed")
             return set(progress['completed_indices'])
         return set()
 
@@ -196,8 +296,19 @@ class OpenMeteoWeatherDownloaderV2:
         logger.info(f"Starting sequential download for {len(markets_df)} markets")
         logger.info(f"Rate limiting settings: {self.base_delay}s base delay, {self.max_retries} max retries")
 
-        # Load previous progress
-        completed_indices = self.load_progress()
+        # Detect country code from markets data (use first market's country)
+        country_code = None
+        if not markets_df.empty and 'countryiso3' in markets_df.columns:
+            unique_countries = markets_df['countryiso3'].unique()
+            if len(unique_countries) == 1:
+                country_code = unique_countries[0]
+                logger.info(f"Detected single country: {country_code}")
+            else:
+                logger.warning(f"Multiple countries detected: {', '.join(unique_countries)}")
+                country_code = "mixed"
+
+        # Load previous progress (country-specific)
+        completed_indices = self.load_progress(country_code)
 
         # Filter out already completed markets
         remaining_markets = markets_df[~markets_df['download_index'].isin(completed_indices)]
@@ -206,8 +317,12 @@ class OpenMeteoWeatherDownloaderV2:
         all_weather_data = []
         failed_markets = []
 
-        # Load existing data if resuming
-        temp_output_file = self.output_dir / "weather_download_in_progress.csv"
+        # Load existing data if resuming (country-specific temp file)
+        if country_code:
+            temp_output_file = self.output_dir / f"weather_download_in_progress_{country_code}.csv"
+        else:
+            temp_output_file = self.output_dir / "weather_download_in_progress.csv"
+            
         if temp_output_file.exists():
             try:
                 existing_df = pd.read_csv(temp_output_file)
@@ -245,11 +360,11 @@ class OpenMeteoWeatherDownloaderV2:
 
             # Save progress periodically
             if i % self.progress_save_interval == 0:
-                self.save_progress(all_weather_data, list(completed_indices), temp_output_file)
+                self.save_progress(all_weather_data, list(completed_indices), temp_output_file, country_code)
 
         # Final save
         if all_weather_data:
-            self.save_progress(all_weather_data, list(completed_indices), temp_output_file)
+            self.save_progress(all_weather_data, list(completed_indices), temp_output_file, country_code)
 
             combined_weather = pd.concat(all_weather_data, ignore_index=True)
             combined_weather = combined_weather.sort_values(['countryiso3', 'market', 'date'])
@@ -265,45 +380,78 @@ class OpenMeteoWeatherDownloaderV2:
             return pd.DataFrame()
 
     def save_weather_data(self, weather_df, start_date, end_date):
-        """Save weather data with descriptive filename"""
+        """
+        Save weather data with descriptive filename
+        
+        Filename format: weather_{country}_{YYYY-MM-DD}_to_{YYYY-MM-DD}_{N}markets_{M}records.csv
+        """
         if weather_df.empty:
             logger.warning("No weather data to save")
             return
 
-        country_count = weather_df['countryiso3'].nunique()
+        # Get country information
+        countries = weather_df['countryiso3'].unique()
+        country_str = '_'.join(sorted(countries)) if len(countries) <= 3 else f"{len(countries)}countries"
+        
         market_count = weather_df['market'].nunique()
         record_count = len(weather_df)
 
-        start_year = pd.to_datetime(start_date).year
-        end_year = pd.to_datetime(end_date).year
-        year_range = f"{start_year}-{end_year}" if start_year != end_year else str(start_year)
+        # Format dates as YYYY-MM-DD
+        start_date_str = pd.to_datetime(start_date).strftime('%Y-%m-%d')
+        end_date_str = pd.to_datetime(end_date).strftime('%Y-%m-%d')
 
-        filename = f"weather_openmeteo_eastern_africa_{year_range}_{country_count}countries_{market_count}markets_{record_count}records.csv"
+        # Create descriptive filename with country and exact date range
+        filename = f"weather_{country_str}_{start_date_str}_to_{end_date_str}_{market_count}markets_{record_count}records.csv"
         output_path = self.output_dir / filename
 
         weather_df.to_csv(output_path, index=False)
 
-        # Save latest version
-        latest_path = self.output_dir / "weather_openmeteo_latest.csv"
+        # Save country-specific latest version
+        if len(countries) == 1:
+            latest_path = self.output_dir / f"weather_{countries[0]}_latest.csv"
+        else:
+            latest_path = self.output_dir / "weather_latest.csv"
         weather_df.to_csv(latest_path, index=False)
 
-        # Clean up temporary file
-        temp_file = self.output_dir / "weather_download_in_progress.csv"
+        # Clean up temporary files (country-specific)
+        if len(countries) == 1:
+            country_code = countries[0]
+            temp_file = self.output_dir / f"weather_download_in_progress_{country_code}.csv"
+            progress_file = self.output_dir / f"download_progress_{country_code}.json"
+        else:
+            # For mixed countries or legacy files
+            temp_file = self.output_dir / "weather_download_in_progress.csv"
+            progress_file = self.output_dir / "download_progress.json"
+            
         if temp_file.exists():
             temp_file.unlink()
+            logger.info(f"Cleaned up temporary file: {temp_file.name}")
 
-        progress_file = self.output_dir / "download_progress.json"
         if progress_file.exists():
             progress_file.unlink()
+            logger.info(f"Cleaned up progress file: {progress_file.name}")
 
         logger.info(f"Weather data saved to: {output_path}")
+        logger.info(f"Latest copy saved to: {latest_path}")
         return output_path
 
-def main():
-    """Main function with improved rate limiting"""
+def main(country_filter=None):
+    """
+    Main function with improved rate limiting
+    
+    Args:
+        country_filter: ISO3 country code to filter (e.g., 'KEN', 'ETH', 'UGA') or None for all countries
+        
+    Example:
+        # Download for Kenya only
+        main(country_filter='KEN')
+        
+        # Download for all countries (not recommended, takes very long)
+        main()
+    """
     downloader = OpenMeteoWeatherDownloaderV2()
 
-    wfp_file = "data/raw/wfp/wfp_food_prices_latest.csv"
+    wfp_file = "data/raw/wfp/wfp_food_prices_eastern_africa_2019-2025_10countries_118487records.csv"
 
     if not Path(wfp_file).exists():
         logger.error(f"WFP file not found: {wfp_file}")
@@ -311,9 +459,17 @@ def main():
 
     logger.info("🌤️ Open-Meteo Weather Downloader v2 - Rate Limit Protected")
     logger.info("=" * 60)
+    
+    if country_filter:
+        logger.info(f"🎯 Target country: {country_filter}")
+    else:
+        logger.warning("⚠️  No country filter set - will download ALL countries (this may take very long!)")
 
-    # Extract market locations
-    markets_df, start_date, end_date = downloader.extract_market_locations(wfp_file)
+    # Extract market locations (with optional country filter)
+    markets_df, start_date, end_date = downloader.extract_market_locations(
+        wfp_file, 
+        country_filter=country_filter
+    )
 
     if markets_df.empty:
         logger.error("No market locations found")
@@ -338,4 +494,35 @@ def main():
         logger.error("❌ Weather data download failed")
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    
+    parser = argparse.ArgumentParser(
+        description='Download weather data from Open-Meteo for specific countries',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Download weather data for Kenya only
+  python src/data_pipeline/openmeteo_weather_downloader_v2.py --country KEN
+  
+  # Download for Ethiopia
+  python src/data_pipeline/openmeteo_weather_downloader_v2.py --country ETH
+  
+  # Download for multiple countries (not recommended in one run)
+  python src/data_pipeline/openmeteo_weather_downloader_v2.py
+  
+Available country codes:
+  KEN (Kenya), ETH (Ethiopia), UGA (Uganda), RWA (Rwanda),
+  TZA (Tanzania), SOM (Somalia), SSD (South Sudan), etc.
+        """
+    )
+    
+    parser.add_argument(
+        '--country', '-c',
+        type=str,
+        default=None,
+        help='ISO3 country code (e.g., KEN, ETH, UGA). If not specified, downloads all countries.'
+    )
+    
+    args = parser.parse_args()
+    
+    main(country_filter=args.country)
