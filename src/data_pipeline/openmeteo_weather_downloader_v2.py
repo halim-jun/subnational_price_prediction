@@ -42,11 +42,12 @@ DOWNLOADED WEATHER VARIABLES (Daily):
     - daylight_duration: Daylight duration (seconds)
     + Derived variables: mean temperature, temperature range, daylight hours
 
-TIMING:
-    - ~3-5 seconds per market (with rate limiting protection)
-    - Kenya (~57 markets): ~3-5 minutes
-    - Ethiopia (~50 markets): ~3-5 minutes
+TIMING (with 4.0s delay):
+    - ~4-5 seconds per market (with rate limiting protection)
+    - Kenya (~57 markets): ~4-5 minutes
+    - Ethiopia (~50 markets): ~4-5 minutes
     - Smaller countries: ~2-3 minutes
+    - Note: Increase delay if rate limited (will take proportionally longer)
 
 RESUME SUPPORT:
     If download is interrupted, simply run the same command again.
@@ -54,10 +55,18 @@ RESUME SUPPORT:
 
 TECHNICAL DETAILS:
     - API: Open-Meteo Archive API (https://archive-api.open-meteo.com)
-    - Rate limiting: 2 second base delay between requests
+    - Rate limiting: 4.0 second base delay (adjustable via --delay parameter)
+    - 429 handling: Minimum 10 second wait, or 4x current delay (whichever is longer)
     - Retry logic: Up to 5 attempts with exponential backoff
     - Data resolution: Daily
     - Timezone: Auto-detected for each location
+
+RATE LIMITING TROUBLESHOOTING:
+    If you frequently get 429 (Too Many Requests) errors:
+    1. Increase --delay to 5.0 or 6.0 seconds
+    2. Check your internet connection stability
+    3. Avoid running multiple downloaders simultaneously
+    4. The script will auto-retry with longer waits, but prevention is better
 """
 
 import requests
@@ -77,7 +86,15 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class OpenMeteoWeatherDownloaderV2:
-    def __init__(self, output_dir="data/raw/weather"):
+    def __init__(self, output_dir="data/raw/weather", base_delay=5.0):
+        """
+        Initialize Open-Meteo Weather Downloader
+        
+        Args:
+            output_dir: Directory to save downloaded weather data
+            base_delay: Base delay between requests in seconds (default: 4.0)
+                       Increase this if you get rate limited (try 5.0 or 6.0)
+        """
         self.base_url = "https://archive-api.open-meteo.com/v1/archive"
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -92,11 +109,13 @@ class OpenMeteoWeatherDownloaderV2:
             'snowfall_sum'            # Daily snowfall sum
         ]
 
-        # Rate limiting settings
-        self.base_delay = 2.0          # Base delay between requests (seconds)
-        self.max_retries = 5           # Maximum retry attempts
-        self.backoff_factor = 2.0      # Exponential backoff multiplier
-        self.progress_save_interval = 10  # Save progress every N markets
+        # Rate limiting settings - IMPORTANT for avoiding 429 errors
+        self.base_delay = base_delay        # Base delay between requests (seconds)
+        self.max_retries = 5                # Maximum retry attempts
+        self.backoff_factor = 2.0           # Exponential backoff multiplier
+        self.progress_save_interval = 10    # Save progress every N markets
+        
+        logger.info(f"Rate limiting: {self.base_delay}s base delay + random jitter")
 
     def extract_market_locations(self, wfp_file_path, country_filter=None):
         """
@@ -150,9 +169,83 @@ class OpenMeteoWeatherDownloaderV2:
             logger.error(f"Error extracting market locations: {e}")
             return pd.DataFrame(), None, None
 
+    def split_date_range(self, start_date, end_date, chunk_years=1):
+        """
+        Split date range into smaller chunks to avoid API timeouts
+        
+        Args:
+            start_date: Start date (str or date object)
+            end_date: End date (str or date object)
+            chunk_years: Years per chunk (default: 1)
+            
+        Returns:
+            List of (start, end) date tuples
+        """
+        from datetime import datetime, timedelta
+        from dateutil.relativedelta import relativedelta
+        
+        start = pd.to_datetime(start_date).date()
+        end = pd.to_datetime(end_date).date()
+        
+        chunks = []
+        current_start = start
+        
+        while current_start < end:
+            # Add chunk_years to current_start
+            current_end = current_start + relativedelta(years=chunk_years)
+            # Don't exceed the final end date
+            if current_end > end:
+                current_end = end
+            
+            chunks.append((str(current_start), str(current_end)))
+            current_start = current_end + timedelta(days=1)
+        
+        return chunks
+    
     def get_weather_for_location_with_retry(self, lat, lon, start_date, end_date, location_info):
         """
         Get weather data with retry logic and exponential backoff
+        
+        For long date ranges (>2 years), automatically splits into yearly chunks
+        to avoid API timeouts and rate limiting issues.
+        """
+        # Calculate date range length
+        start = pd.to_datetime(start_date).date()
+        end = pd.to_datetime(end_date).date()
+        days_diff = (end - start).days
+        
+        # If range is longer than 2 years, split into chunks
+        if days_diff > 730:  # 2 years
+            logger.info(f"Long date range detected ({days_diff} days). Splitting into yearly chunks...")
+            date_chunks = self.split_date_range(start_date, end_date, chunk_years=1)
+            logger.info(f"  → Split into {len(date_chunks)} chunks")
+            
+            all_data = []
+            for i, (chunk_start, chunk_end) in enumerate(date_chunks, 1):
+                logger.info(f"  Chunk {i}/{len(date_chunks)}: {chunk_start} to {chunk_end}")
+                chunk_data = self._download_single_chunk(lat, lon, chunk_start, chunk_end, location_info)
+                
+                if not chunk_data.empty:
+                    all_data.append(chunk_data)
+                    # Small delay between chunks
+                    time.sleep(1.0)
+                else:
+                    logger.warning(f"  No data for chunk {i}")
+            
+            if all_data:
+                combined_df = pd.concat(all_data, ignore_index=True)
+                combined_df = combined_df.sort_values('date').reset_index(drop=True)
+                logger.info(f"✅ Downloaded weather for {location_info['market']} - {len(combined_df)} records (from {len(date_chunks)} chunks)")
+                return combined_df
+            else:
+                return pd.DataFrame()
+        else:
+            # Short range - download in one go
+            return self._download_single_chunk(lat, lon, start_date, end_date, location_info)
+    
+    def _download_single_chunk(self, lat, lon, start_date, end_date, location_info):
+        """
+        Download weather data for a single date chunk with retry logic
         """
         for attempt in range(self.max_retries):
             try:
@@ -178,9 +271,10 @@ class OpenMeteoWeatherDownloaderV2:
 
                 # Handle different HTTP status codes
                 if response.status_code == 429:
-                    # Rate limited - wait longer and retry
-                    wait_time = delay * 2
-                    logger.warning(f"Rate limited for {location_info['market']}. Waiting {wait_time:.1f}s...")
+                    # Rate limited - wait much longer and retry
+                    # Use aggressive backoff: minimum 10 seconds, or 4x current delay
+                    wait_time = max(10.0, delay * 4)
+                    logger.warning(f"⚠️  Rate limited (429) for {location_info['market']}. Waiting {wait_time:.1f}s...")
                     time.sleep(wait_time)
                     continue
 
@@ -435,21 +529,26 @@ class OpenMeteoWeatherDownloaderV2:
         logger.info(f"Latest copy saved to: {latest_path}")
         return output_path
 
-def main(country_filter=None):
+def main(country_filter=None, base_delay=4.0):
     """
     Main function with improved rate limiting
     
     Args:
         country_filter: ISO3 country code to filter (e.g., 'KEN', 'ETH', 'UGA') or None for all countries
+        base_delay: Delay between requests in seconds (default: 4.0)
+                   Increase to 5.0 or 6.0 if you get rate limited frequently
         
     Example:
         # Download for Kenya only
         main(country_filter='KEN')
         
+        # Download with longer delay (if rate limited)
+        main(country_filter='KEN', base_delay=6.0)
+        
         # Download for all countries (not recommended, takes very long)
         main()
     """
-    downloader = OpenMeteoWeatherDownloaderV2()
+    downloader = OpenMeteoWeatherDownloaderV2(base_delay=base_delay)
 
     wfp_file = "data/raw/wfp/wfp_food_prices_eastern_africa_2019-2025_10countries_118487records.csv"
 
@@ -504,8 +603,8 @@ Examples:
   # Download weather data for Kenya only
   python src/data_pipeline/openmeteo_weather_downloader_v2.py --country KEN
   
-  # Download for Ethiopia
-  python src/data_pipeline/openmeteo_weather_downloader_v2.py --country ETH
+  # Download for Ethiopia with longer delay (if rate limited)
+  python src/data_pipeline/openmeteo_weather_downloader_v2.py --country ETH --delay 6.0
   
   # Download for multiple countries (not recommended in one run)
   python src/data_pipeline/openmeteo_weather_downloader_v2.py
@@ -513,6 +612,11 @@ Examples:
 Available country codes:
   KEN (Kenya), ETH (Ethiopia), UGA (Uganda), RWA (Rwanda),
   TZA (Tanzania), SOM (Somalia), SSD (South Sudan), etc.
+
+Rate Limiting Tips:
+  - Default delay is 4.0 seconds between requests
+  - If you get 429 errors, increase --delay to 5.0 or 6.0
+  - Slower is safer and more reliable
         """
     )
     
@@ -523,6 +627,13 @@ Available country codes:
         help='ISO3 country code (e.g., KEN, ETH, UGA). If not specified, downloads all countries.'
     )
     
+    parser.add_argument(
+        '--delay', '-d',
+        type=float,
+        default=4.0,
+        help='Delay between requests in seconds (default: 4.0). Increase to 5.0-6.0 if rate limited.'
+    )
+    
     args = parser.parse_args()
     
-    main(country_filter=args.country)
+    main(country_filter=args.country, base_delay=args.delay)
