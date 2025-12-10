@@ -37,56 +37,249 @@ class ClimateDownloader:
 
         # Data sources
         self.data_sources = {
-            'chirps': 'https://data.chc.ucsb.edu/products/CHIRPS-2.0/global_monthly/tifs/',
-            'modis': 'https://modis.gsfc.nasa.gov/data/',
-            'cru': 'https://crudata.uea.ac.uk/cru/data/hrg/',
-            'giovanni': 'https://giovanni.gsfc.nasa.gov/giovanni/'
+            'chirps': 'https://data.chc.ucsb.edu/products/CHIRPS-2.0/africa_daily/tifs/p05/',
+            # 'modis': 'https://modis.gsfc.nasa.gov/data/',
+            # 'cru': 'https://crudata.uea.ac.uk/cru/data/hrg/',
+            # 'giovanni': 'https://giovanni.gsfc.nasa.gov/giovanni/'
         }
 
-    def download_chirps_precipitation(self, start_year=2019, end_year=2024):
+    def download_chirps_precipitation(self, start_year=2019, end_year=2025):
         """
-        Download CHIRPS precipitation data
+        Download CHIRPS precipitation data from IRI Data Library
         CHIRPS: Climate Hazards Group InfraRed Precipitation with Station data
+        Resolution: 0.05 degrees (~5.5 km)
         """
-        logger.info("Downloading CHIRPS precipitation data")
+        logger.info(f"Downloading CHIRPS precipitation data ({start_year}-{end_year})")
 
         try:
-            # For demonstration, we'll create a sample structure
-            # In practice, you would use the CHIRPS FTP or API
-
-            dates = pd.date_range(
-                start=f'{start_year}-01-01',
-                end=f'{end_year}-12-31',
-                freq='M'
+            # IRI Data Library OPeNDAP endpoint for CHIRPS monthly data
+            # This provides easy access to gridded precipitation data
+            chirps_url = "https://iridl.ldeo.columbia.edu/SOURCES/.UCSB/.CHIRPS/.v2p0/.monthly/.global/.precipitation/dods"
+            
+            logger.info("Connecting to IRI Data Library (CHIRPS v2.0)...")
+            
+            # Load data using xarray (supports OPeNDAP)
+            # Use cftime for non-standard calendars
+            ds = xr.open_dataset(chirps_url, decode_times=False)
+            
+            # Subset to Eastern Africa bounding box
+            logger.info(f"Subsetting to Eastern Africa bbox: {self.bbox}")
+            
+            # Calculate time indices (months since 1960-01-01)
+            # CHIRPS uses 360-day calendar
+            start_months = (start_year - 1960) * 12
+            end_months = (end_year - 1960) * 12 + 11
+            
+            ds_subset = ds.sel(
+                X=slice(self.bbox['min_lon'], self.bbox['max_lon']),
+                Y=slice(self.bbox['min_lat'], self.bbox['max_lat']),
+                T=slice(start_months, end_months)
             )
-
-            # Sample data structure for CHIRPS
-            sample_data = []
-            for date in dates:
-                sample_data.append({
-                    'date': date,
-                    'year': date.year,
-                    'month': date.month,
-                    'precipitation_mm': np.random.normal(50, 30),  # Sample data
-                    'data_source': 'CHIRPS',
-                    'spatial_resolution': '0.05_degree',
-                    'bbox': str(self.bbox)
-                })
-
-            df = pd.DataFrame(sample_data)
-
+            
+            # Calculate spatial mean over the region (for time series)
+            # You can also keep full spatial grid if needed
+            logger.info("Computing spatial averages...")
+            precip_mean = ds_subset['precipitation'].mean(dim=['X', 'Y'])
+            
+            # Convert to pandas DataFrame
+            df_ts = precip_mean.to_dataframe().reset_index()
+            
+            # Convert time index to actual dates
+            # T is in months since 1960-01-01
+            df_ts['date'] = pd.to_datetime('1960-01-01') + pd.to_timedelta(df_ts['T'] * 30, unit='D')
+            df_ts = df_ts.rename(columns={'precipitation': 'precipitation_mm'})
+            
+            # Add metadata columns
+            df_ts['year'] = df_ts['date'].dt.year
+            df_ts['month'] = df_ts['date'].dt.month
+            df_ts = df_ts.drop(columns=['T'])  # Remove raw time index
+            df_ts['data_source'] = 'CHIRPS_v2.0'
+            df_ts['spatial_resolution'] = '0.05_degree'
+            df_ts['bbox'] = str(self.bbox)
+            df_ts['aggregation'] = 'spatial_mean'
+            
+            # Calculate anomalies (deviation from long-term mean)
+            monthly_mean = df_ts.groupby('month')['precipitation_mm'].transform('mean')
+            monthly_std = df_ts.groupby('month')['precipitation_mm'].transform('std')
+            df_ts['precipitation_anomaly_mm'] = df_ts['precipitation_mm'] - monthly_mean
+            df_ts['precipitation_z_score'] = (df_ts['precipitation_mm'] - monthly_mean) / monthly_std
+            
+            # Calculate SPI (Standardized Precipitation Index) - simplified version
+            # Proper SPI requires fitting to gamma distribution, but z-score is a good approximation
+            df_ts['spi_1month'] = df_ts['precipitation_z_score']
+            
+            # Calculate 3-month and 6-month rolling SPI
+            df_ts['precipitation_3month'] = df_ts['precipitation_mm'].rolling(window=3, min_periods=1).mean()
+            df_ts['precipitation_6month'] = df_ts['precipitation_mm'].rolling(window=6, min_periods=1).mean()
+            
+            # Classify drought/wet conditions based on SPI
+            df_ts['condition'] = df_ts['spi_1month'].apply(self._classify_spi_condition)
+            
+            # Reorder columns
+            df_ts = df_ts[[
+                'date', 'year', 'month',
+                'precipitation_mm', 'precipitation_anomaly_mm', 'precipitation_z_score',
+                'spi_1month', 'precipitation_3month', 'precipitation_6month',
+                'condition', 'data_source', 'spatial_resolution', 'aggregation', 'bbox'
+            ]]
+            
             # Save data
-            # Create descriptive filename
             year_range = f"{start_year}-{end_year}" if start_year != end_year else str(start_year)
             output_path = self.output_dir / f"climate_precipitation_chirps_eastern_africa_{year_range}_monthly.csv"
-            df.to_csv(output_path, index=False)
-
-            logger.info(f"CHIRPS data saved to {output_path}")
-            return df
+            df_ts.to_csv(output_path, index=False)
+            
+            logger.info(f"✓ CHIRPS data saved: {len(df_ts)} monthly records")
+            logger.info(f"  Mean precipitation: {df_ts['precipitation_mm'].mean():.2f} mm/month")
+            logger.info(f"  Date range: {df_ts['date'].min()} to {df_ts['date'].max()}")
+            logger.info(f"  Output: {output_path}")
+            
+            # Close dataset
+            ds.close()
+            
+            return df_ts
 
         except Exception as e:
             logger.error(f"Error downloading CHIRPS data: {e}")
-            return pd.DataFrame()
+            logger.info("Falling back to alternative CHIRPS source...")
+            
+            # Fallback: Try to download from CHIRPS FTP (simplified)
+            try:
+                return self._download_chirps_fallback(start_year, end_year)
+            except Exception as e2:
+                logger.error(f"Fallback also failed: {e2}")
+                return pd.DataFrame()
+    
+    def _download_chirps_fallback(self, start_year, end_year):
+        """
+        Fallback method: Download CHIRPS data from NOAA NCEI
+        Uses CHIRPS data hosted at NOAA Climate Data Online
+        """
+        logger.info("Using CHIRPS fallback method (downloading from direct URLs)...")
+        
+        try:
+            # Alternative: Use Climate Hazards Center's FTP with GeoTIFF files
+            # Download monthly precipitation and calculate regional average
+            import rasterio
+            from rasterio.mask import mask
+            import tempfile
+            import os
+            
+            all_data = []
+            
+            for year in range(start_year, min(end_year + 1, 2024)):  # CHIRPS data typically up to 2023
+                for month in range(1, 13):
+                    try:
+                        # CHIRPS monthly GeoTIFF from FTP server
+                        # Note: 2024+ data might not be available yet
+                        if year >= 2024 and month > 6:
+                            logger.info(f"  Skipping {year}-{month:02d} (future data)")
+                            continue
+                        
+                        # Construct URL for GeoTIFF file
+                        url = f"https://data.chc.ucsb.edu/products/CHIRPS-2.0/global_monthly/tifs/chirps-v2.0.{year}.{month:02d}.tif"
+                        
+                        logger.info(f"  Downloading {year}-{month:02d}...")
+                        
+                        # Download file to temporary location
+                        response = requests.get(url, timeout=60)
+                        
+                        if response.status_code == 404:
+                            logger.warning(f"  File not found for {year}-{month:02d}")
+                            continue
+                        
+                        response.raise_for_status()
+                        
+                        # Save to temp file
+                        with tempfile.NamedTemporaryFile(delete=False, suffix='.tif') as tmp:
+                            tmp.write(response.content)
+                            tmp_path = tmp.name
+                        
+                        try:
+                            # Read with rasterio and extract for bbox
+                            with rasterio.open(tmp_path) as src:
+                                # Create bbox geometry
+                                from shapely.geometry import box
+                                bbox_geom = box(
+                                    self.bbox['min_lon'], 
+                                    self.bbox['min_lat'],
+                                    self.bbox['max_lon'], 
+                                    self.bbox['max_lat']
+                                )
+                                
+                                # Crop to bbox
+                                out_image, out_transform = mask(src, [bbox_geom], crop=True, filled=False)
+                                
+                                # Calculate mean precipitation
+                                precip_mean = float(np.nanmean(out_image))
+                                
+                                all_data.append({
+                                    'date': pd.Timestamp(f'{year}-{month:02d}-01'),
+                                    'year': year,
+                                    'month': month,
+                                    'precipitation_mm': precip_mean,
+                                    'data_source': 'CHIRPS_v2.0_geotiff',
+                                    'spatial_resolution': '0.05_degree',
+                                    'bbox': str(self.bbox)
+                                })
+                                
+                                logger.info(f"    ✓ {year}-{month:02d}: {precip_mean:.2f} mm")
+                        
+                        finally:
+                            # Clean up temp file
+                            os.unlink(tmp_path)
+                        
+                        time.sleep(1)  # Rate limiting
+                        
+                    except Exception as e:
+                        logger.warning(f"  Failed to download {year}-{month:02d}: {e}")
+                        continue
+            
+            if not all_data:
+                raise Exception("No data could be downloaded from fallback source")
+            
+            df = pd.DataFrame(all_data)
+            
+            # Add calculated fields
+            monthly_mean = df.groupby('month')['precipitation_mm'].transform('mean')
+            monthly_std = df.groupby('month')['precipitation_mm'].transform('std')
+            df['precipitation_anomaly_mm'] = df['precipitation_mm'] - monthly_mean
+            df['precipitation_z_score'] = (df['precipitation_mm'] - monthly_mean) / monthly_std
+            df['spi_1month'] = df['precipitation_z_score']
+            df['condition'] = df['spi_1month'].apply(self._classify_spi_condition)
+            
+            logger.info(f"✓ Fallback method retrieved {len(df)} records")
+            
+            return df
+            
+        except Exception as e:
+            logger.error(f"Fallback method failed: {e}")
+            raise
+    
+    def _classify_spi_condition(self, spi_value):
+        """
+        Classify drought/wet conditions based on SPI value
+        SPI: Standardized Precipitation Index
+        """
+        if pd.isna(spi_value):
+            return 'unknown'
+        elif spi_value <= -2.0:
+            return 'extremely_dry'
+        elif spi_value <= -1.5:
+            return 'severely_dry'
+        elif spi_value <= -1.0:
+            return 'moderately_dry'
+        elif spi_value <= -0.5:
+            return 'abnormally_dry'
+        elif spi_value >= 2.0:
+            return 'extremely_wet'
+        elif spi_value >= 1.5:
+            return 'severely_wet'
+        elif spi_value >= 1.0:
+            return 'moderately_wet'
+        elif spi_value >= 0.5:
+            return 'abnormally_wet'
+        else:
+            return 'normal'
 
     def download_modis_temperature(self, start_year=2019, end_year=2024):
         """

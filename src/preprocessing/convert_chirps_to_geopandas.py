@@ -58,7 +58,8 @@ def tif_to_gdf(tif_path, date_str, subsample=10):
         cols_valid = cols_flat[valid_mask]
         values_valid = values_flat[valid_mask]
         
-        # Convert to geographic coordinates
+        # Convert pixel coordinates to geographic coordinates (lon, lat)
+        # xy() returns (x, y) where x=longitude, y=latitude for EPSG:4326
         xs, ys = rasterio.transform.xy(
             transform, 
             rows_valid, 
@@ -66,16 +67,21 @@ def tif_to_gdf(tif_path, date_str, subsample=10):
             offset='center'
         )
         
-        # Create GeoDataFrame
+        # Convert to numpy arrays
+        lons = np.array(xs)
+        lats = np.array(ys)
+        
+        # Create GeoDataFrame with explicit EPSG:4326 (WGS84)
+        # Point(longitude, latitude) - x is lon, y is lat
         gdf = gpd.GeoDataFrame(
             {
                 'precipitation': values_valid,
                 'date': date_str,
-                'lon': xs,
-                'lat': ys
+                'lon': lons,
+                'lat': lats
             },
-            geometry=[Point(x, y) for x, y in zip(xs, ys)],
-            crs=crs
+            geometry=[Point(lon, lat) for lon, lat in zip(lons, lats)],
+            crs='EPSG:4326'  # Explicitly set WGS84
         )
         
         return gdf
@@ -152,7 +158,7 @@ if __name__ == "__main__":
     # Configuration
     CHIRPS_DIR = "./data/raw/climate/chirps/"
     OUTPUT_PATH = "./data/processed/chirps_all_geopandas.parquet"  # or .gpkg, .geojson
-    SUBSAMPLE = 10  # 1 = all pixels (LARGE!), 10 = every 10th pixel, 20 = every 20th
+    SUBSAMPLE = 3  # 1 = all pixels (LARGE!), 5 = every 5th pixel, 10 = every 10th
     
     # Convert
     gdf = convert_all_chirps(
