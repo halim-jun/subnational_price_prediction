@@ -498,7 +498,8 @@ class CHIRPStoSPI:
     def run_full_pipeline(self, lon_min=25, lon_max=52, lat_min=-15, lat_max=22,
                          year_start=2016, year_end=2024,
                          spi_scales=[1, 2, 3, 6, 9, 12],
-                         calibration_start=1991, calibration_end=2020):
+                         calibration_start=1991, calibration_end=2020,
+                         fill_missing=True):
         """
         Run the complete pipeline from raw CHIRPS to SPI
         
@@ -507,6 +508,7 @@ class CHIRPStoSPI:
             year_start, year_end: Temporal bounds
             spi_scales: List of SPI time scales to calculate
             calibration_start, calibration_end: Calibration period for SPI
+            fill_missing: Whether to interpolate coastal missing values (set False to keep NaNs)
         """
         print("\n")
         print("*" * 60)
@@ -521,8 +523,14 @@ class CHIRPStoSPI:
                 year_start, year_end
             )
             
-            # Step 2: Fill missing values
-            filled_file = self.step2_fill_missing(clipped_file)
+            # Step 2: Fill missing values (optional)
+            if fill_missing:
+                filled_file = self.step2_fill_missing(clipped_file)
+            else:
+                print("=" * 60)
+                print("STEP 2: Skipped filling missing values (keeping NaNs over ocean)")
+                print("=" * 60)
+                filled_file = clipped_file
             
             # Step 3: Fix metadata
             metadata_file = self.step3_fix_metadata(filled_file)

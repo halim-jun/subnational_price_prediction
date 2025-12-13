@@ -19,6 +19,7 @@ import xarray as xr
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
+import geopandas as gpd
 from pathlib import Path
 from datetime import datetime
 import requests
@@ -196,6 +197,22 @@ def visualize_spi(spi_file, output_dir, year=2024, scale=12):
     # Get coordinate names
     lon_name = 'longitude' if 'longitude' in spi_year.dims else 'lon'
     lat_name = 'latitude' if 'latitude' in spi_year.dims else 'lat'
+
+    # Preload basemap (Natural Earth via GeoPandas)
+    world = None
+    min_lon = float(spi_year[lon_name].min())
+    max_lon = float(spi_year[lon_name].max())
+    min_lat = float(spi_year[lat_name].min())
+    max_lat = float(spi_year[lat_name].max())
+    # small padding for aesthetics
+    pad_lon = max(0.5, (max_lon - min_lon) * 0.02)
+    pad_lat = max(0.5, (max_lat - min_lat) * 0.02)
+    try:
+        world = gpd.read_file(gpd.datasets.get_path("naturalearth_lowres"))
+        # Clip to relevant extent with padding to reduce draw time
+        world = world.cx[min_lon - pad_lon : max_lon + pad_lon, min_lat - pad_lat : max_lat + pad_lat]
+    except Exception as e:
+        print(f"⚠️  Basemap load failed (will continue without): {e}")
     
     # Create figure
     fig, axes = plt.subplots(4, 3, figsize=(20, 16))
@@ -220,6 +237,11 @@ def visualize_spi(spi_file, output_dir, year=2024, scale=12):
                 data[lon_name], data[lat_name], data,
                 cmap=cmap, norm=norm, shading='auto'
             )
+            # Basemap overlay
+            if world is not None:
+                world.boundary.plot(ax=ax, color='black', linewidth=0.6, alpha=0.7)
+                ax.set_xlim(min_lon - pad_lon, max_lon + pad_lon)
+                ax.set_ylim(min_lat - pad_lat, max_lat + pad_lat)
             
             # Styling
             ax.set_title(months[i], fontsize=12, fontweight='bold')
@@ -428,6 +450,10 @@ def main():
         '--chirps-dir', default='../../data/raw/chirps',
         help='Directory for CHIRPS data (default: ../../data/raw/chirps)'
     )
+    parser.add_argument(
+        '--no-fill-missing', action='store_true',
+        help='Do not interpolate/fill missing coastal values (keep NaNs over ocean)'
+    )
     
     args = parser.parse_args()
     
@@ -502,7 +528,8 @@ def main():
                 year_end=args.year_end,
                 spi_scales=args.scales,
                 calibration_start=args.calibration_start,
-                calibration_end=args.calibration_end
+                calibration_end=args.calibration_end,
+                fill_missing=not args.no_fill_missing
             )
             
             print("\n" + "*" * 70)
@@ -524,22 +551,23 @@ def main():
     
     # Create visualizations if requested
     if args.visualize:
-        viz_dir = os.path.join(args.output, 'visualizations')
+        viz_base_dir = os.path.join(args.output, 'visualizations')
+        viz_dir = os.path.join(viz_base_dir, datetime.now().strftime("%Y%m%d_%H%M%S"))
         os.makedirs(viz_dir, exist_ok=True)
         
         print("\n" + "=" * 70)
         print("CREATING VISUALIZATIONS")
         print("=" * 70)
+        print(f"Saving plots to: {viz_dir}")
         
-        # Visualize key SPI scales
-        for scale in [3, 6, 12]:
-            if scale in args.scales:
-                spi_file = os.path.join(
-                    final_dir, 
-                    f'east_africa_spi_gamma_{scale:02d}_month.nc'
-                )
-                if os.path.exists(spi_file):
-                    visualize_spi(spi_file, viz_dir, year=args.viz_year, scale=scale)
+        # Visualize all requested SPI scales
+        for scale in sorted(args.scales):
+            spi_file = os.path.join(
+                final_dir, 
+                f'east_africa_spi_gamma_{scale:02d}_month.nc'
+            )
+            if os.path.exists(spi_file):
+                visualize_spi(spi_file, viz_dir, year=args.viz_year, scale=scale)
     
     # Create summary report
     create_summary_report(final_dir, args.output)
