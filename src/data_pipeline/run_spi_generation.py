@@ -450,10 +450,6 @@ def main():
         '--chirps-dir', default='../../data/raw/chirps',
         help='Directory for CHIRPS data (default: ../../data/raw/chirps)'
     )
-    parser.add_argument(
-        '--no-fill-missing', action='store_true',
-        help='Do not interpolate/fill missing coastal values (keep NaNs over ocean)'
-    )
     
     args = parser.parse_args()
     
@@ -528,8 +524,7 @@ def main():
                 year_end=args.year_end,
                 spi_scales=args.scales,
                 calibration_start=args.calibration_start,
-                calibration_end=args.calibration_end,
-                fill_missing=not args.no_fill_missing
+                calibration_end=args.calibration_end
             )
             
             print("\n" + "*" * 70)
