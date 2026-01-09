@@ -9,7 +9,7 @@ import seaborn as sns
 SPI_DIR = Path("data/processed/spi/06_spi_csv")
 WB_PATH = Path("data/processed/external/worldbank_indices.csv")
 PRICE_PATH = Path("data/raw/wfp/wfp_food_prices_eastern_africa_2019-2025_10countries_118487records.csv")
-OUTPUT_DIR = Path("data/analysis_results")
+OUTPUT_DIR = Path("src/analysis/analysis_results")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 SPI_TIMESCALES = [1, 3, 6, 12, 24]
@@ -218,7 +218,7 @@ def run_analysis():
     if results:
         res_df = pd.DataFrame(results)
         res_df.to_csv(OUTPUT_DIR / "price_impact_summary.csv", index=False)
-        print("\nAnalysis Complete. Summary saved to data/analysis_results/price_impact_summary.csv")
+        print("\nAnalysis Complete. Summary saved to src/analysis/analysis_results/price_impact_summary.csv")
         print(res_df)
     else:
         print("No results generated.")

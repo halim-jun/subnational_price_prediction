@@ -11,7 +11,7 @@ from pathlib import Path
 SPI_CACHE = Path("data/processed/spi/06_spi_csv/eth_agg_spi_all_scales.csv")
 PRICE_PATH = Path("data/raw/wfp/wfp_food_prices_eastern_africa_2019-2025_10countries_118487records.csv")
 WB_PATH = Path("data/processed/external/worldbank_indices.csv")
-OUTPUT_DIR = Path("data/analysis_results/eth_analysis")
+OUTPUT_DIR = Path("src/analysis/analysis_results/eth_analysis")
 
 def compare_split_scales():
     print("Comparing Split SPI Across Timescales (1, 3, 6, 12, 24) for Maize...")

@@ -5,7 +5,7 @@ from pathlib import Path
 
 # Config
 SPI_DIR = Path("data/processed/spi/06_spi_csv")
-OUTPUT_DIR = Path("data/analysis_results/eth_analysis")
+OUTPUT_DIR = Path("src/analysis/analysis_results") / "eth_analysis"
 
 def compare_scales():
     print("Comparing SPI Scales for Maize...")

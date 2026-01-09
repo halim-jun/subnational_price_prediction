@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 
 # Config
-DATA_PATH = Path("data/analysis_results/eth_analysis/eth_merged_data.csv")
-OUTPUT_DIR = Path("data/analysis_results/eth_analysis")
+DATA_PATH = Path("src/analysis/analysis_results/eth_analysis/eth_merged_data.csv")
+OUTPUT_DIR = Path("src/analysis/analysis_results/eth_analysis")
 
 def compare_definitions():
     print("Comparing SPI Definitions (Raw vs Split)...")

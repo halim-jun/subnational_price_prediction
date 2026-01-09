@@ -9,8 +9,8 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Config
-DATA_PATH = Path("data/analysis_results/eth_analysis/eth_merged_data.csv")
-OUTPUT_DIR = Path("data/analysis_results/eth_analysis/forecasts")
+DATA_PATH = Path("src/analysis/analysis_results/eth_analysis/eth_merged_data.csv")
+OUTPUT_DIR = Path("src/analysis/analysis_results/eth_analysis/forecasts")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Target Commodities
@@ -152,7 +152,7 @@ def run_sarimax_modeling():
     # Summary
     if results:
         pd.DataFrame(results).to_csv(OUTPUT_DIR / "sarimax_summary.csv", index=False)
-        print("\nSARIMAX Modeling Complete. Forecasts saved to data/analysis_results/eth_analysis/forecasts")
+        print("\nSARIMAX Modeling Complete. Forecasts saved to src/analysis/analysis_results/eth_analysis/forecasts")
 
 if __name__ == "__main__":
     run_sarimax_modeling()

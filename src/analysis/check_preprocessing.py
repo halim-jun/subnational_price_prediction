@@ -5,8 +5,8 @@ from statsmodels.tsa.stattools import adfuller, ccf
 from pathlib import Path
 import seaborn as sns
 
-DATA_PATH = Path("data/analysis_results/eth_analysis/eth_merged_data.csv")
-OUTPUT_DIR = Path("data/analysis_results/eth_analysis")
+DATA_PATH = Path("src/analysis/analysis_results/eth_analysis/eth_merged_data.csv")
+OUTPUT_DIR = Path("src/analysis/analysis_results/eth_analysis")
 
 def check_preprocessing_needs():
     print("Checking Data Quality & Preprocessing Needs...")

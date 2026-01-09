@@ -1,0 +1,33 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:              log_price   R-squared:                       0.844
+Model:                            OLS   Adj. R-squared:                  0.840
+Method:                 Least Squares   F-statistic:                     237.9
+Date:                Fri, 26 Dec 2025   Prob (F-statistic):          6.37e-154
+Time:                        18:32:15   Log-Likelihood:                -478.29
+No. Observations:                 407   AIC:                             976.6
+Df Residuals:                     397   BIC:                             1017.
+Df Model:                           9                                         
+Covariance Type:            nonrobust                                         
+=========================================================================================
+                            coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept               -13.5816      1.357    -10.006      0.000     -16.250     -10.913
+C(countryiso3)[T.ETH]     4.6078      0.134     34.333      0.000       4.344       4.872
+C(countryiso3)[T.KEN]    -0.2401      0.157     -1.525      0.128      -0.550       0.069
+C(countryiso3)[T.MDG]     0.6159      0.281      2.190      0.029       0.063       1.169
+C(countryiso3)[T.SOM]     3.9053      0.134     29.154      0.000       3.642       4.169
+C(countryiso3)[T.SSD]     1.6995      0.134     12.656      0.000       1.436       1.964
+C(countryiso3)[T.TZA]     3.0235      0.133     22.696      0.000       2.762       3.285
+spi_3                     0.0091      0.051      0.179      0.858      -0.091       0.109
+log_energy               -0.5749      0.201     -2.862      0.004      -0.970      -0.180
+log_food_idx              3.3654      0.414      8.130      0.000       2.552       4.179
+==============================================================================
+Omnibus:                       54.062   Durbin-Watson:                   0.309
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              246.000
+Skew:                          -0.451   Prob(JB):                     3.82e-54
+Kurtosis:                       6.700   Cond. No.                         239.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

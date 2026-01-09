@@ -8,7 +8,7 @@ import re
 # Config
 SPI_DIR = Path("data/processed/spi/06_spi_csv")
 PRICE_PATH = Path("data/raw/wfp/wfp_food_prices_eastern_africa_2019-2025_10countries_118487records.csv")
-OUTPUT_DIR = Path("data/analysis_results")
+OUTPUT_DIR = Path("src/analysis/analysis_results")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 SPI_TIMESCALES = [1, 3, 6, 12, 24]

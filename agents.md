@@ -1,7 +1,3 @@
-아래는 자연스러운 연구 제안서 스타일로 깔끔하게 다듬어 번역한 영어본입니다. 한국어 원문의 구조·의미는 유지하면서 문장 흐름만 학술적으로 매끈하게 손봤어요.
-
-⸻
-
 Eastern Africa Food Price Forecasting Proposal
 
 Building a Time-Series Prediction Model Integrating Climate Change, Conflict, and Market Drivers

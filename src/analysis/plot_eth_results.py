@@ -4,8 +4,8 @@ import seaborn as sns
 from pathlib import Path
 
 # Config
-DATA_DIR = Path("data/analysis_results/eth_analysis")
-OUTPUT_DIR = Path("data/analysis_results/eth_analysis/plots")
+DATA_DIR = Path("src/analysis/analysis_results/eth_analysis")
+OUTPUT_DIR = Path("src/analysis/analysis_results/eth_analysis/plots")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def plot_price_vs_spi():

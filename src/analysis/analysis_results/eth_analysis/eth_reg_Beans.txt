@@ -1,0 +1,28 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:              log_price   R-squared:                       0.135
+Model:                            OLS   Adj. R-squared:                  0.071
+Method:                 Least Squares   F-statistic:                     2.104
+Date:                Fri, 26 Dec 2025   Prob (F-statistic):             0.0929
+Time:                        19:10:18   Log-Likelihood:                 22.810
+No. Observations:                  59   AIC:                            -35.62
+Df Residuals:                      54   BIC:                            -25.23
+Df Model:                           4                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept          1.2624      1.427      0.885      0.380      -1.598       4.122
+spi_drought_24    -0.0973      0.129     -0.753      0.455      -0.356       0.162
+spi_flood_24      -0.0854      0.048     -1.776      0.081      -0.182       0.011
+log_energy         0.1068      0.160      0.669      0.506      -0.213       0.427
+log_food          -0.3726      0.417     -0.893      0.376      -1.209       0.464
+==============================================================================
+Omnibus:                        0.581   Durbin-Watson:                   0.719
+Prob(Omnibus):                  0.748   Jarque-Bera (JB):                0.191
+Skew:                           0.118   Prob(JB):                        0.909
+Kurtosis:                       3.149   Cond. No.                         447.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

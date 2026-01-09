@@ -1,0 +1,5 @@
+commodity,rmse,plot_path
+Maize,0.32839864331000534,data/analysis_results/eth_analysis/forecasts/forecast_Maize.png
+Wheat,0.7302083610488812,data/analysis_results/eth_analysis/forecasts/forecast_Wheat.png
+Sorghum,0.24631683294469314,data/analysis_results/eth_analysis/forecasts/forecast_Sorghum.png
+Beans,0.23987030784563929,data/analysis_results/eth_analysis/forecasts/forecast_Beans.png
