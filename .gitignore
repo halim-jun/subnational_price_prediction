@@ -14,4 +14,4 @@ mlruns/*
 *.log
 
 
-*wandb/*
+*wandb/*archive/*.parquet
