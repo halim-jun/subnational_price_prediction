@@ -37,9 +37,6 @@ src/
 ### 1. 필수 조건 (Prerequisites)
 
 - Python 3.9 이상 권장.
-- 필요한 패키지는 `requirements.txt`에 명시되어 있습니다.
-
-source venv/bin/activate
 
 ### 2. 설치 (Installation)
 
@@ -56,6 +53,7 @@ source venv/bin/activate  # macOS/Linux
 
 # 종속성 패키지 설치
 pip install -r requirements.txt
+(필요한 패키지는 `requirements.txt`에 명시되어 있고, 해당 패키지를 venv 에 설치합니다)
 
 #구글 드라이브에서 파일 다운로드
 https://drive.google.com/drive/folders/1J5alTJtyKhiR-Eow_-G5FxXM8x7j2Uql?usp=drive_link
