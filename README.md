@@ -61,8 +61,9 @@ pip install -r requirements.txt
 https://drive.google.com/drive/folders/1J5alTJtyKhiR-Eow_-G5FxXM8x7j2Uql?usp=drive_link
 
 파일을 다운로드 하여
-subnational_price_prediction 하에 놓습니다.
-(최종 아웃풋 : subnational_price_prediction/data/... 이런식으로 형성되되록)
+subnational_price_prediction/data/ 하에 놓습니다.
+(최종 아웃풋 : subnational_price_prediction/data/... 이런식으로 형성되되록.
+data/data 가 되지 않도록 주의하세요)
 
 
 

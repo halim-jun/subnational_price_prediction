@@ -42,18 +42,25 @@ src/
 
 ```bash
 # Clone the repository
-git clone https://github.com/halim-jun/price_prediction
-cd wpf_colla_v2
-
-# Create processing directories
-mkdir -p data/raw data/processed
-
-# Install dependencies
-pip install -r requirements.txt
+git clone https://github.com/halim-jun/subnational_price_prediction
+cd subnational_price_prediction
 
 # Activate virtual environment
 source venv/bin/activate  # macOS/Linux
 .\venv\Scripts\activate  # Windows
+
+# Create processing directories
+mkdir -p data
+
+# Download  data
+https://drive.google.com/drive/folders/1J5alTJtyKhiR-Eow_-G5FxXM8x7j2Uql?usp=drive_link
+
+place the folder under the root (price_prediction_clean/data/..)
+
+# Install dependencies
+pip install -r requirements.txt
+
+
 ```
 
 ---
