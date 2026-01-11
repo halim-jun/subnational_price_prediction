@@ -1,85 +1,34 @@
-# Eastern Africa Food Price Forecasting - Python Dependencies
-
-# Core data processing
+# Core Data Science
 pandas>=2.0.0
 numpy>=1.24.0
 scipy>=1.10.0
 
-# Geospatial data handling
+# Geospatial
 geopandas>=0.13.0
 shapely>=2.0.0
 rasterio>=1.3.0
 fiona>=1.9.0
-h3>=3.7.6  # Hexagonal hierarchical geospatial indexing for spatial merging
-pyproj>=3.5.0  # Coordinate transformations
 
-# Climate and satellite data
+# Climate Data
 xarray>=2023.1.0
 netcdf4>=1.6.0
-h5py>=3.8.0
-climate-indices>=1.0.0  # For SPI/SPEI calculation
+climate-indices>=1.0.0
 
-# Web scraping and APIs
-requests>=2.31.0
-urllib3>=2.0.0
-beautifulsoup4>=4.12.0
-
-# OpenStreetMap data
-overpy>=0.7
-osmnx>=1.5.0
-
-# Economic data APIs
-wbdata>=0.3.0
-fredapi>=0.5.0
-quandl>=3.7.0
-
-# Machine learning and statistics
+# Machine Learning & Statistics
 scikit-learn>=1.3.0
 statsmodels>=0.14.0
-xgboost>=1.7.0
-lightgbm>=3.3.0
-
-# Deep learning
-tensorflow>=2.13.0
-torch>=2.0.0
-keras>=2.13.0
 
 # Visualization
 matplotlib>=3.7.0
 seaborn>=0.12.0
-plotly>=5.14.0
-folium>=0.14.0
-bokeh>=3.1.0
 
-# Jupyter and notebook support
-jupyter>=1.0.0
-ipywidgets>=8.0.0
-notebook>=6.5.0
-
-# MLflow for experiment tracking
-mlflow>=2.5.0
-
-# Data validation and quality
-great-expectations>=0.17.0
-pandera>=0.15.0
-
-# Utilities
+# Utilities & APIs
+requests>=2.31.0
+beautifulsoup4>=4.12.0
 tqdm>=4.65.0
-python-dotenv>=1.0.0
-python-dateutil>=2.8.0
-pyyaml>=6.0
-openpyxl>=3.1.0
-xlrd>=2.0.0
+openpyxl>=3.1.0  # For Excel reading
 
-# Testing
+# Development & Testing
 pytest>=7.4.0
-pytest-cov>=4.1.0
-
-# Code quality
 black>=23.0.0
 flake8>=6.0.0
-isort>=5.12.0
-
-# Documentation
-sphinx>=7.0.0
-sphinx-rtd-theme>=1.3.0

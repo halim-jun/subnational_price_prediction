@@ -27,9 +27,11 @@ from tqdm import tqdm
 
 # Import our SPI generator
 from generate_spi_python import CHIRPStoSPI
+# Import CSV converter
+from convert_nc_to_csv import convert_nc_to_csv
 
 
-def download_chirps(output_dir='../../data/raw/chirps', force=False):
+def download_chirps(output_dir='../../../data/raw/climate/chirps', force=False):
     """
     Download CHIRPS global monthly dataset
     
@@ -132,7 +134,7 @@ def download_chirps(output_dir='../../data/raw/chirps', force=False):
         sys.exit(1)
 
 
-def setup_paths(base_dir='../../data/raw/chirps'):
+def setup_paths(base_dir='../../../data/raw/climate/chirps'):
     """
     Setup and validate input/output paths
     
@@ -145,8 +147,8 @@ def setup_paths(base_dir='../../data/raw/chirps'):
     paths = {
         'chirps_dir': base_dir,
         'chirps_file': os.path.join(base_dir, 'chirps-v2.0.monthly.nc'),
-        'output_dir': '../../data/processed/spi',
-        'viz_dir': '../../data/processed/spi/visualizations'
+        'output_dir': '../../../data/processed/spi',
+        'viz_dir': '../../../data/processed/spi/visualizations'
     }
     
     # Create visualization directory
@@ -382,12 +384,12 @@ def main():
     )
     parser.add_argument(
         '--input', '-i',
-        default='../../data/raw/chirps/chirps-v2.0.monthly.nc',
+        default='../../../data/raw/climate/chirps/chirps-v2.0.monthly.nc',
         help='Path to input CHIRPS NetCDF file'
     )
     parser.add_argument(
         '--output', '-o',
-        default='../../data/processed/spi',
+        default='../../../data/processed/spi',
         help='Output directory for SPI files'
     )
     parser.add_argument(
@@ -439,6 +441,10 @@ def main():
         help='Skip SPI generation (useful if only visualizing existing data)'
     )
     parser.add_argument(
+        '--skip-csv', action='store_true',
+        help='Skip NetCDF to CSV conversion'
+    )
+    parser.add_argument(
         '--download-chirps', action='store_true',
         help='Download CHIRPS data before processing'
     )
@@ -447,8 +453,8 @@ def main():
         help='Force re-download even if CHIRPS file exists'
     )
     parser.add_argument(
-        '--chirps-dir', default='../../data/raw/chirps',
-        help='Directory for CHIRPS data (default: ../../data/raw/chirps)'
+        '--chirps-dir', default='../../../data/raw/climate/chirps',
+        help='Directory for CHIRPS data (default: ../../../data/raw/climate/chirps)'
     )
     
     args = parser.parse_args()
@@ -567,6 +573,19 @@ def main():
     # Create summary report
     create_summary_report(final_dir, args.output)
     
+    # Convert to CSV if not skipped
+    csv_dir = os.path.join(args.output, '06_spi_csv')
+    if not args.skip_csv:
+        print("\n" + "=" * 70)
+        print("CONVERTING TO CSV")
+        print("=" * 70)
+        try:
+            convert_nc_to_csv(final_dir, csv_dir)
+        except Exception as e:
+            print(f"⚠️  CSV Conversion failed: {e}")
+    else:
+        print("\nSkipping CSV conversion (--skip-csv provided)")
+    
     # Final summary
     print("\n" + "*" * 70)
     print("  ALL TASKS COMPLETED!")
@@ -577,6 +596,8 @@ def main():
     if args.visualize:
         print(f"  - Visualizations: {viz_dir}")
     print(f"  - Report: {os.path.join(args.output, 'spi_generation_report.txt')}")
+    if not args.skip_csv:
+        print(f"  - CSV files: {csv_dir}")
     print()
 
 

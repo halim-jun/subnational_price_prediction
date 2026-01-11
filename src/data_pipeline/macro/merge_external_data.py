@@ -1,9 +1,14 @@
 import pandas as pd
 import os
 from functools import reduce
+from pathlib import Path
 
-PROCESSED_DIR = "data/processed/external"
-OUTPUT_FILE = "data/processed/external/external_variables_merged.csv"
+# Paths relative to this script
+SCRIPT_DIR = Path(__file__).parent
+PROJECT_ROOT = SCRIPT_DIR.parents[2]
+
+PROCESSED_DIR = PROJECT_ROOT / "data/processed/external"
+OUTPUT_FILE = PROCESSED_DIR / "external_variables_merged.csv"
 
 def merge_external_data():
     print("Merging external variables...")

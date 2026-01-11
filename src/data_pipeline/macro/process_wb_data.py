@@ -1,9 +1,14 @@
 import pandas as pd
 import os
+from pathlib import Path
 
-INPUT_FILE = "data/raw/worldbank_commodity/CMO-Historical-Data-Monthly.xlsx"
-OUTPUT_DIR = "data/processed/external"
-OUTPUT_FILE = os.path.join(OUTPUT_DIR, "worldbank_indices.csv")
+# Paths relative to this script
+SCRIPT_DIR = Path(__file__).parent
+PROJECT_ROOT = SCRIPT_DIR.parents[2]  # src/data_pipeline/macro -> src/data_pipeline -> src -> root
+
+INPUT_FILE = PROJECT_ROOT / "data/raw/worldbank_commodity/CMO-Historical-Data-Monthly.xlsx"
+OUTPUT_DIR = PROJECT_ROOT / "data/processed/external"
+OUTPUT_FILE = OUTPUT_DIR / "worldbank_indices.csv"
 
 def process_wb_data():
     """

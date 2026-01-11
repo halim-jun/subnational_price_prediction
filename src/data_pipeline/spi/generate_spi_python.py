@@ -26,7 +26,7 @@ class CHIRPStoSPI:
     Convert CHIRPS precipitation data to Standardized Precipitation Index
     """
     
-    def __init__(self, input_file, output_dir='../../data/processed/spi'):
+    def __init__(self, input_file, output_dir='../../../data/processed/spi'):
         """
         Initialize the SPI generator
         

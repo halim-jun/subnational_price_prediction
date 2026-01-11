@@ -11,8 +11,8 @@ ISO_CODES = [
     'ZMB', 'MWI', 'MOZ', 'MDG'
 ]
 GB_API_URL = "https://www.geoboundaries.org/api/current/gbOpen/{}/{}/"
-DATA_DIR = "data/external/geoboundaries"
-INPUT_DIR = "data/processed/spi/06_spi_csv"
+DATA_DIR = "../../../data/geoboundaries"
+INPUT_DIR = "../../../data/processed/spi/06_spi_csv"
 
 # List of input files to process (exclude already processed or outputs)
 INPUT_FILES = [

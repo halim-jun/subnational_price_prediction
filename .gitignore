@@ -12,7 +12,8 @@ logs/*
 mlruns/*
 *.log*
 *.log
+*.parquet
+archive/*
 
 
 *wandb/*archive/*.parquet
-archive/*.parquet
