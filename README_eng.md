@@ -50,6 +50,10 @@ mkdir -p data/raw data/processed
 
 # Install dependencies
 pip install -r requirements.txt
+
+# Activate virtual environment
+source venv/bin/activate  # macOS/Linux
+.\venv\Scripts\activate  # Windows
 ```
 
 ---

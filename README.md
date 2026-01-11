@@ -49,8 +49,10 @@ git clone https://github.com/halim-jun/subnational_price_prediction
 cd subnational_price_prediction
 
 # 가상환경 생성 및 활성화
+
 python3 -m venv venv
-source venv/bin/activate
+source venv/bin/activate  # macOS/Linux
+.\venv\Scripts\activate  # Windows
 
 # 종속성 패키지 설치
 pip install -r requirements.txt
