@@ -1,10 +1,12 @@
 # 🌾 동아프리카 식량 가격 및 예측 프로젝트
 
-이 프로젝트는 기후 데이터(SPI), 거시경제 지표, 그리고 과거 가격 데이터를 통합하여 동아프리카(주로 에티오피아)의 식량 가격을 분석하고 예측하는 것을 목표로 합니다. SARIMAX 모델을 사용하여 국가 및 지역(Sub-national) 수준의 가격을 예측합니다.
+이 프로젝트는 기후 데이터(SPI), 거시경제 지표, 그리고 과거 가격 데이터를 통합하여 동아프리카(주로 에티오피아)의 식량 가격을 분석하고 예측하는 것을 목표로 합니다.
 
 ## 📂 프로젝트 구조
 
 소스 코드는 `src/` 디렉토리 내에 다음과 같이 구성되어 있습니다:
+핵심 모델링 파일은 주로 `src/notebook` 하에 있습니다.
+(subnational_level_prediction_baseline.ipynb)
 
 ```
 src/
@@ -21,7 +23,7 @@ src/
 ├── data/
 │   ├── raw/
 │   │   ├── climate/            # CHIRPS 강수량 원본 데이터
-│   │   ├── worldbank_commodity/# World Bank Commodity (Pink Sheet) 데이터
+│   │   ├── worldbank_commodity/# World Bank Commodity (PinkSheet) 데이터
 │   │   └── wfp/                # WFP 식량 가격 데이터 (수동/사전 다운로드 필요)
 │   └── processed/
 │       ├── spi/                # 계산된 SPI 지수
@@ -37,42 +39,44 @@ src/
 - Python 3.9 이상 권장.
 - 필요한 패키지는 `requirements.txt`에 명시되어 있습니다.
 
+source venv/bin/activate
+
 ### 2. 설치 (Installation)
 
 ```bash
 # 레포지토리 클론
-git clone https://github.com/halim-jun/price_prediction
-cd wpf_colla_v2
+git clone https://github.com/halim-jun/subnational_price_prediction
+cd subnational_price_prediction
 
-# 데이터 처리용 디렉토리 생성
-mkdir -p data/raw data/processed
+# 가상환경 생성 및 활성화
+python3 -m venv venv
+source venv/bin/activate
 
 # 종속성 패키지 설치
 pip install -r requirements.txt
+
+#구글 드라이브에서 파일 다운로드
+https://drive.google.com/drive/folders/1J5alTJtyKhiR-Eow_-G5FxXM8x7j2Uql?usp=drive_link
+
+파일을 다운로드 하여
+subnational_price_prediction 하에 놓습니다.
+(최종 아웃풋 : subnational_price_prediction/data/... 이런식으로 형성되되록)
+
+
+
+```
+### 3. 테스트 실행 (Test Run)
+
+```bash
+python src/notebook/subnational_level_prediction_baseline.ipynb
 ```
 
----
 
-## 🛠️ 데이터 파이프라인 (Data Pipeline)
 
-분석을 위한 데이터셋을 준비하려면 다음 파이프라인들을 실행하세요:
-
-1.  **거시경제 데이터 (Macro Pipeline)**:
-    ```bash
-    python src/data_pipeline/macro/process_wb_data.py
-    python src/data_pipeline/macro/merge_external_data.py
-    ```
-
-2.  **기후 데이터 (SPI Pipeline)**:
-    ```bash
-    # CHIRPS 데이터 다운로드 및 SPI 생성
-    python src/data_pipeline/spi/run_spi_generation.py --download-chirps
-    ```
-    *(상세한 SPI 관련 설명은 `src/data_pipeline/spi/README.md`를 참고하세요)*
 
 ---
 
-## ✅ 구현된 데이터 파이프라인 상세
+## ✅ 구현된 데이터 파이프라인 상세 (실행하지 않아도 됨)
 
 ### 1. 기후 데이터 (SPI) ✅
 - **위치**: `src/data_pipeline/spi/`
