@@ -14,5 +14,6 @@ mlruns/*
 *.parquet
 archive/*
 data/*
+*.zip
 
 *wandb/*archive/*.parquet

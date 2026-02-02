@@ -21,6 +21,21 @@ def run_sarimax_modeling():
     df = pd.read_csv(DATA_PATH)
     df['month'] = pd.to_datetime(df['month'])
     
+    # [NEW] Load SPAM Weighted Indices
+    spam_indices_path = Path("data/processed/weighted_climate_indices.csv")
+    if spam_indices_path.exists():
+        print("Loading SPAM Weighted Indices...")
+        df_spam = pd.read_csv(spam_indices_path)
+        df_spam['month'] = pd.to_datetime(df_spam['time']) # Rename 'time' to 'month'
+        df_spam = df_spam.drop(columns=['time'])
+        
+        # Merge
+        # Note: df has multiple rows per month (commodities/regions). 
+        # We need to merge on 'month'.
+        df = pd.merge(df, df_spam, on='month', how='left')
+    else:
+        print("Warning: SPAM Weighted Indices not found.")
+    
     results = []
     
     for com in TARGETS:
@@ -77,6 +92,22 @@ def run_sarimax_modeling():
         # Note: We need to use FILLNA for the initial lagged Nans if we want to use the whole series, 
         # but standard practice is to drop the first K rows.
         final_exog = [f'spi_drought_{best_scale}_lag{lag_k}', f'spi_flood_{best_scale}_lag{lag_k}', 'log_energy', 'log_food']
+        
+        # [NEW] Add SPAM Weighted Climate Index
+        crop_key = com.lower()
+        # Map common names to column names
+        if 'maize' in crop_key: weighted_col = 'precip_weighted_maize'
+        elif 'wheat' in crop_key: weighted_col = 'precip_weighted_wheat'
+        elif 'sorghum' in crop_key: weighted_col = 'precip_weighted_sorghum'
+        else: weighted_col = None
+        
+        if weighted_col and weighted_col in comm_df.columns:
+            # Log transform precipitation (handle zeros with +1)
+            comm_df[f'log_{weighted_col}'] = np.log(comm_df[weighted_col] + 1.0)
+            # Add lagged version same as SPI
+            comm_df[f'log_{weighted_col}_lag{lag_k}'] = comm_df[f'log_{weighted_col}'].shift(lag_k)
+            final_exog.append(f'log_{weighted_col}_lag{lag_k}')
+            print(f"  Added SPAM-weighted feature: log_{weighted_col}_lag{lag_k}")
         
         # Clean nulls (This will drop the first 7 months)
         model_df = comm_df[['log_price'] + final_exog].dropna()
