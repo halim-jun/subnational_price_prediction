@@ -130,6 +130,16 @@ It is unnecessary to run the data pipeline as the data is already processed and 
 - **Status**: Raw data available in `data/raw/wfp/`.
 - **Note**: Currently used as the target variable for forecasting models.
 
+### 4. Crop Mask Data (ASAP)
+- **Source**: ASAP Crop Mask (TIFF format)
+- **Processing**:
+    - The raw TIFF file (`data/crop_mask/asap_mask_crop_v04.tif`) is extremely large (29k x 80k pixels).
+    - It has been processed to extract only **non-zero** pixels (pixels indicating crop presence).
+    - **Transformation**: `scripts/tiff_to_parquet.py` reads the TIFF using `rasterio`, calculates Latitude/Longitude for each active pixel, and saves the result as a Parquet file.
+    - **Output**: `/tmp/asap_mask_crop_v04.parquet` (Saved to `/tmp` for permission reasons).
+    - **Format**: Parquet file with columns: `longitude`, `latitude`, `value`.
+
+
 ## 📊 Data Pipeline Usage
 
 ### Running the SPI Pipeline
