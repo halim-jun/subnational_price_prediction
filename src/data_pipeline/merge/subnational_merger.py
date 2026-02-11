@@ -281,6 +281,7 @@ def merge_datasets(price_df, crop_df, acled_df, data_dir, iso3_list=['KEN', 'SOM
         matched = price_joined['admin2_canonical'].notna().sum()
         total = len(price_joined)
         logger.info(f"Price spatial join: {matched}/{total} matched ({matched/total*100:.1f}%)")
+        print()
     else:
         # Fallback to fuzzy matching if no coordinates
         logger.warning("Price data has no lat/lon columns. Falling back to fuzzy matching.")

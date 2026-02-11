@@ -25,6 +25,7 @@ def load_price_data(data_dir):
         
     price = pd.read_csv(csv_path)
     target_countries = ['Kenya', 'Somalia']  # Ethiopia excluded — no price data
+    
     return price[price['country'].isin(target_countries)]
 
 
