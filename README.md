@@ -10,7 +10,10 @@ The source code is organized in `src/` as follows:
 src/
 ├── data_pipeline/      # Data Acquisition & Processing
 │   ├── spi/            # Precipitation data (CHIRPS) & SPI calculation
-│   └── macro/          # Macroeconomic indicators (World Bank, Exchange Rates)
+│   ├── macro/          # Macroeconomic indicators (World Bank, Exchange Rates)
+│   ├── fews_net/       # Food Security Data
+│   ├── crop_mask/      # Crop Mask Data
+│   └── night_lights/   # Night Lights Data
 │
 ├── notebook/           # Jupyter Notebooks
 │   ├── national_level_analysis.ipynb
@@ -135,10 +138,56 @@ It is unnecessary to run the data pipeline as the data is already processed and 
 - **Processing**:
     - The raw TIFF file (`data/crop_mask/asap_mask_crop_v04.tif`) is extremely large (29k x 80k pixels).
     - It has been processed to extract only **non-zero** pixels (pixels indicating crop presence).
-    - **Transformation**: `scripts/tiff_to_parquet.py` reads the TIFF using `rasterio`, calculates Latitude/Longitude for each active pixel, and saves the result as a Parquet file.
-    - **Output**: `/tmp/asap_mask_crop_v04.parquet` (Saved to `/tmp` for permission reasons).
+    - **Transformation**: `src/data_pipeline/crop_mask/tiff_to_parquet.py` reads the TIFF using `rasterio`, calculates Latitude/Longitude for each active pixel, and saves the result as a Parquet file.
+    - **Output**: The script generates `/tmp/asap_mask_crop_v04.parquet`.
+    - **Note**: You should move this file to `data/crop_mask/` manually due to write permissions:
+      ```bash
+      mv /tmp/asap_mask_crop_v04.parquet data/crop_mask/
+      ```
     - **Format**: Parquet file with columns: `longitude`, `latitude`, `value`.
+    - **Spatial Mapping (Optional)**:
+      To map these points to administrative regions (Admin Level 2), run the provided script. This requires `geopandas`.
+      ```bash
+      # Install geospatial dependencies
+      pip install geopandas shapely pyarrow
 
+      # Run the mapping script
+      python src/data_pipeline/crop_mask/map_to_admin.py
+      ```
+      - **Output**: `data/crop_mask/admin_mapped/` (Parquet files partitioned by chunk).
+
+
+
+### 5. Night Light Data (NASA Black Marble)
+- **Source**: NASA Black Marble (VNP46A4 - Annual Nighttime Lights)
+- **Scripts**:
+    1. **Download**: `src/data_pipeline/night_lights/download.py`
+       - Downloads annual NetCDF data.
+       - Output: `data/night_lights/{Country}/{Country}_VNP46A4_{Year}.nc`
+    2. **Processing**: `src/data_pipeline/night_lights/process.py`
+       - Aggregates mean night light intensity by Admin2 regions (using GeoBoundaries).
+       - Output: `data/processed/night_lights_admin2.parquet`
+- **Usage**:
+  ```bash
+  # 1. Download Data (Requires BEARER_TOKEN in .env)
+  python src/data_pipeline/night_lights/download.py
+
+  # 2. Process to Admin2 Level
+  python src/data_pipeline/night_lights/process.py
+  ```
+
+
+
+### 6. Food Security Data (FEWS NET)
+- **Source**: FEWS NET IPC Phase Data (API)
+- **Countries**: Somalia (SO), Kenya (KE), Ethiopia (ET)
+- **Scripts**: 
+    - `src/data_pipeline/fews_net/download.py`: Downloads data for each country separately (to handle API stability) and merges them.
+- **Output**: `fewsnet/food_security/fewsnet_ipc_data.csv`
+- **Usage**:
+  ```bash
+  python src/data_pipeline/fews_net/download.py
+  ```
 
 ## 📊 Data Pipeline Usage
 

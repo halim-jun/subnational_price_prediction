@@ -12,7 +12,10 @@
 src/
 ├── data_pipeline/      # 데이터 수집 및 처리
 │   ├── spi/            # 강수량 데이터 (CHIRPS) & SPI 계산
-│   └── macro/          # 거시경제 지표 (World Bank, 환율)
+│   ├── macro/          # 거시경제 지표 (World Bank, 환율)
+│   ├── fews_net/       # 식량 안보 데이터
+│   ├── crop_mask/      # 작물 마스크 데이터
+│   └── night_lights/   # 야간 조명 데이터
 │
 ├── notebook/           # Jupyter 분석 노트북
 │   ├── national_level_analysis.ipynb

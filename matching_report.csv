@@ -1,0 +1,274 @@
+country,adm1_name,adm2_name,mkt_name,lat,lon,admin2_canonical,algorithm
+Kenya,Central,Nyeri,Karatina (Nyeri),-0.48,37.13,Mathira,Spatial Join
+Kenya,Coast,Kilifi,Dzikunze,-3.25,39.75,Ganze,Spatial Join
+Kenya,Coast,Kilifi,Kachororoni,-3.48,39.75,Ganze,Spatial Join
+Kenya,Coast,Kilifi,Kaembeni,-3.33,39.79,Ganze,Spatial Join
+Kenya,Coast,Kilifi,Kilifi,-3.63,39.85,Kilifi North,Spatial Join
+Kenya,Coast,Kilifi,Matanomanne,-3.4,39.78,Ganze,Spatial Join
+Kenya,Coast,Kwale,Vanga (Kwale),-4.66,39.22,,UNMATCHED
+Kenya,Coast,Mombasa,Bangladesh (Mombasa),-4.01,39.63,Jomvu,Spatial Join
+Kenya,Coast,Mombasa,Junda (Mombasa),-4.01,39.68,Kisauni,Spatial Join
+Kenya,Coast,Mombasa,Kalahari (Mombasa),-4.03,39.63,Changamwe,Spatial Join
+Kenya,Coast,Mombasa,Kisumu Ndogo (Mombasa),-4.04,39.69,Nyali,Spatial Join
+Kenya,Coast,Mombasa,Kongowea (Mombasa),-4.06,39.66,Mvita,Spatial Join
+Kenya,Coast,Mombasa,Mombasa,-4.05,39.67,Mvita,Spatial Join
+Kenya,Coast,Mombasa,Moroto (Mombasa),-4.03,39.66,Mvita,Spatial Join
+Kenya,Coast,Mombasa,Shauri Yako,-4.04,39.7,Nyali,Spatial Join
+Kenya,Coast,Mombasa,Shonda (Mombasa),-4.11,39.65,Likoni,Spatial Join
+Kenya,Coast,Taita Taveta,Mtito Andei,-2.69,38.16,Voi,Spatial Join
+Kenya,Coast,Tana River,Adele Center,-0.47,39.61,Bura,Spatial Join
+Kenya,Coast,Tana River,Bangale,-0.72,39.02,Bura,Spatial Join
+Kenya,Coast,Tana River,Bilbil,-1.01,39.79,Bura,Spatial Join
+Kenya,Coast,Tana River,Boka,-0.34,38.78,Bura,Spatial Join
+Kenya,Coast,Tana River,Bura,-1.19,39.84,Galole,Spatial Join
+Kenya,Coast,Tana River,Charidende,-0.78,39.67,Bura,Spatial Join
+Kenya,Coast,Tana River,Garsen,-2.27,40.11,Garsen,Spatial Join
+Kenya,Coast,Tana River,Hola town,-1.5,40.03,Galole,Spatial Join
+Kenya,Coast,Tana River,Kipini,-2.53,40.53,,UNMATCHED
+Kenya,Coast,Tana River,Makere,-1.33,40.01,Galole,Spatial Join
+Kenya,Coast,Tana River,Masalani,-1.7,40.17,Ijara,Spatial Join
+Kenya,Coast,Tana River,Minjila,-2.32,40.11,Garsen,Spatial Join
+Kenya,Coast,Tana River,Saka Town,-0.14,39.33,Bura,Spatial Join
+Kenya,Coast,Tana River,Tarasaa,-2.44,40.17,Garsen,Spatial Join
+Kenya,Coast,Tana River,Waldena,-1.61,39.03,Galole,Spatial Join
+Kenya,Coast,Tana River,Wayu,-1.53,39.58,Galole,Spatial Join
+Kenya,Eastern,Isiolo,Benane,0.5,38.66,Isiolo South,Spatial Join
+Kenya,Eastern,Isiolo,Biliqo,0.9,38.48,Isiolo North,Spatial Join
+Kenya,Eastern,Isiolo,Boji,0.57,38.34,Isiolo South,Spatial Join
+Kenya,Eastern,Isiolo,Bulesa Bulesa,0.96,38.54,Isiolo North,Spatial Join
+Kenya,Eastern,Isiolo,Garbatulla,0.53,38.51,Isiolo South,Spatial Join
+Kenya,Eastern,Isiolo,Iresaboru Centre,0.99,38.88,Isiolo South,Spatial Join
+Kenya,Eastern,Isiolo,Isiolo town,0.35,37.58,Isiolo North,Spatial Join
+Kenya,Eastern,Isiolo,Kinna,0.32,38.21,Isiolo South,Spatial Join
+Kenya,Eastern,Isiolo,Kipsing CENTER,0.6,37.25,Isiolo North,Spatial Join
+Kenya,Eastern,Isiolo,Kulamawe,0.57,38.2,Isiolo South,Spatial Join
+Kenya,Eastern,Isiolo,Malka GALLA,1.27,38.8,Isiolo North,Spatial Join
+Kenya,Eastern,Isiolo,Malkadaka,0.84,38.5,Isiolo South,Spatial Join
+Kenya,Eastern,Isiolo,Merti CENTER,1.07,38.67,Isiolo North,Spatial Join
+Kenya,Eastern,Isiolo,Modogashe,0.73,39.17,Isiolo South,Spatial Join
+Kenya,Eastern,Isiolo,Oldonyiro,0.62,36.99,Isiolo North,Spatial Join
+Kenya,Eastern,Isiolo,Sericho Center,1.13,39.1,Isiolo South,Spatial Join
+Kenya,Eastern,Kitui,Kitui,-1.37,38.02,Kitui Central,Spatial Join
+Kenya,Eastern,Kitui,Kitui town (Kitui),-1.36,38.01,Kitui Central,Spatial Join
+Kenya,Eastern,Machakos,Tala Centre Market (Machakos),-1.27,37.32,Matungulu,Spatial Join
+Kenya,Eastern,Makueni,Emali,-2.08,37.47,Makueni,Spatial Join
+Kenya,Eastern,Makueni,Kathonzweni (Makueni),-1.91,37.73,Makueni,Spatial Join
+Kenya,Eastern,Makueni,Kibwezi,-2.41,37.97,Kibwezi East,Spatial Join
+Kenya,Eastern,Makueni,Makueni,-1.81,37.62,Makueni,Spatial Join
+Kenya,Eastern,Makueni,Wote town (Makueni),-1.79,37.63,Makueni,Spatial Join
+Kenya,Eastern,Marsabit,Dirib,2.29,38.06,Saku,Spatial Join
+Kenya,Eastern,Marsabit,Dub Goba,2.33,38.03,Saku,Spatial Join
+Kenya,Eastern,Marsabit,Karare,2.21,37.89,Saku,Spatial Join
+Kenya,Eastern,Marsabit,Kargi,2.49,37.56,Laisamis,Spatial Join
+Kenya,Eastern,Marsabit,Kargi South Horr,2.1,36.92,Laisamis,Spatial Join
+Kenya,Eastern,Marsabit,Korr,2.01,37.5,Laisamis,Spatial Join
+Kenya,Eastern,Marsabit,Laisamis Town,1.58,37.8,Laisamis,Spatial Join
+Kenya,Eastern,Marsabit,Loglogo,1.99,37.92,Laisamis,Spatial Join
+Kenya,Eastern,Marsabit,Loyangalani,2.76,36.72,Laisamis,Spatial Join
+Kenya,Eastern,Marsabit,Maikona,2.92,37.63,North Horr,Spatial Join
+Kenya,Eastern,Marsabit,Marsabit,2.33,37.98,Saku,Spatial Join
+Kenya,Eastern,Marsabit,Marsabit town,2.33,37.99,Saku,Spatial Join
+Kenya,Eastern,Marsabit,Merille Town,1.42,37.72,Laisamis,Spatial Join
+Kenya,Eastern,Marsabit,North Horr,3.32,37.07,North Horr,Spatial Join
+Kenya,Eastern,Marsabit,Songa,2.25,38.0,Saku,Spatial Join
+Kenya,Eastern,Meru North,Kiwanja,0.44,37.6,Tigania East,Spatial Join
+Kenya,Eastern,Meru North,Ngaremara,0.5,37.64,Isiolo North,Spatial Join
+Kenya,Eastern,Meru South,Kaanwa (Tharaka Nithi),-0.32,37.72,Nithi,Spatial Join
+Kenya,Eastern,Moyale,Dambala Fachana,3.51,38.75,Moyale,Spatial Join
+Kenya,Eastern,Moyale,Moyale town,3.51,39.05,Moyale,Spatial Join
+Kenya,Eastern,Moyale,Sololo,3.56,38.65,Moyale,Spatial Join
+Kenya,Eastern,Moyale,Walda,3.45,38.52,Moyale,Spatial Join
+Kenya,Hola (Tana River),Hola (Tana River),Hola (Tana River),1.0,38.0,Samburu East,Spatial Join
+Kenya,Kajiado,Ongata Rongai,Ongata Rongai,-1.41,36.83,Kajiado East,Spatial Join
+Kenya,Market Average,Market Average,Market Average,,,,UNMATCHED
+Kenya,Nairobi,Nairobi,Dandora (Nairobi),-1.25,36.9,Embakasi North,Spatial Join
+Kenya,Nairobi,Nairobi,Kangemi (Nairobi),-1.27,36.74,Westlands,Spatial Join
+Kenya,Nairobi,Nairobi,Kawangware (Nairobi),-1.28,36.74,Kilimani,Spatial Join
+Kenya,Nairobi,Nairobi,Kibra (Nairobi),-1.32,36.78,Langata,Spatial Join
+Kenya,Nairobi,Nairobi,Kitengela (Kajiado),-1.29,36.86,Makadara,Spatial Join
+Kenya,Nairobi,Nairobi,Mathare (Nairobi),-1.26,36.86,Mathare,Spatial Join
+Kenya,Nairobi,Nairobi,Mukuru (Nairobi),-1.3,36.88,Makadara,Spatial Join
+Kenya,Nairobi,Nairobi,Nairobi,-1.28,36.82,Starehe,Spatial Join
+Kenya,Nairobi,Nairobi,Wakulima (Nairobi),-1.29,36.83,Starehe,Spatial Join
+Kenya,North Eastern,Garissa,Alango Arba,-0.1,39.99,Fafi,Spatial Join
+Kenya,North Eastern,Garissa,Alinjugur,-0.03,40.46,Dadaab,Spatial Join
+Kenya,North Eastern,Garissa,Baraki,0.65,39.58,Lagdera,Spatial Join
+Kenya,North Eastern,Garissa,Dadaab town,0.06,40.31,Dadaab,Spatial Join
+Kenya,North Eastern,Garissa,Dagahaley (Daadab),0.19,40.29,Dadaab,Spatial Join
+Kenya,North Eastern,Garissa,Damajale,0.1,40.78,Dadaab,Spatial Join
+Kenya,North Eastern,Garissa,Dertu,0.28,39.8,Lagdera,Spatial Join
+Kenya,North Eastern,Garissa,Garissa,-0.46,39.65,Dujis,Spatial Join
+Kenya,North Eastern,Garissa,Garissa town (Garissa),-0.46,39.64,Dujis,Spatial Join
+Kenya,North Eastern,Garissa,Hagadera (Daadab),0.01,40.37,Fafi,Spatial Join
+Kenya,North Eastern,Garissa,IFO (Daadab),0.11,40.32,Dadaab,Spatial Join
+Kenya,North Eastern,Garissa,Jarajara,-0.04,39.01,Bura,Spatial Join
+Kenya,North Eastern,Garissa,Korakora,-0.61,39.78,Bura,Spatial Join
+Kenya,North Eastern,Garissa,Liboi,0.35,40.87,Dadaab,Spatial Join
+Kenya,North Eastern,Garissa,Maalamin,0.38,39.35,Lagdera,Spatial Join
+Kenya,North Eastern,Garissa,Mathaxgesi,0.16,40.43,Dadaab,Spatial Join
+Kenya,North Eastern,Garissa,Nanigi,-0.85,39.87,Bura,Spatial Join
+Kenya,North Eastern,Garissa,Saretho,-0.03,40.13,Fafi,Spatial Join
+Kenya,North Eastern,Garissa,Shanta Abak,0.46,39.74,Lagdera,Spatial Join
+Kenya,North Eastern,Ijara,Hara (Garissa),-1.85,40.23,Ijara,Spatial Join
+Kenya,North Eastern,Ijara,Kotile,-1.97,40.21,Ijara,Spatial Join
+Kenya,North Eastern,Mandera,Alungu,3.05,41.06,Mandera South,Spatial Join
+Kenya,North Eastern,Mandera,Ashabito,3.55,40.87,Mandera North,Spatial Join
+Kenya,North Eastern,Mandera,Banissa,3.94,40.34,Banissa,Spatial Join
+Kenya,North Eastern,Mandera,El Wak,2.81,40.93,Mandera South,Spatial Join
+Kenya,North Eastern,Mandera,Kiliwaheri,3.92,40.01,Banissa,Spatial Join
+Kenya,North Eastern,Mandera,Mandera,3.94,41.86,Mandera East,Spatial Join
+Kenya,North Eastern,Mandera,Mandera town,3.94,41.85,Mandera East,Spatial Join
+Kenya,North Eastern,Mandera,Rhamu,3.93,41.22,Mandera North,Spatial Join
+Kenya,North Eastern,Mandera,Suq Jini,3.15,41.18,Lafey,Spatial Join
+Kenya,North Eastern,Mandera,Takaba (Mandera),3.39,40.23,Mandera West,Spatial Join
+Kenya,North Eastern,Mandera,Warankara,3.41,41.01,Lafey,Spatial Join
+Kenya,North Eastern,Wajir,Buna,2.79,39.5,Wajir North,Spatial Join
+Kenya,North Eastern,Wajir,Bute,3.36,39.42,Wajir North,Spatial Join
+Kenya,North Eastern,Wajir,Eldas,2.49,39.57,Eldas,Spatial Join
+Kenya,North Eastern,Wajir,Griftu,2.0,39.75,Wajir West,Spatial Join
+Kenya,North Eastern,Wajir,Habaswein,1.02,39.49,Wajir West,Spatial Join
+Kenya,North Eastern,Wajir,Hadado,1.53,39.43,Isiolo North,Spatial Join
+Kenya,North Eastern,Wajir,Lagbogol,1.29,39.84,Wajir South,Spatial Join
+Kenya,North Eastern,Wajir,Tarbaj,2.21,40.12,Tarbaj,Spatial Join
+Kenya,North Eastern,Wajir,Wajir town,1.75,40.06,Wajir East,Spatial Join
+Kenya,Nyanza,Kisumu,Kibuye (Kisumu),-0.09,34.77,Kisumu Central,Spatial Join
+Kenya,Nyanza,Kisumu,Kisumu,-0.1,34.75,Kisumu Central,Spatial Join
+Kenya,Rift Valley,Baringo,Amaya,0.77,36.41,Tiaty,Spatial Join
+Kenya,Rift Valley,Baringo,Chemolingot,0.99,35.97,Tiaty,Spatial Join
+Kenya,Rift Valley,Baringo,Kimalel Center,0.47,35.9,Baringo South,Spatial Join
+Kenya,Rift Valley,Baringo,Koriema,0.46,35.86,Baringo South,Spatial Join
+Kenya,Rift Valley,Baringo,Loboi Center,0.36,36.06,Baringo South,Spatial Join
+Kenya,Rift Valley,Baringo,Lororo Centre,0.44,36.0,Baringo South,Spatial Join
+Kenya,Rift Valley,Baringo,Marigat (Baringo),0.46,35.96,Baringo South,Spatial Join
+Kenya,Rift Valley,Baringo,Marigat town (Baringo),0.47,35.98,Baringo South,Spatial Join
+Kenya,Rift Valley,Baringo,Nginyang,0.95,36.02,Tiaty,Spatial Join
+Kenya,Rift Valley,Kajiado,Illbissil Food Market (Kajiado),-2.1,36.79,Kajiado Central,Spatial Join
+Kenya,Rift Valley,Kajiado,Kajiado,-1.84,36.79,Kajiado Central,Spatial Join
+Kenya,Rift Valley,Nakuru,Nakuru,-0.28,36.07,Nakuru Town East,Spatial Join
+Kenya,Rift Valley,Nakuru,Wakulima (Nakuru),-0.3,36.08,Nakuru Town East,Spatial Join
+Kenya,Rift Valley,Samburu,Archers Post,0.64,37.67,Samburu East,Spatial Join
+Kenya,Rift Valley,Samburu,Baragoi,1.65,37.03,Samburu North,Spatial Join
+Kenya,Rift Valley,Samburu,Kisima,0.95,36.77,Samburu West,Spatial Join
+Kenya,Rift Valley,Samburu,Lengusaka,0.88,37.32,Samburu East,Spatial Join
+Kenya,Rift Valley,Samburu,Lesirkan,1.78,36.97,Samburu North,Spatial Join
+Kenya,Rift Valley,Samburu,Lodungokwe,0.87,37.0,Samburu East,Spatial Join
+Kenya,Rift Valley,Samburu,Lolkuniyani,1.06,37.23,Samburu East,Spatial Join
+Kenya,Rift Valley,Samburu,Lolkunono,1.08,36.6,Samburu West,Spatial Join
+Kenya,Rift Valley,Samburu,Loosuk,1.02,36.58,Samburu West,Spatial Join
+Kenya,Rift Valley,Samburu,Lpus,0.89,37.06,Samburu East,Spatial Join
+Kenya,Rift Valley,Samburu,Maralal,1.1,36.7,Samburu West,Spatial Join
+Kenya,Rift Valley,Samburu,Masikita,1.61,36.95,Samburu North,Spatial Join
+Kenya,Rift Valley,Samburu,Nachola,1.8,36.7,Samburu North,Spatial Join
+Kenya,Rift Valley,Samburu,Ngilai,1.15,37.26,Samburu East,Spatial Join
+Kenya,Rift Valley,Samburu,Ngurunit,1.74,37.31,Samburu North,Spatial Join
+Kenya,Rift Valley,Samburu,Porro,1.22,36.6,Samburu West,Spatial Join
+Kenya,Rift Valley,Samburu,Simale,2.11,36.78,Samburu North,Spatial Join
+Kenya,Rift Valley,Samburu,Suguta,0.83,36.69,Samburu West,Spatial Join
+Kenya,Rift Valley,Samburu,Tuum,2.15,36.77,Samburu North,Spatial Join
+Kenya,Rift Valley,Samburu,Wamba,0.98,37.32,Samburu East,Spatial Join
+Kenya,Rift Valley,Turkana,Alemsekon,3.53,34.82,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Aposta,4.06,34.52,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Elelea,2.1,36.16,Turkana East,Spatial Join
+Kenya,Rift Valley,Turkana,Eliye Centre,3.24,36.02,Turkana Central,Spatial Join
+Kenya,Rift Valley,Turkana,Ethiopia (Kakuma),3.72,34.85,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,HongKong (Kakuma),3.75,34.84,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Kaakelai,4.52,35.59,Turkana North,Spatial Join
+Kenya,Rift Valley,Turkana,Kaeris,3.98,35.48,Turkana North,Spatial Join
+Kenya,Rift Valley,Turkana,Kaikor,4.52,35.42,Turkana North,Spatial Join
+Kenya,Rift Valley,Turkana,Kakuma 2,3.75,34.82,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Kakuma 3,3.77,34.82,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Kakuma 4,3.74,34.81,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Kakuma town,3.71,34.86,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Kalemgorok,2.14,35.5,Turkana South,Spatial Join
+Kenya,Rift Valley,Turkana,Kalemunyang,2.74,35.37,Loima,Spatial Join
+Kenya,Rift Valley,Turkana,Kaleng,4.37,35.55,Turkana North,Spatial Join
+Kenya,Rift Valley,Turkana,Kalobeyei (Village 1),3.77,34.73,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Kalobeyei (Village 2),3.76,34.75,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Kalobeyei (Village 3),3.75,34.76,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Kalobeyei town,3.77,34.62,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Kalokol,3.54,35.86,Turkana Central,Spatial Join
+Kenya,Rift Valley,Turkana,Kang'akipur,2.38,36.04,Turkana South,Spatial Join
+Kenya,Rift Valley,Turkana,Kasuroi,2.48,35.66,Turkana South,Spatial Join
+Kenya,Rift Valley,Turkana,Kataboi,3.75,35.83,Turkana North,Spatial Join
+Kenya,Rift Valley,Turkana,Katilia,2.14,36.14,Turkana East,Spatial Join
+Kenya,Rift Valley,Turkana,Kibish,4.57,35.31,Turkana North,Spatial Join
+Kenya,Rift Valley,Turkana,Kokuro,4.62,35.71,Turkana North,Spatial Join
+Kenya,Rift Valley,Turkana,Letea,3.52,35.75,Turkana Central,Spatial Join
+Kenya,Rift Valley,Turkana,Lodwar (Turkana),3.12,35.6,Turkana Central,Spatial Join
+Kenya,Rift Valley,Turkana,Lodwar town,3.12,35.61,Turkana Central,Spatial Join
+Kenya,Rift Valley,Turkana,Lokangae,4.1,34.9,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Lokapel,2.37,35.42,Turkana South,Spatial Join
+Kenya,Rift Valley,Turkana,Lokichar (Turkana),2.38,35.65,Turkana South,Spatial Join
+Kenya,Rift Valley,Turkana,Lokichoggio,4.2,34.36,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Lokipoto,3.18,34.67,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Lokiriama,2.76,34.88,Loima,Spatial Join
+Kenya,Rift Valley,Turkana,Lokitaung,4.27,35.75,Turkana North,Spatial Join
+Kenya,Rift Valley,Turkana,Lokori,1.95,36.03,Turkana East,Spatial Join
+Kenya,Rift Valley,Turkana,Lokwii,1.98,36.1,Turkana East,Spatial Join
+Kenya,Rift Valley,Turkana,Lolupe,3.54,35.25,Loima,Spatial Join
+Kenya,Rift Valley,Turkana,Lopur,3.86,34.82,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Lorengipi,2.58,34.99,Loima,Spatial Join
+Kenya,Rift Valley,Turkana,Lorugum,2.88,35.25,Loima,Spatial Join
+Kenya,Rift Valley,Turkana,Lotubae,2.02,36.13,Turkana East,Spatial Join
+Kenya,Rift Valley,Turkana,Loturerei,2.93,35.61,Turkana South,Spatial Join
+Kenya,Rift Valley,Turkana,Lowarengak,4.28,35.89,Turkana North,Spatial Join
+Kenya,Rift Valley,Turkana,Mogadishu (Kakuma),3.72,34.86,Turkana West,Spatial Join
+Kenya,Rift Valley,Turkana,Morulem,1.98,36.13,Turkana East,Spatial Join
+Kenya,Rift Valley,Turkana,Naakalei,2.54,36.22,Turkana Central,Spatial Join
+Kenya,Rift Valley,Turkana,Naduat,3.51,35.19,Loima,Spatial Join
+Kenya,Rift Valley,Turkana,Nakinomet,4.58,35.4,Turkana North,Spatial Join
+Kenya,Rift Valley,Turkana,Nakukulas,2.2,35.81,Turkana East,Spatial Join
+Kenya,Rift Valley,Turkana,Namoruputh,2.84,35.04,Loima,Spatial Join
+Kenya,Rift Valley,Turkana,Napak,4.56,35.39,Turkana North,Spatial Join
+Kenya,Rift Valley,Turkana,Todonyang,4.44,35.93,Turkana North,Spatial Join
+Kenya,Rift Valley,Turkana,Turkwel Centre,2.92,35.4,Loima,Spatial Join
+Kenya,Rift Valley,Turkana,Urum,2.95,34.7,Loima,Spatial Join
+Kenya,Rift Valley,Uasin Gishu,Eldoret town (Uasin Gishu),0.52,35.28,Moiben,Spatial Join
+Kenya,Rift Valley,West Pokot,Lomut (West Pokot),1.44,35.57,Sigor,Spatial Join
+Kenya,Rift Valley,West Pokot,Makutano (West Pokot),1.25,35.08,Kapenguria,Spatial Join
+Somalia,Awdal,Borama,Borama,9.94,43.18,BORAMA,Spatial Join
+Somalia,Bakool,Ceel Barde,Ceel Barde,4.83,43.66,EL BARDE,Spatial Join
+Somalia,Bakool,Rab Dhuure,Rab Dhuure,4.35,43.16,RABDURE,Spatial Join
+Somalia,Bakool,Xudur,Xudur,4.12,43.89,HUDUR,Spatial Join
+Somalia,Banadir,Banadir,Bakaara,2.05,45.32,HAWAL WADAG,Spatial Join
+Somalia,Banadir,Banadir,Karaan,2.07,45.39,KARAN,Spatial Join
+Somalia,Bari,Bossaso,Bossaso,11.26,49.18,BOSSASO,Spatial Join
+Somalia,Bari,Qardho,Qardho,9.5,49.09,GARDO,Spatial Join
+Somalia,Bay,Baydhaba,Baidoa,3.12,43.65,BAIDOA,Spatial Join
+Somalia,Bay,Diinsoor,Dinsoor,2.41,42.98,DINSOOR,Spatial Join
+Somalia,Bay,Qansax Dheere,Qansax Dheere,2.87,43.0,QANSAH DHEERE,Spatial Join
+Somalia,Galgaduud,Cabudwaaq,Cabudwaaq,6.24,46.31,ABUDWAQ,Spatial Join
+Somalia,Galgaduud,Cadaado,Cadaado,6.15,46.63,ADADO,Spatial Join
+Somalia,Galgaduud,Dhuusamarreeb,Dhuusamarreeb,5.54,46.39,DUSAMREB,Spatial Join
+Somalia,Gedo,Belet Xaawo,Belet Xaawo,3.78,41.89,BELET HAWA,Spatial Join
+Somalia,Gedo,Ceel Waaq,Ceel Waaq,2.79,41.0,EL WAK,Spatial Join
+Somalia,Gedo,Doolow,Doolow,4.16,42.08,DOLO,Spatial Join
+Somalia,Gedo,Doolow,Doolow,4.16,42.08,Afder,Spatial Join
+Somalia,Gedo,Luuq,Luuq,3.8,42.54,LUUQ,Spatial Join
+Somalia,Hiraan,Belet Weyne,Beletweyne,4.74,45.2,BELET WEYNE,Spatial Join
+Somalia,Hiraan,Bulo Burto,Buloburto,3.85,45.57,BULO BURTI,Spatial Join
+Somalia,Hiraan,Jalalaqsi,Jalalaqsi,3.38,45.6,JALALAQSI,Spatial Join
+Somalia,Juba Dhexe,Bu'aale,Buale,1.08,42.58,BUAALE,Spatial Join
+Somalia,Juba Hoose,Afmadow,Afmadow,0.51,42.07,AFMADOW,Spatial Join
+Somalia,Juba Hoose,Kismaayo,Kismayo,-0.36,42.55,KISMAYO,Spatial Join
+Somalia,Market Average,Market Average,Market Average,,,,UNMATCHED
+Somalia,Mudug,Gaalkacyo,Gaalkacyo,6.77,47.42,GALKAYU NORTH,Spatial Join
+Somalia,Mudug,Hobyo,Hobyo,5.35,48.53,HOBYO,Spatial Join
+Somalia,Mudug,Jariiban,Jariiban,7.21,48.85,JARIBAN,Spatial Join
+Somalia,Nugaal,Burtinle,Burtinle,7.64,47.83,BURTINLE,Spatial Join
+Somalia,Nugaal,Eyl,Eyl,7.98,49.82,EYL,Spatial Join
+Somalia,Nugaal,Garoowe,Garowe,8.4,48.48,GAROWE,Spatial Join
+Somalia,Sanaag,Ceerigaabo,Ceerigaabo,10.62,47.37,ERIGAVO,Spatial Join
+Somalia,Shabelle Dhexe,Balcad,Balcad,2.36,45.39,BALAD,Spatial Join
+Somalia,Shabelle Dhexe,Cadale,Cadale,2.76,46.32,ADALE,Spatial Join
+Somalia,Shabelle Dhexe,Jowhar,Jowhar,2.78,45.5,JOWHAR,Spatial Join
+Somalia,Shabelle Hoose,Afgooye,Afgooye,2.14,45.12,AFGOI,Spatial Join
+Somalia,Shabelle Hoose,Marka,Marka (Shabelle Hoose),1.71,44.76,MARKA,Spatial Join
+Somalia,Shabelle Hoose,Qoryooley,Qorioley,1.78,44.53,QORYOLEY,Spatial Join
+Somalia,Sool,Laas Caanood,Laas Caanood,8.48,47.36,LAS ANOD,Spatial Join
+Somalia,Sool,Taleex,Taleex,9.15,48.42,TALEH,Spatial Join
+Somalia,Sool,Xudun,Xudun,9.15,47.48,HUDUN,Spatial Join
+Somalia,Togdheer,Burco,Burco,9.53,45.54,BURAO,Spatial Join
+Somalia,Wadajir,Wadajir,Wadajir,5.0,45.0,Shabelle,Spatial Join
+Somalia,Woqooyi Galbeed,Berbera,Berbera,10.44,45.01,BERBERA,Spatial Join
+Somalia,Woqooyi Galbeed,Hargeysa,Hargeysa,9.56,44.07,HARGEISA,Spatial Join

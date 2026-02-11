@@ -1,0 +1,43 @@
+# Admin Coverage Verification Report
+Generated on: 2026-02-10
+
+## Summary
+The merger process is accurately matching most rural and sub-regional administrative units. However, there is a **Critical Granularity Mismatch** affecting major urban centers and capital cities.
+
+## The Problem
+The Source Data (Price, Population) often reports data at the **City** or **Region** level (Admin 1), while the Canonical Boundaries are strictly at the **District/Sub-county** level (Admin 2).
+
+As a result, source data labeled with "City" names are not finding a direct match in the "Sub-county" list, and are being dropped.
+
+## Critical Missing Regions (Capitals & Cities)
+
+### Kenya
+- **Nairobi**: The price data lists "Nairobi" (likely the whole city/county). The Canonical Admin2 list breaks Nairobi into constituencies like `Starehe`, `Westlands`, `Kasarani`, etc. "Nairobi" does not exist as a single Admin2 polygon.
+- **Mombasa**: Similar case. Source has "Mombasa" (market/city). Canonical has sub-counties like `Mvita`, `Changamwe`, `Kisauni`.
+- **Garissa**: Source has "Garissa" (town/county). Canonical has `Garissa Township` (likely match but fuzzy score was low: 71, threshold 80).
+- **Tana River**: Source has "Tana River" (County). Canonical has `Galole`, `Garsen`, `Bura` (constituencies).
+
+### Somalia
+- **Banadir**: Source has "Banadir" (Region containing Mogadishu). Canonical breaks it down into districts like `ABDUL AZIZ`, `HAMAR WEYNE`, `HODAN`, etc.
+- **Gaalkacyo**: Source has "Gaalkacyo". Canonical likely has `GALKAYO` (Score 68 - fuzzy match failed).
+
+### Ethiopia
+- **Addis Abeba**: Source has "Addis Abeba". Canonical Admin2 list DOES NOT contain "Addis Ababa". It likely treats the chartered city as a separate entity or it is broken down into sub-cities (which we verified do not contain 'Addis' in their name).
+- **Dire Dawa**: Canonical has `Dire Dawa`. Source might have it, but it matched? (Need to verify).
+
+## Statistics (from Check Script)
+- **Price Data**: 73 source regions -> 19 Unmatched (~26% missing, mostly major cities).
+- **Population Data**: 522 source regions -> 173 Unmatched.
+- **Crop Data**: Column missing or empty (Data pipeline issue).
+
+## Recommendation
+To fix this, we need to implement a **Manual Mapping Strategy** in `subnational_merger.py` that maps these "City" names to a representative Admin2 region, or aggregated geometry.
+
+**Suggested Mappings (examples):**
+- `Nairobi` -> `Starehe` (Central Business District)
+- `Mombasa` -> `Mvita` (Island)
+- `Addis Abeba` -> (Needs identification of central sub-city or `Arada`)
+- `Banadir` -> `Hamar Weyne`
+- `Garissa` -> `Garissa Township`
+
+Without these mappings, **Price Predictions for Capital Cities will be impossible** as they will be dropped from the dataset.
