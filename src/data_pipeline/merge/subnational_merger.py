@@ -290,10 +290,10 @@ def merge_datasets(price_df, crop_df, acled_df, data_dir, iso3_list=['KEN', 'SOM
     
     # Aggregate Price: mean across markets in same admin2/year/month
     # Only keep selected commodity columns (user-specified)
-    price_cols = 'c_sorghum'
+    price_cols = ['c_maize']
     # Keep only numeric among selected
     price_cols = price_joined[price_cols].select_dtypes(include=np.number).columns.tolist()
-    logger.info(f"Price columns kept: {len(price_cols)} (from {KEEP_COMMODITIES})")
+    logger.info(f"Price columns kept: {len(price_cols)}")
     
     price_agg = price_joined.dropna(subset=['admin2_canonical']).groupby(
         ['year', 'month', 'admin2_canonical']
