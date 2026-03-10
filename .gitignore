@@ -18,5 +18,5 @@ data/*
 myenv/
 libs/
 *.zip
-
+*/venv_fix/*
 *wandb/*archive/*.parquet
