@@ -274,14 +274,32 @@ def merge_datasets(price_df, crop_df, acled_df, data_dir, iso3_list=['KEN', 'SOM
     admin_gdf = load_canonical_boundaries(iso3_list, str(boundary_dir))
     canonical_names = admin_gdf['shapeName'].unique().tolist()
     
-    # ── 2. Standardize Price Data (SPATIAL JOIN) ──
-    logger.info("Standardizing Price Data via Spatial Join...")
+    # ── 2. Standardize Price Data (SPATIAL JOIN per country) ──
+    # Join each country's price data against its own boundaries to prevent
+    # cross-boundary misassignment (e.g., SOM markets falling in ETH polygons).
+    logger.info("Standardizing Price Data via Spatial Join (per-country)...")
     if 'lat' in price_df.columns and 'lon' in price_df.columns:
-        price_joined = spatial_join_points(price_df, admin_gdf, 'lon', 'lat')
-        matched = price_joined['admin2_canonical'].notna().sum()
-        total = len(price_joined)
-        logger.info(f"Price spatial join: {matched}/{total} matched ({matched/total*100:.1f}%)")
-        print()
+        price_joined_parts = []
+        for iso in iso3_list:
+            iso_prices = price_df[price_df['ISO3'] == iso].copy()
+            if iso_prices.empty:
+                logger.warning(f"No price data for {iso} in source CSV.")
+                continue
+            iso_bounds = admin_gdf[admin_gdf['shapeISO'] == iso]
+            iso_with_coords = iso_prices.dropna(subset=['lat', 'lon'])
+            if iso_with_coords.empty:
+                logger.warning(f"No price data with coordinates for {iso}.")
+                continue
+            joined = spatial_join_points(iso_with_coords, iso_bounds, 'lon', 'lat')
+            matched = joined['admin2_canonical'].notna().sum()
+            logger.info(f"Price spatial join {iso}: {matched}/{len(joined)} matched ({matched/len(joined)*100:.1f}%)")
+            price_joined_parts.append(joined)
+        if price_joined_parts:
+            price_joined = pd.concat(price_joined_parts, ignore_index=True)
+        else:
+            logger.error("No price data matched any boundaries.")
+            price_joined = price_df.copy()
+            price_joined['admin2_canonical'] = np.nan
     else:
         # Fallback to fuzzy matching if no coordinates
         logger.warning("Price data has no lat/lon columns. Falling back to fuzzy matching.")
@@ -290,11 +308,12 @@ def merge_datasets(price_df, crop_df, acled_df, data_dir, iso3_list=['KEN', 'SOM
         price_joined['admin2_canonical'] = price_joined['adm2_name'].map(price_mapping)
     
     # Aggregate Price: mean across markets in same admin2/year/month
-    # Only keep selected commodity columns (user-specified)
-    price_cols = ['c_maize']
-    # Keep only numeric among selected
+    # Use c_maize_fao (available for both KEN and SOM) + c_food_price_index
+    price_cols = ['c_maize_fao', 'c_food_price_index', 'c_sorghum']
+    # Keep only columns that exist and are numeric
+    price_cols = [c for c in price_cols if c in price_joined.columns]
     price_cols = price_joined[price_cols].select_dtypes(include=np.number).columns.tolist()
-    logger.info(f"Price columns kept: {len(price_cols)}")
+    logger.info(f"Price columns kept: {price_cols}")
     
     price_agg = price_joined.dropna(subset=['admin2_canonical']).groupby(
         ['year', 'month', 'admin2_canonical']
@@ -404,7 +423,13 @@ def merge_datasets(price_df, crop_df, acled_df, data_dir, iso3_list=['KEN', 'SOM
     
     merged['conflict_events'] = merged['conflict_events'].fillna(0)
     merged['conflict_fatalities'] = merged['conflict_fatalities'].fillna(0)
-    
+
+    # Crop cover: fill NULL with 0 (urban/desert admin2 with no cropland)
+    crop_null_count = merged['crop_cover_fraction'].isna().sum()
+    if crop_null_count > 0:
+        merged['crop_cover_fraction'] = merged['crop_cover_fraction'].fillna(0)
+        logger.info(f"Filled {crop_null_count} crop_cover_fraction NULLs with 0 (urban/desert areas)")
+
     logger.info(f"Final merged shape: {merged.shape}")
     return merged
 
