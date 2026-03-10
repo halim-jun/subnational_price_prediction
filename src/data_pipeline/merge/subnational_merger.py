@@ -261,7 +261,8 @@ def create_master_skeleton(years, months, admin_gdf):
     
     return master_df
 
-def merge_datasets(price_df, crop_df, acled_df, data_dir, iso3_list=['KEN', 'SOM', 'ETH'], pop_df=None):
+def merge_datasets(price_df, crop_df, acled_df, data_dir, iso3_list=['KEN', 'SOM', 'ETH'], pop_df=None,
+                   fldas_df=None, vegetation_df=None, climate_indices_df=None):
     """
     Main function to merge all datasets.
     Uses spatial join (lat/lon) for Price and ACLED data.
@@ -429,6 +430,49 @@ def merge_datasets(price_df, crop_df, acled_df, data_dir, iso3_list=['KEN', 'SOM
     if crop_null_count > 0:
         merged['crop_cover_fraction'] = merged['crop_cover_fraction'].fillna(0)
         logger.info(f"Filled {crop_null_count} crop_cover_fraction NULLs with 0 (urban/desert areas)")
+
+    # ── 8. Merge FLDAS (temperature, soil moisture, precipitation Z-scores) ──
+    if fldas_df is not None and not fldas_df.empty:
+        logger.info("Merging FLDAS data...")
+        fldas_filtered = fldas_df[fldas_df['country_iso'].isin(iso3_list)].copy()
+        fldas_cols = [c for c in fldas_filtered.columns if c not in ['year', 'month', 'country_iso', 'admin1', 'admin2']]
+        fldas_merge = fldas_filtered[['year', 'month', 'country_iso', 'admin2'] + fldas_cols]
+        before = merged.shape[1]
+        merged = pd.merge(merged, fldas_merge,
+                          on=['year', 'month', 'country_iso', 'admin2'], how='left')
+        fldas_matched = merged[fldas_cols[0]].notna().sum()
+        logger.info(f"FLDAS: added {merged.shape[1] - before} columns, "
+                    f"{fldas_matched}/{len(merged)} rows matched ({fldas_matched/len(merged)*100:.1f}%)")
+    else:
+        logger.info("No FLDAS data provided. Skipping.")
+
+    # ── 9. Merge Vegetation Indices (NDVI, EVI, LST, VCI, TCI, VHI) ──
+    if vegetation_df is not None and not vegetation_df.empty:
+        logger.info("Merging Vegetation data...")
+        veg_filtered = vegetation_df[vegetation_df['country_iso'].isin(iso3_list)].copy()
+        veg_cols = [c for c in veg_filtered.columns if c not in ['year', 'month', 'country_iso', 'admin1', 'admin2']]
+        veg_merge = veg_filtered[['year', 'month', 'country_iso', 'admin2'] + veg_cols]
+        before = merged.shape[1]
+        merged = pd.merge(merged, veg_merge,
+                          on=['year', 'month', 'country_iso', 'admin2'], how='left')
+        veg_matched = merged[veg_cols[0]].notna().sum()
+        logger.info(f"Vegetation: added {merged.shape[1] - before} columns, "
+                    f"{veg_matched}/{len(merged)} rows matched ({veg_matched/len(merged)*100:.1f}%)")
+    else:
+        logger.info("No Vegetation data provided. Skipping.")
+
+    # ── 10. Merge Climate Indices (NINO34, IOD, MEI — global, broadcast to all admin2) ──
+    if climate_indices_df is not None and not climate_indices_df.empty:
+        logger.info("Merging Climate Indices (global → broadcast)...")
+        ci_cols = [c for c in climate_indices_df.columns if c not in ['year', 'month']]
+        ci_merge = climate_indices_df[['year', 'month'] + ci_cols].copy()
+        before = merged.shape[1]
+        merged = pd.merge(merged, ci_merge, on=['year', 'month'], how='left')
+        ci_matched = merged[ci_cols[0]].notna().sum()
+        logger.info(f"Climate Indices: added {merged.shape[1] - before} columns, "
+                    f"{ci_matched}/{len(merged)} rows matched ({ci_matched/len(merged)*100:.1f}%)")
+    else:
+        logger.info("No Climate Indices data provided. Skipping.")
 
     logger.info(f"Final merged shape: {merged.shape}")
     return merged

@@ -1,10 +1,10 @@
 """
-Subnational Merge Runner (v2 — KEN + SOM)
+Subnational Merge Runner (v3 — KEN + SOM + FLDAS/Vegetation/Climate)
 
-Changes from v1:
-  - Target: KEN + SOM only (ETH has no price data in source CSV)
-  - Price cols: c_maize_fao, c_food_price_index, c_sorghum
-  - Per-country spatial join (prevents cross-boundary misassignment)
+Changes from v2:
+  - Added FLDAS data (33 climate/hydrology Z-score variables)
+  - Added Vegetation Indices (NDVI, EVI, LST, VCI, TCI, VHI)
+  - Added Climate Indices (NINO34, IOD_DMI, Western_V_Gradient, MEI_v2)
 
 Usage:
   python run_subnational_merge.py
@@ -83,12 +83,49 @@ def load_acled_data(data_dir):
     return acled
 
 
+def load_fldas_data(data_dir):
+    logger.info("Loading FLDAS Data...")
+    path = os.path.join(data_dir, "fldas/processed/EastAfrica_FLDAS_Fixed_2007_2025.csv")
+    if not os.path.exists(path):
+        logger.warning(f"FLDAS file not found: {path}")
+        return pd.DataFrame()
+    df = pd.read_csv(path)
+    logger.info(f"FLDAS data: {len(df)} rows, {df['country_iso'].nunique()} countries, "
+                f"{len([c for c in df.columns if c not in ['year','month','country_iso','admin1','admin2']])} feature cols")
+    return df
+
+
+def load_vegetation_data(data_dir):
+    logger.info("Loading Vegetation Indices Data...")
+    path = os.path.join(data_dir, "vegetation/processed/EastAfrica_Vegetation_Indices_2007_2025.csv")
+    if not os.path.exists(path):
+        logger.warning(f"Vegetation file not found: {path}")
+        return pd.DataFrame()
+    df = pd.read_csv(path)
+    logger.info(f"Vegetation data: {len(df)} rows, columns: {[c for c in df.columns if c not in ['year','month','country_iso','admin1','admin2']]}")
+    return df
+
+
+def load_climate_indices(data_dir):
+    logger.info("Loading Climate Indices Data...")
+    path = os.path.join(data_dir, "climate_indices/processed/Climate_Indices_2007_2025.csv")
+    if not os.path.exists(path):
+        logger.warning(f"Climate indices file not found: {path}")
+        return pd.DataFrame()
+    df = pd.read_csv(path)
+    logger.info(f"Climate indices: {len(df)} rows, columns: {list(df.columns)}")
+    return df
+
+
 def main():
     data_dir = os.path.join(project_root, 'data')
 
     price_df = load_price_data(data_dir)
     crop_df = load_crop_data(data_dir)
     acled_df = load_acled_data(data_dir)
+    fldas_df = load_fldas_data(data_dir)
+    vegetation_df = load_vegetation_data(data_dir)
+    climate_indices_df = load_climate_indices(data_dir)
 
     logger.info("Starting Merge Process...")
     merged_df = subnational_merger.merge_datasets(
@@ -97,9 +134,12 @@ def main():
         acled_df=acled_df,
         data_dir=data_dir,
         iso3_list=ISO3_LIST,
+        fldas_df=fldas_df,
+        vegetation_df=vegetation_df,
+        climate_indices_df=climate_indices_df,
     )
 
-    output_path = os.path.join(data_dir, "processed/subnational_merged_v2_KEN_SOM.parquet")
+    output_path = os.path.join(data_dir, "processed/subnational_merged_v3_KEN_SOM.parquet")
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     merged_df.to_parquet(output_path, index=False)
 
