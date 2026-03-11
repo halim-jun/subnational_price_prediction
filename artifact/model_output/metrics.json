@@ -1,0 +1,417 @@
+{
+  "c_food_price_index": {
+    "h1": {
+      "overall": {
+        "rmse": 0.04352063191235026,
+        "mae": 0.031046643394945343,
+        "mape": 0.02309640806599864,
+        "r2": 0.9464113030597519,
+        "n": 2640
+      },
+      "country": {
+        "KEN": {
+          "rmse": 0.03925614111807357,
+          "mae": 0.02950908302458676,
+          "mape": 0.023615537293945738,
+          "r2": 0.7854046151523124,
+          "n": 1608
+        },
+        "SOM": {
+          "rmse": 0.04943753516759509,
+          "mae": 0.03344237699527149,
+          "mape": 0.022287532292220604,
+          "r2": 0.8766118387624985,
+          "n": 1032
+        }
+      },
+      "n_features": 38,
+      "n_lag_features": 15,
+      "lag_features_used": [
+        "c_food_price_index_lag_1",
+        "c_food_price_index_lag_2",
+        "c_food_price_index_lag_3",
+        "c_food_price_index_lag_6",
+        "c_food_price_index_lag_12",
+        "c_food_price_index_s1_rmean3",
+        "c_food_price_index_s1_rmean12",
+        "c_food_price_index_s1_rstd12",
+        "c_food_price_index_s2_rmean3",
+        "c_food_price_index_s2_rmean12",
+        "c_food_price_index_s2_rstd12",
+        "c_food_price_index_s3_rmean3",
+        "c_food_price_index_s3_rmean12",
+        "c_food_price_index_s3_rstd12",
+        "c_food_price_index_yoy"
+      ],
+      "best_iteration": 499
+    },
+    "h2": {
+      "overall": {
+        "rmse": 0.059549784636382365,
+        "mae": 0.04390568220149552,
+        "mape": 0.03312487471941142,
+        "r2": 0.8996671376946408,
+        "n": 2640
+      },
+      "country": {
+        "KEN": {
+          "rmse": 0.060203199310606505,
+          "mae": 0.04572241130877762,
+          "mape": 0.03683864311531314,
+          "r2": 0.49528721337219894,
+          "n": 1608
+        },
+        "SOM": {
+          "rmse": 0.05851713417170131,
+          "mae": 0.04107496475526531,
+          "mape": 0.027338305358355266,
+          "r2": 0.8271274770447912,
+          "n": 1032
+        }
+      },
+      "n_features": 34,
+      "n_lag_features": 11,
+      "lag_features_used": [
+        "c_food_price_index_lag_2",
+        "c_food_price_index_lag_3",
+        "c_food_price_index_lag_6",
+        "c_food_price_index_lag_12",
+        "c_food_price_index_s2_rmean3",
+        "c_food_price_index_s2_rmean12",
+        "c_food_price_index_s2_rstd12",
+        "c_food_price_index_s3_rmean3",
+        "c_food_price_index_s3_rmean12",
+        "c_food_price_index_s3_rstd12",
+        "c_food_price_index_yoy"
+      ],
+      "best_iteration": 499
+    },
+    "h3": {
+      "overall": {
+        "rmse": 0.07308047018128654,
+        "mae": 0.05635383983029004,
+        "mape": 0.04289427805717367,
+        "r2": 0.8488926889763441,
+        "n": 2640
+      },
+      "country": {
+        "KEN": {
+          "rmse": 0.07856566230523862,
+          "mae": 0.06328949076516092,
+          "mape": 0.05091479277933027,
+          "r2": 0.14045084603696922,
+          "n": 1608
+        },
+        "SOM": {
+          "rmse": 0.06359781383347707,
+          "mae": 0.045547127908514465,
+          "mape": 0.030397196978464557,
+          "r2": 0.7958054027742939,
+          "n": 1032
+        }
+      },
+      "n_features": 30,
+      "n_lag_features": 7,
+      "lag_features_used": [
+        "c_food_price_index_lag_3",
+        "c_food_price_index_lag_6",
+        "c_food_price_index_lag_12",
+        "c_food_price_index_s3_rmean3",
+        "c_food_price_index_s3_rmean12",
+        "c_food_price_index_s3_rstd12",
+        "c_food_price_index_yoy"
+      ],
+      "best_iteration": 490
+    }
+  },
+  "c_maize_fao": {
+    "h1": {
+      "overall": {
+        "rmse": 2097.14692300242,
+        "mae": 1318.0177731181727,
+        "mape": 0.04182273327821464,
+        "r2": 0.9884637427716904,
+        "n": 2640
+      },
+      "country": {
+        "KEN": {
+          "rmse": 2550.4053812557254,
+          "mae": 1671.3312400866416,
+          "mape": 0.03177486380447941,
+          "r2": 0.7405657136064128,
+          "n": 1608
+        },
+        "SOM": {
+          "rmse": 1056.2851100203502,
+          "mae": 767.5060920277677,
+          "mape": 0.0574787159465928,
+          "r2": 0.9471236693647146,
+          "n": 1032
+        }
+      },
+      "n_features": 38,
+      "n_lag_features": 15,
+      "lag_features_used": [
+        "c_maize_fao_lag_1",
+        "c_maize_fao_lag_2",
+        "c_maize_fao_lag_3",
+        "c_maize_fao_lag_6",
+        "c_maize_fao_lag_12",
+        "c_maize_fao_s1_rmean3",
+        "c_maize_fao_s1_rmean12",
+        "c_maize_fao_s1_rstd12",
+        "c_maize_fao_s2_rmean3",
+        "c_maize_fao_s2_rmean12",
+        "c_maize_fao_s2_rstd12",
+        "c_maize_fao_s3_rmean3",
+        "c_maize_fao_s3_rmean12",
+        "c_maize_fao_s3_rstd12",
+        "c_maize_fao_yoy"
+      ],
+      "best_iteration": 490
+    },
+    "h2": {
+      "overall": {
+        "rmse": 2956.9845276660367,
+        "mae": 1932.5396402999809,
+        "mape": 0.06140915455581638,
+        "r2": 0.9770646527346806,
+        "n": 2640
+      },
+      "country": {
+        "KEN": {
+          "rmse": 3593.9279743690067,
+          "mae": 2464.375133695145,
+          "mape": 0.047019727886990735,
+          "r2": 0.4848334249631929,
+          "n": 1608
+        },
+        "SOM": {
+          "rmse": 1497.439671979719,
+          "mae": 1103.8657319865854,
+          "mape": 0.08382988913282378,
+          "r2": 0.8937331851506352,
+          "n": 1032
+        }
+      },
+      "n_features": 34,
+      "n_lag_features": 11,
+      "lag_features_used": [
+        "c_maize_fao_lag_2",
+        "c_maize_fao_lag_3",
+        "c_maize_fao_lag_6",
+        "c_maize_fao_lag_12",
+        "c_maize_fao_s2_rmean3",
+        "c_maize_fao_s2_rmean12",
+        "c_maize_fao_s2_rstd12",
+        "c_maize_fao_s3_rmean3",
+        "c_maize_fao_s3_rmean12",
+        "c_maize_fao_s3_rstd12",
+        "c_maize_fao_yoy"
+      ],
+      "best_iteration": 377
+    },
+    "h3": {
+      "overall": {
+        "rmse": 3437.997994799573,
+        "mae": 2343.314829491258,
+        "mape": 0.0732145370888831,
+        "r2": 0.968995948179894,
+        "n": 2640
+      },
+      "country": {
+        "KEN": {
+          "rmse": 4172.607259240812,
+          "mae": 3005.4086716767038,
+          "mape": 0.057635423624213485,
+          "r2": 0.3055772223908443,
+          "n": 1608
+        },
+        "SOM": {
+          "rmse": 1763.1082725779836,
+          "mae": 1311.6802381790517,
+          "mape": 0.09748896969662417,
+          "r2": 0.8526816112180001,
+          "n": 1032
+        }
+      },
+      "n_features": 30,
+      "n_lag_features": 7,
+      "lag_features_used": [
+        "c_maize_fao_lag_3",
+        "c_maize_fao_lag_6",
+        "c_maize_fao_lag_12",
+        "c_maize_fao_s3_rmean3",
+        "c_maize_fao_s3_rmean12",
+        "c_maize_fao_s3_rstd12",
+        "c_maize_fao_yoy"
+      ],
+      "best_iteration": 134
+    }
+  },
+  "c_sorghum": {
+    "h1": {
+      "overall": {
+        "rmse": 1798.8893420122351,
+        "mae": 870.9737500783311,
+        "mape": 0.056270706299859696,
+        "r2": 0.9645172575035178,
+        "n": 2640
+      },
+      "country": {
+        "KEN": {
+          "rmse": 323.6966129964121,
+          "mae": 214.86977392806307,
+          "mape": 0.031166336050458134,
+          "r2": 0.9175338270546912,
+          "n": 1608
+        },
+        "SOM": {
+          "rmse": 2848.6638598333802,
+          "mae": 1893.2752943124697,
+          "mape": 0.09538681808381098,
+          "r2": 0.9337353067078914,
+          "n": 1032
+        }
+      },
+      "n_features": 38,
+      "n_lag_features": 15,
+      "lag_features_used": [
+        "c_sorghum_lag_1",
+        "c_sorghum_lag_2",
+        "c_sorghum_lag_3",
+        "c_sorghum_lag_6",
+        "c_sorghum_lag_12",
+        "c_sorghum_s1_rmean3",
+        "c_sorghum_s1_rmean12",
+        "c_sorghum_s1_rstd12",
+        "c_sorghum_s2_rmean3",
+        "c_sorghum_s2_rmean12",
+        "c_sorghum_s2_rstd12",
+        "c_sorghum_s3_rmean3",
+        "c_sorghum_s3_rmean12",
+        "c_sorghum_s3_rstd12",
+        "c_sorghum_yoy"
+      ],
+      "best_iteration": 497
+    },
+    "h2": {
+      "overall": {
+        "rmse": 2394.689759084372,
+        "mae": 1207.8318713959945,
+        "mape": 0.08179518084110807,
+        "r2": 0.9371208306439772,
+        "n": 2640
+      },
+      "country": {
+        "KEN": {
+          "rmse": 528.3398140723708,
+          "mae": 342.14260094612126,
+          "mape": 0.049538219099143056,
+          "r2": 0.7803019469914491,
+          "n": 1608
+        },
+        "SOM": {
+          "rmse": 3772.9043663784405,
+          "mae": 2556.6965486085874,
+          "mape": 0.1320560282064954,
+          "r2": 0.8837611312744037,
+          "n": 1032
+        }
+      },
+      "n_features": 34,
+      "n_lag_features": 11,
+      "lag_features_used": [
+        "c_sorghum_lag_2",
+        "c_sorghum_lag_3",
+        "c_sorghum_lag_6",
+        "c_sorghum_lag_12",
+        "c_sorghum_s2_rmean3",
+        "c_sorghum_s2_rmean12",
+        "c_sorghum_s2_rstd12",
+        "c_sorghum_s3_rmean3",
+        "c_sorghum_s3_rmean12",
+        "c_sorghum_s3_rstd12",
+        "c_sorghum_yoy"
+      ],
+      "best_iteration": 494
+    },
+    "h3": {
+      "overall": {
+        "rmse": 2740.145383667483,
+        "mae": 1461.9848438797167,
+        "mape": 0.10786526528153725,
+        "r2": 0.9176704970184937,
+        "n": 2640
+      },
+      "country": {
+        "KEN": {
+          "rmse": 788.9725173320553,
+          "mae": 545.7170436457061,
+          "mape": 0.07894676508293974,
+          "r2": 0.510082129748654,
+          "n": 1608
+        },
+        "SOM": {
+          "rmse": 4270.552598036688,
+          "mae": 2889.657927965268,
+          "mape": 0.15292432373051482,
+          "r2": 0.8510748895452902,
+          "n": 1032
+        }
+      },
+      "n_features": 30,
+      "n_lag_features": 7,
+      "lag_features_used": [
+        "c_sorghum_lag_3",
+        "c_sorghum_lag_6",
+        "c_sorghum_lag_12",
+        "c_sorghum_s3_rmean3",
+        "c_sorghum_s3_rmean12",
+        "c_sorghum_s3_rstd12",
+        "c_sorghum_yoy"
+      ],
+      "best_iteration": 498
+    }
+  },
+  "config": {
+    "targets": [
+      "c_food_price_index",
+      "c_maize_fao",
+      "c_sorghum"
+    ],
+    "horizons": [
+      1,
+      2,
+      3
+    ],
+    "split_year": 2024,
+    "known_at_prediction": [
+      "month_sin",
+      "month_cos",
+      "population",
+      "crop_cover_fraction",
+      "country_iso",
+      "admin2"
+    ],
+    "needs_lag_features": [
+      "conflict_fatalities",
+      "conflict_events",
+      "Tair_f_3mon_Z",
+      "SoilMoi00_10cm_3mon_Z",
+      "SoilMoi10_40cm_3mon_Z",
+      "Rainf_f_3mon_Z",
+      "Evap_3mon_Z",
+      "Qs_3mon_Z",
+      "Qsb_3mon_Z",
+      "Water_Balance_3mon_Z",
+      "NDVI",
+      "LST",
+      "VHI",
+      "NINO34_Anom",
+      "IOD_DMI",
+      "Western_V_Gradient",
+      "MEI_v2"
+    ]
+  }
+}

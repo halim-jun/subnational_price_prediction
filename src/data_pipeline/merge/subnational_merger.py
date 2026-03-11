@@ -391,11 +391,24 @@ def merge_datasets(price_df, crop_df, acled_df, data_dir, iso3_list=['KEN', 'SOM
     }).reset_index().rename(columns={'EVENTS': 'conflict_events', 'FATALITIES': 'conflict_fatalities'})
 
     # ── 6. Create Master Skeleton ──
-    years = sorted(price_df['year'].unique())
+    # Only include admins that actually have price observations (target variable).
+    # Admins without any price data are not modeling targets and inflate the dataset
+    # with rows that are 100% null on the target columns.
+    priced_admins = set(price_agg['admin2_canonical'].unique())
+    priced_admin_gdf = admin_gdf[admin_gdf['shapeName'].isin(priced_admins)].copy()
+    excluded_count = len(admin_gdf) - len(priced_admin_gdf)
+    logger.info(f"Skeleton: keeping {len(priced_admin_gdf)} admins with price data, "
+                f"excluding {excluded_count} admins without any price observations")
+
+    # Cap temporal range: only include months up to 2025-12 where both
+    # price and feature data are available (future placeholder rows are useless).
+    MAX_YEAR = 2025
+    years = sorted(y for y in price_df['year'].unique() if y <= MAX_YEAR)
     months = sorted(price_df['month'].unique())
-    
-    logger.info(f"Creating skeleton for {len(years)} years, {len(months)} months, {len(canonical_names)} regions...")
-    master = create_master_skeleton(years, months, admin_gdf)
+
+    logger.info(f"Creating skeleton for {len(years)} years ({years[0]}-{years[-1]}), "
+                f"{len(months)} months, {len(priced_admin_gdf)} regions...")
+    master = create_master_skeleton(years, months, priced_admin_gdf)
     
     # ── 7. Merge All ──
     logger.info("Merging all datasets...")
