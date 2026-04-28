@@ -67,6 +67,29 @@ pip install -r requirements.txt
 ```
 
 
+## 📊 Dashboard
+
+Interactive Next.js dashboard with a FastAPI backend for exploring model performance and predictions.
+
+```bash
+# 1. Start the FastAPI backend
+uvicorn src.dashboard.api.main:app --reload --port 8000
+
+# 2. Start the Next.js frontend (in a separate terminal)
+cd src/dashboard/frontend
+npm install   # first time only
+npm run dev
+```
+
+Frontend runs at http://localhost:3000, API at http://localhost:8000.
+
+The frontend proxies `/api/*` to the backend URL set by `NEXT_PUBLIC_API_URL` (default `http://localhost:8000`). To run the API on a different port, set the env var before `npm run dev`, e.g. `NEXT_PUBLIC_API_URL=http://localhost:8001 npm run dev`.
+
+Pages:
+- **Overview** — Holdout test metrics (R², MAPE, RMSE), best/worst performing regions
+- **Map** — Interactive Leaflet choropleth (predicted/actual/error views) with date slider
+- **Time Series** — Per-region line charts, predicted vs actual scatter plots, MoM change analysis
+
 ## 📓 Notebooks
 
 Interactive analysis is available in the `src/notebook/` directory.

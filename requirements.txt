@@ -35,3 +35,7 @@ black>=23.0.0
 flake8>=6.0.0
 blackmarblepy
 python-dotenv
+
+# Dashboard
+streamlit>=1.30.0
+plotly>=5.18.0

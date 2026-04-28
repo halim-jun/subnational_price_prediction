@@ -1,0 +1,131 @@
+{
+  "generated_at": "2026-04-28T07:40:19.033285+00:00",
+  "total_bytes": 3950932,
+  "file_count": 31,
+  "files": [
+    {
+      "path": "config.json",
+      "bytes": 8427
+    },
+    {
+      "path": "features/importance/c_food_price_index_h1.json",
+      "bytes": 877
+    },
+    {
+      "path": "features/importance/c_food_price_index_h2.json",
+      "bytes": 881
+    },
+    {
+      "path": "features/importance/c_food_price_index_h3.json",
+      "bytes": 877
+    },
+    {
+      "path": "features/importance/c_maize_fao_h1.json",
+      "bytes": 883
+    },
+    {
+      "path": "features/importance/c_maize_fao_h2.json",
+      "bytes": 880
+    },
+    {
+      "path": "features/importance/c_maize_fao_h3.json",
+      "bytes": 879
+    },
+    {
+      "path": "features/importance/c_sorghum_h1.json",
+      "bytes": 880
+    },
+    {
+      "path": "features/importance/c_sorghum_h2.json",
+      "bytes": 880
+    },
+    {
+      "path": "features/importance/c_sorghum_h3.json",
+      "bytes": 876
+    },
+    {
+      "path": "geo/admin2.json",
+      "bytes": 145493
+    },
+    {
+      "path": "metrics/fold-results.json",
+      "bytes": 38862
+    },
+    {
+      "path": "metrics/per-admin/c_food_price_index_h1.json",
+      "bytes": 16325
+    },
+    {
+      "path": "metrics/per-admin/c_food_price_index_h2.json",
+      "bytes": 16328
+    },
+    {
+      "path": "metrics/per-admin/c_food_price_index_h3.json",
+      "bytes": 16335
+    },
+    {
+      "path": "metrics/per-admin/c_maize_fao_h1.json",
+      "bytes": 16349
+    },
+    {
+      "path": "metrics/per-admin/c_maize_fao_h2.json",
+      "bytes": 16343
+    },
+    {
+      "path": "metrics/per-admin/c_maize_fao_h3.json",
+      "bytes": 16341
+    },
+    {
+      "path": "metrics/per-admin/c_sorghum_h1.json",
+      "bytes": 16301
+    },
+    {
+      "path": "metrics/per-admin/c_sorghum_h2.json",
+      "bytes": 16291
+    },
+    {
+      "path": "metrics/per-admin/c_sorghum_h3.json",
+      "bytes": 16264
+    },
+    {
+      "path": "metrics/summary.json",
+      "bytes": 2575
+    },
+    {
+      "path": "predictions/c_food_price_index_h1.json",
+      "bytes": 405865
+    },
+    {
+      "path": "predictions/c_food_price_index_h2.json",
+      "bytes": 405679
+    },
+    {
+      "path": "predictions/c_food_price_index_h3.json",
+      "bytes": 405288
+    },
+    {
+      "path": "predictions/c_maize_fao_h1.json",
+      "bytes": 396670
+    },
+    {
+      "path": "predictions/c_maize_fao_h2.json",
+      "bytes": 396464
+    },
+    {
+      "path": "predictions/c_maize_fao_h3.json",
+      "bytes": 396520
+    },
+    {
+      "path": "predictions/c_sorghum_h1.json",
+      "bytes": 398426
+    },
+    {
+      "path": "predictions/c_sorghum_h2.json",
+      "bytes": 397990
+    },
+    {
+      "path": "predictions/c_sorghum_h3.json",
+      "bytes": 397883
+    }
+  ]
+}

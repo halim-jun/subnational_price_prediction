@@ -1,0 +1,1081 @@
+target,horizon,spatial_fold,temporal_fold,group,importance
+c_food_price_index,1,0,0,Autoregressive,0.9383049607276917
+c_food_price_index,1,0,0,Climate Index,0.020580489188432693
+c_food_price_index,1,0,0,Conflict,0.001745759160257876
+c_food_price_index,1,0,0,FLDAS,0.012160882353782654
+c_food_price_index,1,0,0,Spatial ID,0.007225294131785631
+c_food_price_index,1,0,0,Static,0.0037275273352861404
+c_food_price_index,1,0,0,Temporal,0.011921042576432228
+c_food_price_index,1,0,0,Vegetation,0.004334056284278631
+c_food_price_index,1,0,1,Autoregressive,0.9426860213279724
+c_food_price_index,1,0,1,Climate Index,0.01686255820095539
+c_food_price_index,1,0,1,Conflict,0.0017931463662534952
+c_food_price_index,1,0,1,FLDAS,0.0138601865619421
+c_food_price_index,1,0,1,Spatial ID,0.007626150269061327
+c_food_price_index,1,0,1,Static,0.0028472174890339375
+c_food_price_index,1,0,1,Temporal,0.009299948811531067
+c_food_price_index,1,0,1,Vegetation,0.005024949554353952
+c_food_price_index,1,0,2,Autoregressive,0.9806280136108398
+c_food_price_index,1,0,2,Climate Index,0.005609176121652126
+c_food_price_index,1,0,2,Conflict,0.0005316517199389637
+c_food_price_index,1,0,2,FLDAS,0.004768463782966137
+c_food_price_index,1,0,2,Spatial ID,0.0021448791958391666
+c_food_price_index,1,0,2,Static,0.0009951835963875055
+c_food_price_index,1,0,2,Temporal,0.003705157432705164
+c_food_price_index,1,0,2,Vegetation,0.0016174775082617998
+c_food_price_index,1,1,0,Autoregressive,0.9328210949897766
+c_food_price_index,1,1,0,Climate Index,0.022739935666322708
+c_food_price_index,1,1,0,Conflict,0.0019527280237525702
+c_food_price_index,1,1,0,FLDAS,0.013897474855184555
+c_food_price_index,1,1,0,Spatial ID,0.005854819901287556
+c_food_price_index,1,1,0,Static,0.003935263492166996
+c_food_price_index,1,1,0,Temporal,0.01394418254494667
+c_food_price_index,1,1,0,Vegetation,0.004854362457990646
+c_food_price_index,1,1,1,Autoregressive,0.9391821026802063
+c_food_price_index,1,1,1,Climate Index,0.01824299618601799
+c_food_price_index,1,1,1,Conflict,0.0029968079179525375
+c_food_price_index,1,1,1,FLDAS,0.014030343852937222
+c_food_price_index,1,1,1,Spatial ID,0.008419649675488472
+c_food_price_index,1,1,1,Static,0.002824205905199051
+c_food_price_index,1,1,1,Temporal,0.008839348331093788
+c_food_price_index,1,1,1,Vegetation,0.005464630201458931
+c_food_price_index,1,1,2,Autoregressive,0.9714102149009705
+c_food_price_index,1,1,2,Climate Index,0.008363627828657627
+c_food_price_index,1,1,2,Conflict,0.0007418786408379674
+c_food_price_index,1,1,2,FLDAS,0.006744891870766878
+c_food_price_index,1,1,2,Spatial ID,0.004025206435471773
+c_food_price_index,1,1,2,Static,0.0012039754074066877
+c_food_price_index,1,1,2,Temporal,0.005041399970650673
+c_food_price_index,1,1,2,Vegetation,0.0024686395190656185
+c_food_price_index,1,2,0,Autoregressive,0.9410110116004944
+c_food_price_index,1,2,0,Climate Index,0.0186019130051136
+c_food_price_index,1,2,0,Conflict,0.001993858488276601
+c_food_price_index,1,2,0,FLDAS,0.011362563818693161
+c_food_price_index,1,2,0,Spatial ID,0.006412206217646599
+c_food_price_index,1,2,0,Static,0.002642837818711996
+c_food_price_index,1,2,0,Temporal,0.013120491057634354
+c_food_price_index,1,2,0,Vegetation,0.0048551117070019245
+c_food_price_index,1,2,1,Autoregressive,0.940944492816925
+c_food_price_index,1,2,1,Climate Index,0.018176332116127014
+c_food_price_index,1,2,1,Conflict,0.002772719133645296
+c_food_price_index,1,2,1,FLDAS,0.01394281629472971
+c_food_price_index,1,2,1,Spatial ID,0.006669044494628906
+c_food_price_index,1,2,1,Static,0.0023971416521817446
+c_food_price_index,1,2,1,Temporal,0.00957217626273632
+c_food_price_index,1,2,1,Vegetation,0.005525196902453899
+c_food_price_index,1,2,2,Autoregressive,0.9803317785263062
+c_food_price_index,1,2,2,Climate Index,0.006334155332297087
+c_food_price_index,1,2,2,Conflict,0.0006562905618920922
+c_food_price_index,1,2,2,FLDAS,0.004526817239820957
+c_food_price_index,1,2,2,Spatial ID,0.002095768926665187
+c_food_price_index,1,2,2,Static,0.0008242881158366799
+c_food_price_index,1,2,2,Temporal,0.003664147574454546
+c_food_price_index,1,2,2,Vegetation,0.0015668511623516679
+c_food_price_index,1,3,0,Autoregressive,0.9218149781227112
+c_food_price_index,1,3,0,Climate Index,0.025836952030658722
+c_food_price_index,1,3,0,Conflict,0.0014106384478509426
+c_food_price_index,1,3,0,FLDAS,0.01125277578830719
+c_food_price_index,1,3,0,Spatial ID,0.015006028115749359
+c_food_price_index,1,3,0,Static,0.0031177543569356203
+c_food_price_index,1,3,0,Temporal,0.017538130283355713
+c_food_price_index,1,3,0,Vegetation,0.0040227738209068775
+c_food_price_index,1,3,1,Autoregressive,0.9387139678001404
+c_food_price_index,1,3,1,Climate Index,0.01853693462908268
+c_food_price_index,1,3,1,Conflict,0.0037067136727273464
+c_food_price_index,1,3,1,FLDAS,0.01236598938703537
+c_food_price_index,1,3,1,Spatial ID,0.0085067143663764
+c_food_price_index,1,3,1,Static,0.0026426073163747787
+c_food_price_index,1,3,1,Temporal,0.01131155900657177
+c_food_price_index,1,3,1,Vegetation,0.004215660039335489
+c_food_price_index,1,3,2,Autoregressive,0.9649055600166321
+c_food_price_index,1,3,2,Climate Index,0.011104857549071312
+c_food_price_index,1,3,2,Conflict,0.0011261068284511566
+c_food_price_index,1,3,2,FLDAS,0.007299813441932201
+c_food_price_index,1,3,2,Spatial ID,0.005072318948805332
+c_food_price_index,1,3,2,Static,0.0013874785508960485
+c_food_price_index,1,3,2,Temporal,0.00673022260889411
+c_food_price_index,1,3,2,Vegetation,0.0023736529983580112
+c_food_price_index,1,4,0,Autoregressive,0.9272002577781677
+c_food_price_index,1,4,0,Climate Index,0.025202758610248566
+c_food_price_index,1,4,0,Conflict,0.0015100481687113643
+c_food_price_index,1,4,0,FLDAS,0.013239231891930103
+c_food_price_index,1,4,0,Spatial ID,0.009750645607709885
+c_food_price_index,1,4,0,Static,0.00306626595556736
+c_food_price_index,1,4,0,Temporal,0.015744613483548164
+c_food_price_index,1,4,0,Vegetation,0.004286155570298433
+c_food_price_index,1,4,1,Autoregressive,0.9402840733528137
+c_food_price_index,1,4,1,Climate Index,0.017622733488678932
+c_food_price_index,1,4,1,Conflict,0.003643881529569626
+c_food_price_index,1,4,1,FLDAS,0.012346800416707993
+c_food_price_index,1,4,1,Spatial ID,0.008803346194326878
+c_food_price_index,1,4,1,Static,0.002624811138957739
+c_food_price_index,1,4,1,Temporal,0.009938409551978111
+c_food_price_index,1,4,1,Vegetation,0.004736036062240601
+c_food_price_index,1,4,2,Autoregressive,0.9709751605987549
+c_food_price_index,1,4,2,Climate Index,0.0086255744099617
+c_food_price_index,1,4,2,Conflict,0.0009316217619925737
+c_food_price_index,1,4,2,FLDAS,0.006545098498463631
+c_food_price_index,1,4,2,Spatial ID,0.003889213316142559
+c_food_price_index,1,4,2,Static,0.0011437053326517344
+c_food_price_index,1,4,2,Temporal,0.0056051770225167274
+c_food_price_index,1,4,2,Vegetation,0.0022845028433948755
+c_food_price_index,2,0,0,Autoregressive,0.8840758204460144
+c_food_price_index,2,0,0,Climate Index,0.04268665611743927
+c_food_price_index,2,0,0,Conflict,0.002081891056150198
+c_food_price_index,2,0,0,FLDAS,0.024290097877383232
+c_food_price_index,2,0,0,Spatial ID,0.014110242016613483
+c_food_price_index,2,0,0,Static,0.00812574289739132
+c_food_price_index,2,0,0,Temporal,0.01698639988899231
+c_food_price_index,2,0,0,Vegetation,0.0076431287452578545
+c_food_price_index,2,0,1,Autoregressive,0.893639326095581
+c_food_price_index,2,0,1,Climate Index,0.032721590250730515
+c_food_price_index,2,0,1,Conflict,0.0030263590160757303
+c_food_price_index,2,0,1,FLDAS,0.02799977734684944
+c_food_price_index,2,0,1,Spatial ID,0.01196818333119154
+c_food_price_index,2,0,1,Static,0.005945301149040461
+c_food_price_index,2,0,1,Temporal,0.015411369502544403
+c_food_price_index,2,0,1,Vegetation,0.009288097731769085
+c_food_price_index,2,0,2,Autoregressive,0.9607263207435608
+c_food_price_index,2,0,2,Climate Index,0.009867644868791103
+c_food_price_index,2,0,2,Conflict,0.0010310605866834521
+c_food_price_index,2,0,2,FLDAS,0.010572453960776329
+c_food_price_index,2,0,2,Spatial ID,0.004316322505474091
+c_food_price_index,2,0,2,Static,0.0020540794357657433
+c_food_price_index,2,0,2,Temporal,0.0077469078823924065
+c_food_price_index,2,0,2,Vegetation,0.0036851875483989716
+c_food_price_index,2,1,0,Autoregressive,0.8660098314285278
+c_food_price_index,2,1,0,Climate Index,0.05554823949933052
+c_food_price_index,2,1,0,Conflict,0.0025565610267221928
+c_food_price_index,2,1,0,FLDAS,0.02776704542338848
+c_food_price_index,2,1,0,Spatial ID,0.013064791448414326
+c_food_price_index,2,1,0,Static,0.007401769980788231
+c_food_price_index,2,1,0,Temporal,0.018753333017230034
+c_food_price_index,2,1,0,Vegetation,0.008898228406906128
+c_food_price_index,2,1,1,Autoregressive,0.8970237374305725
+c_food_price_index,2,1,1,Climate Index,0.03349035978317261
+c_food_price_index,2,1,1,Conflict,0.002740930300205946
+c_food_price_index,2,1,1,FLDAS,0.025421522557735443
+c_food_price_index,2,1,1,Spatial ID,0.012434209696948528
+c_food_price_index,2,1,1,Static,0.005102401599287987
+c_food_price_index,2,1,1,Temporal,0.01496397890150547
+c_food_price_index,2,1,1,Vegetation,0.008822795934975147
+c_food_price_index,2,1,2,Autoregressive,0.9446917772293091
+c_food_price_index,2,1,2,Climate Index,0.01562545821070671
+c_food_price_index,2,1,2,Conflict,0.001244453014805913
+c_food_price_index,2,1,2,FLDAS,0.013492937199771404
+c_food_price_index,2,1,2,Spatial ID,0.0067213913425803185
+c_food_price_index,2,1,2,Static,0.0026866369880735874
+c_food_price_index,2,1,2,Temporal,0.01055782102048397
+c_food_price_index,2,1,2,Vegetation,0.004979470279067755
+c_food_price_index,2,2,0,Autoregressive,0.8916336894035339
+c_food_price_index,2,2,0,Climate Index,0.04134943708777428
+c_food_price_index,2,2,0,Conflict,0.0026536050718277693
+c_food_price_index,2,2,0,FLDAS,0.0217042937874794
+c_food_price_index,2,2,0,Spatial ID,0.009558617137372494
+c_food_price_index,2,2,0,Static,0.005114097613841295
+c_food_price_index,2,2,0,Temporal,0.02064763382077217
+c_food_price_index,2,2,0,Vegetation,0.007338601164519787
+c_food_price_index,2,2,1,Autoregressive,0.8961493372917175
+c_food_price_index,2,2,1,Climate Index,0.03321627900004387
+c_food_price_index,2,2,1,Conflict,0.0032153658103197813
+c_food_price_index,2,2,1,FLDAS,0.028066666796803474
+c_food_price_index,2,2,1,Spatial ID,0.010276037268340588
+c_food_price_index,2,2,1,Static,0.004287156276404858
+c_food_price_index,2,2,1,Temporal,0.015614612959325314
+c_food_price_index,2,2,1,Vegetation,0.009174543432891369
+c_food_price_index,2,2,2,Autoregressive,0.9640079140663147
+c_food_price_index,2,2,2,Climate Index,0.010157546028494835
+c_food_price_index,2,2,2,Conflict,0.0008466227445751429
+c_food_price_index,2,2,2,FLDAS,0.009330916218459606
+c_food_price_index,2,2,2,Spatial ID,0.0036239277105778456
+c_food_price_index,2,2,2,Static,0.0016712562646716833
+c_food_price_index,2,2,2,Temporal,0.0070860604755580425
+c_food_price_index,2,2,2,Vegetation,0.0032757858280092478
+c_food_price_index,2,3,0,Autoregressive,0.8458971381187439
+c_food_price_index,2,3,0,Climate Index,0.06474693864583969
+c_food_price_index,2,3,0,Conflict,0.002717860508710146
+c_food_price_index,2,3,0,FLDAS,0.02434314228594303
+c_food_price_index,2,3,0,Spatial ID,0.024874577298760414
+c_food_price_index,2,3,0,Static,0.00609305314719677
+c_food_price_index,2,3,0,Temporal,0.024584287777543068
+c_food_price_index,2,3,0,Vegetation,0.006743050180375576
+c_food_price_index,2,3,1,Autoregressive,0.8866962790489197
+c_food_price_index,2,3,1,Climate Index,0.04022234305739403
+c_food_price_index,2,3,1,Conflict,0.0031700972467660904
+c_food_price_index,2,3,1,FLDAS,0.02217981219291687
+c_food_price_index,2,3,1,Spatial ID,0.014366650953888893
+c_food_price_index,2,3,1,Static,0.0043686553835868835
+c_food_price_index,2,3,1,Temporal,0.021740565076470375
+c_food_price_index,2,3,1,Vegetation,0.007255575153976679
+c_food_price_index,2,3,2,Autoregressive,0.9329732060432434
+c_food_price_index,2,3,2,Climate Index,0.02107774093747139
+c_food_price_index,2,3,2,Conflict,0.001558136660605669
+c_food_price_index,2,3,2,FLDAS,0.013827590271830559
+c_food_price_index,2,3,2,Spatial ID,0.009647198021411896
+c_food_price_index,2,3,2,Static,0.002598473336547613
+c_food_price_index,2,3,2,Temporal,0.013563220389187336
+c_food_price_index,2,3,2,Vegetation,0.004754534922540188
+c_food_price_index,2,4,0,Autoregressive,0.8639647364616394
+c_food_price_index,2,4,0,Climate Index,0.05792544409632683
+c_food_price_index,2,4,0,Conflict,0.0022807817440479994
+c_food_price_index,2,4,0,FLDAS,0.02340678498148918
+c_food_price_index,2,4,0,Spatial ID,0.016280939802527428
+c_food_price_index,2,4,0,Static,0.005809805355966091
+c_food_price_index,2,4,0,Temporal,0.02326303720474243
+c_food_price_index,2,4,0,Vegetation,0.007068435661494732
+c_food_price_index,2,4,1,Autoregressive,0.8936803936958313
+c_food_price_index,2,4,1,Climate Index,0.03457062691450119
+c_food_price_index,2,4,1,Conflict,0.0031026965007185936
+c_food_price_index,2,4,1,FLDAS,0.023539818823337555
+c_food_price_index,2,4,1,Spatial ID,0.013516796752810478
+c_food_price_index,2,4,1,Static,0.004710674285888672
+c_food_price_index,2,4,1,Temporal,0.018866831436753273
+c_food_price_index,2,4,1,Vegetation,0.00801203865557909
+c_food_price_index,2,4,2,Autoregressive,0.9425368309020996
+c_food_price_index,2,4,2,Climate Index,0.01686500757932663
+c_food_price_index,2,4,2,Conflict,0.0014655319973826408
+c_food_price_index,2,4,2,FLDAS,0.012821891345083714
+c_food_price_index,2,4,2,Spatial ID,0.008190284483134747
+c_food_price_index,2,4,2,Static,0.0022779761347919703
+c_food_price_index,2,4,2,Temporal,0.01116438303142786
+c_food_price_index,2,4,2,Vegetation,0.004678189288824797
+c_food_price_index,3,0,0,Autoregressive,0.8159416913986206
+c_food_price_index,3,0,0,Climate Index,0.07551950961351395
+c_food_price_index,3,0,0,Conflict,0.0034965812228620052
+c_food_price_index,3,0,0,FLDAS,0.03667348250746727
+c_food_price_index,3,0,0,Spatial ID,0.013674926944077015
+c_food_price_index,3,0,0,Static,0.012213647365570068
+c_food_price_index,3,0,0,Temporal,0.030335338786244392
+c_food_price_index,3,0,0,Vegetation,0.012144673615694046
+c_food_price_index,3,0,1,Autoregressive,0.8480055332183838
+c_food_price_index,3,0,1,Climate Index,0.04820072278380394
+c_food_price_index,3,0,1,Conflict,0.004046306945383549
+c_food_price_index,3,0,1,FLDAS,0.037067919969558716
+c_food_price_index,3,0,1,Spatial ID,0.017730828374624252
+c_food_price_index,3,0,1,Static,0.009521258994936943
+c_food_price_index,3,0,1,Temporal,0.02263934724032879
+c_food_price_index,3,0,1,Vegetation,0.01278815045952797
+c_food_price_index,3,0,2,Autoregressive,0.9406487345695496
+c_food_price_index,3,0,2,Climate Index,0.014810318127274513
+c_food_price_index,3,0,2,Conflict,0.0014821146614849567
+c_food_price_index,3,0,2,FLDAS,0.016261346638202667
+c_food_price_index,3,0,2,Spatial ID,0.005980736576020718
+c_food_price_index,3,0,2,Static,0.0037892041727900505
+c_food_price_index,3,0,2,Temporal,0.011925224214792252
+c_food_price_index,3,0,2,Vegetation,0.0051022847183048725
+c_food_price_index,3,1,0,Autoregressive,0.7785859107971191
+c_food_price_index,3,1,0,Climate Index,0.08158870786428452
+c_food_price_index,3,1,0,Conflict,0.0039376867935061455
+c_food_price_index,3,1,0,FLDAS,0.04240354523062706
+c_food_price_index,3,1,0,Spatial ID,0.02258290722966194
+c_food_price_index,3,1,0,Static,0.011154765263199806
+c_food_price_index,3,1,0,Temporal,0.04691886156797409
+c_food_price_index,3,1,0,Vegetation,0.012827517464756966
+c_food_price_index,3,1,1,Autoregressive,0.8325409889221191
+c_food_price_index,3,1,1,Climate Index,0.051980067044496536
+c_food_price_index,3,1,1,Conflict,0.004859503358602524
+c_food_price_index,3,1,1,FLDAS,0.03760167583823204
+c_food_price_index,3,1,1,Spatial ID,0.01860617846250534
+c_food_price_index,3,1,1,Static,0.00923477578908205
+c_food_price_index,3,1,1,Temporal,0.030428171157836914
+c_food_price_index,3,1,1,Vegetation,0.0147487111389637
+c_food_price_index,3,1,2,Autoregressive,0.9117279648780823
+c_food_price_index,3,1,2,Climate Index,0.024097923189401627
+c_food_price_index,3,1,2,Conflict,0.00229630246758461
+c_food_price_index,3,1,2,FLDAS,0.020072275772690773
+c_food_price_index,3,1,2,Spatial ID,0.01173332892358303
+c_food_price_index,3,1,2,Static,0.004203535616397858
+c_food_price_index,3,1,2,Temporal,0.018110407516360283
+c_food_price_index,3,1,2,Vegetation,0.007758331950753927
+c_food_price_index,3,2,0,Autoregressive,0.8261705636978149
+c_food_price_index,3,2,0,Climate Index,0.06756782531738281
+c_food_price_index,3,2,0,Conflict,0.0038264538161456585
+c_food_price_index,3,2,0,FLDAS,0.02839394472539425
+c_food_price_index,3,2,0,Spatial ID,0.021995656192302704
+c_food_price_index,3,2,0,Static,0.006236403249204159
+c_food_price_index,3,2,0,Temporal,0.03653592988848686
+c_food_price_index,3,2,0,Vegetation,0.009273206815123558
+c_food_price_index,3,2,1,Autoregressive,0.8635908961296082
+c_food_price_index,3,2,1,Climate Index,0.04947469383478165
+c_food_price_index,3,2,1,Conflict,0.0033652628771960735
+c_food_price_index,3,2,1,FLDAS,0.032451268285512924
+c_food_price_index,3,2,1,Spatial ID,0.014536409638822079
+c_food_price_index,3,2,1,Static,0.005468054674565792
+c_food_price_index,3,2,1,Temporal,0.019761670380830765
+c_food_price_index,3,2,1,Vegetation,0.01135166734457016
+c_food_price_index,3,2,2,Autoregressive,0.9436115622520447
+c_food_price_index,3,2,2,Climate Index,0.01578877493739128
+c_food_price_index,3,2,2,Conflict,0.0015365194994956255
+c_food_price_index,3,2,2,FLDAS,0.014376935549080372
+c_food_price_index,3,2,2,Spatial ID,0.005494171287864447
+c_food_price_index,3,2,2,Static,0.002855802420526743
+c_food_price_index,3,2,2,Temporal,0.011817206628620625
+c_food_price_index,3,2,2,Vegetation,0.00451905932277441
+c_food_price_index,3,3,0,Autoregressive,0.7617748379707336
+c_food_price_index,3,3,0,Climate Index,0.08912743628025055
+c_food_price_index,3,3,0,Conflict,0.00566679984331131
+c_food_price_index,3,3,0,FLDAS,0.03518875688314438
+c_food_price_index,3,3,0,Spatial ID,0.041048936545848846
+c_food_price_index,3,3,0,Static,0.008459275588393211
+c_food_price_index,3,3,0,Temporal,0.049170561134815216
+c_food_price_index,3,3,0,Vegetation,0.009563280269503593
+c_food_price_index,3,3,1,Autoregressive,0.8293070793151855
+c_food_price_index,3,3,1,Climate Index,0.060031693428754807
+c_food_price_index,3,3,1,Conflict,0.004782755859196186
+c_food_price_index,3,3,1,FLDAS,0.032406918704509735
+c_food_price_index,3,3,1,Spatial ID,0.02173675410449505
+c_food_price_index,3,3,1,Static,0.007130978628993034
+c_food_price_index,3,3,1,Temporal,0.03428902477025986
+c_food_price_index,3,3,1,Vegetation,0.010314717888832092
+c_food_price_index,3,3,2,Autoregressive,0.8952902555465698
+c_food_price_index,3,3,2,Climate Index,0.0323084257543087
+c_food_price_index,3,3,2,Conflict,0.0021269635763019323
+c_food_price_index,3,3,2,FLDAS,0.020051904022693634
+c_food_price_index,3,3,2,Spatial ID,0.015234368853271008
+c_food_price_index,3,3,2,Static,0.004111694172024727
+c_food_price_index,3,3,2,Temporal,0.0243579912930727
+c_food_price_index,3,3,2,Vegetation,0.006518306210637093
+c_food_price_index,3,4,0,Autoregressive,0.7810233235359192
+c_food_price_index,3,4,0,Climate Index,0.08579537272453308
+c_food_price_index,3,4,0,Conflict,0.003545071929693222
+c_food_price_index,3,4,0,FLDAS,0.04224304109811783
+c_food_price_index,3,4,0,Spatial ID,0.02068355679512024
+c_food_price_index,3,4,0,Static,0.009841691702604294
+c_food_price_index,3,4,0,Temporal,0.044922105967998505
+c_food_price_index,3,4,0,Vegetation,0.01194583810865879
+c_food_price_index,3,4,1,Autoregressive,0.8398844003677368
+c_food_price_index,3,4,1,Climate Index,0.05340978875756264
+c_food_price_index,3,4,1,Conflict,0.004937615245580673
+c_food_price_index,3,4,1,FLDAS,0.033559005707502365
+c_food_price_index,3,4,1,Spatial ID,0.018963733687996864
+c_food_price_index,3,4,1,Static,0.007256392389535904
+c_food_price_index,3,4,1,Temporal,0.029821282252669334
+c_food_price_index,3,4,1,Vegetation,0.012167776934802532
+c_food_price_index,3,4,2,Autoregressive,0.9081844687461853
+c_food_price_index,3,4,2,Climate Index,0.02661372348666191
+c_food_price_index,3,4,2,Conflict,0.0022105739917606115
+c_food_price_index,3,4,2,FLDAS,0.019649310037493706
+c_food_price_index,3,4,2,Spatial ID,0.013095998205244541
+c_food_price_index,3,4,2,Static,0.0040990812703967094
+c_food_price_index,3,4,2,Temporal,0.01949400082230568
+c_food_price_index,3,4,2,Vegetation,0.0066529372707009315
+c_maize_fao,1,0,0,Autoregressive,0.9328528046607971
+c_maize_fao,1,0,0,Climate Index,0.010806229896843433
+c_maize_fao,1,0,0,Conflict,0.0008491701446473598
+c_maize_fao,1,0,0,FLDAS,0.009210128337144852
+c_maize_fao,1,0,0,Spatial ID,0.037121374160051346
+c_maize_fao,1,0,0,Static,0.0015657912008464336
+c_maize_fao,1,0,0,Temporal,0.00547418836504221
+c_maize_fao,1,0,0,Vegetation,0.0021201628260314465
+c_maize_fao,1,0,1,Autoregressive,0.8728880286216736
+c_maize_fao,1,0,1,Climate Index,0.004115573130548
+c_maize_fao,1,0,1,Conflict,0.0005240921163931489
+c_maize_fao,1,0,1,FLDAS,0.004045292269438505
+c_maize_fao,1,0,1,Spatial ID,0.11339310556650162
+c_maize_fao,1,0,1,Static,0.0008955963421612978
+c_maize_fao,1,0,1,Temporal,0.00281232176348567
+c_maize_fao,1,0,1,Vegetation,0.0013259616680443287
+c_maize_fao,1,0,2,Autoregressive,0.9678623080253601
+c_maize_fao,1,0,2,Climate Index,0.0030341302044689655
+c_maize_fao,1,0,2,Conflict,0.0004591215692926198
+c_maize_fao,1,0,2,FLDAS,0.0033006793819367886
+c_maize_fao,1,0,2,Spatial ID,0.021317332983016968
+c_maize_fao,1,0,2,Static,0.0007844434585422277
+c_maize_fao,1,0,2,Temporal,0.002120204735547304
+c_maize_fao,1,0,2,Vegetation,0.001121757784858346
+c_maize_fao,1,1,0,Autoregressive,0.9336403608322144
+c_maize_fao,1,1,0,Climate Index,0.023077936843037605
+c_maize_fao,1,1,0,Conflict,0.000930474721826613
+c_maize_fao,1,1,0,FLDAS,0.009082125499844551
+c_maize_fao,1,1,0,Spatial ID,0.020506231114268303
+c_maize_fao,1,1,0,Static,0.001497661112807691
+c_maize_fao,1,1,0,Temporal,0.008886296302080154
+c_maize_fao,1,1,0,Vegetation,0.002378973178565502
+c_maize_fao,1,1,1,Autoregressive,0.969244122505188
+c_maize_fao,1,1,1,Climate Index,0.009070922620594501
+c_maize_fao,1,1,1,Conflict,0.0009771708864718676
+c_maize_fao,1,1,1,FLDAS,0.005055568180978298
+c_maize_fao,1,1,1,Spatial ID,0.008132321760058403
+c_maize_fao,1,1,1,Static,0.0010551477316766977
+c_maize_fao,1,1,1,Temporal,0.0049671595916152
+c_maize_fao,1,1,1,Vegetation,0.001497646328061819
+c_maize_fao,1,1,2,Autoregressive,0.9742605090141296
+c_maize_fao,1,1,2,Climate Index,0.007445944473147392
+c_maize_fao,1,1,2,Conflict,0.0006191794527694583
+c_maize_fao,1,1,2,FLDAS,0.0050071668811142445
+c_maize_fao,1,1,2,Spatial ID,0.00646378705278039
+c_maize_fao,1,1,2,Static,0.001035404158756137
+c_maize_fao,1,1,2,Temporal,0.0036808145232498646
+c_maize_fao,1,1,2,Vegetation,0.0014870800077915192
+c_maize_fao,1,2,0,Autoregressive,0.9537345767021179
+c_maize_fao,1,2,0,Climate Index,0.01201552338898182
+c_maize_fao,1,2,0,Conflict,0.0008975676610134542
+c_maize_fao,1,2,0,FLDAS,0.007596280891448259
+c_maize_fao,1,2,0,Spatial ID,0.015511400997638702
+c_maize_fao,1,2,0,Static,0.001448610913939774
+c_maize_fao,1,2,0,Temporal,0.0059908302500844
+c_maize_fao,1,2,0,Vegetation,0.0028053175192326307
+c_maize_fao,1,2,1,Autoregressive,0.8985277414321899
+c_maize_fao,1,2,1,Climate Index,0.005072175525128841
+c_maize_fao,1,2,1,Conflict,0.0004256956744939089
+c_maize_fao,1,2,1,FLDAS,0.00324875395745039
+c_maize_fao,1,2,1,Spatial ID,0.08782591670751572
+c_maize_fao,1,2,1,Static,0.0007328042411245406
+c_maize_fao,1,2,1,Temporal,0.0029184548184275627
+c_maize_fao,1,2,1,Vegetation,0.0012483381433412433
+c_maize_fao,1,2,2,Autoregressive,0.9700025916099548
+c_maize_fao,1,2,2,Climate Index,0.0031872973777353764
+c_maize_fao,1,2,2,Conflict,0.0004666521563194692
+c_maize_fao,1,2,2,FLDAS,0.002631731331348419
+c_maize_fao,1,2,2,Spatial ID,0.020039202645421028
+c_maize_fao,1,2,2,Static,0.000514115730766207
+c_maize_fao,1,2,2,Temporal,0.0021263277158141136
+c_maize_fao,1,2,2,Vegetation,0.0010320511646568775
+c_maize_fao,1,3,0,Autoregressive,0.9432929754257202
+c_maize_fao,1,3,0,Climate Index,0.020177647471427917
+c_maize_fao,1,3,0,Conflict,0.0009159453329630196
+c_maize_fao,1,3,0,FLDAS,0.008108681999146938
+c_maize_fao,1,3,0,Spatial ID,0.012790109030902386
+c_maize_fao,1,3,0,Static,0.0013862138148397207
+c_maize_fao,1,3,0,Temporal,0.011284475214779377
+c_maize_fao,1,3,0,Vegetation,0.0020439664367586374
+c_maize_fao,1,3,1,Autoregressive,0.9593918323516846
+c_maize_fao,1,3,1,Climate Index,0.007764292415231466
+c_maize_fao,1,3,1,Conflict,0.0006660348735749722
+c_maize_fao,1,3,1,FLDAS,0.005487324669957161
+c_maize_fao,1,3,1,Spatial ID,0.019564663991332054
+c_maize_fao,1,3,1,Static,0.0008420037338510156
+c_maize_fao,1,3,1,Temporal,0.004820645786821842
+c_maize_fao,1,3,1,Vegetation,0.0014632262755185366
+c_maize_fao,1,3,2,Autoregressive,0.9753775000572205
+c_maize_fao,1,3,2,Climate Index,0.005909943487495184
+c_maize_fao,1,3,2,Conflict,0.0005232947878539562
+c_maize_fao,1,3,2,FLDAS,0.004335831385105848
+c_maize_fao,1,3,2,Spatial ID,0.008176421746611595
+c_maize_fao,1,3,2,Static,0.0008262947667390108
+c_maize_fao,1,3,2,Temporal,0.003582715755328536
+c_maize_fao,1,3,2,Vegetation,0.0012681151274591684
+c_maize_fao,1,4,0,Autoregressive,0.9339770078659058
+c_maize_fao,1,4,0,Climate Index,0.01833054982125759
+c_maize_fao,1,4,0,Conflict,0.0007238775724545121
+c_maize_fao,1,4,0,FLDAS,0.007445479743182659
+c_maize_fao,1,4,0,Spatial ID,0.02746778540313244
+c_maize_fao,1,4,0,Static,0.0012474883114919066
+c_maize_fao,1,4,0,Temporal,0.00876755639910698
+c_maize_fao,1,4,0,Vegetation,0.0020402274094522
+c_maize_fao,1,4,1,Autoregressive,0.9700778126716614
+c_maize_fao,1,4,1,Climate Index,0.007356648799031973
+c_maize_fao,1,4,1,Conflict,0.0005586575716733932
+c_maize_fao,1,4,1,FLDAS,0.0046166726388037205
+c_maize_fao,1,4,1,Spatial ID,0.010611080564558506
+c_maize_fao,1,4,1,Static,0.00082293467130512
+c_maize_fao,1,4,1,Temporal,0.0044818418100476265
+c_maize_fao,1,4,1,Vegetation,0.0014744843356311321
+c_maize_fao,1,4,2,Autoregressive,0.9756130576133728
+c_maize_fao,1,4,2,Climate Index,0.005570171866565943
+c_maize_fao,1,4,2,Conflict,0.0004977897042408586
+c_maize_fao,1,4,2,FLDAS,0.004010871984064579
+c_maize_fao,1,4,2,Spatial ID,0.009267009794712067
+c_maize_fao,1,4,2,Static,0.000783217023126781
+c_maize_fao,1,4,2,Temporal,0.003022979013621807
+c_maize_fao,1,4,2,Vegetation,0.0012348704040050507
+c_maize_fao,2,0,0,Autoregressive,0.3197011649608612
+c_maize_fao,2,0,0,Climate Index,0.012765223160386086
+c_maize_fao,2,0,0,Conflict,0.0005668220692314208
+c_maize_fao,2,0,0,FLDAS,0.011437336914241314
+c_maize_fao,2,0,0,Spatial ID,0.6439284682273865
+c_maize_fao,2,0,0,Static,0.002124849706888199
+c_maize_fao,2,0,0,Temporal,0.007206848822534084
+c_maize_fao,2,0,0,Vegetation,0.002269288059324026
+c_maize_fao,2,0,1,Autoregressive,0.36508995294570923
+c_maize_fao,2,0,1,Climate Index,0.005513619165867567
+c_maize_fao,2,0,1,Conflict,0.00040939822793006897
+c_maize_fao,2,0,1,FLDAS,0.0045500327832996845
+c_maize_fao,2,0,1,Spatial ID,0.6177610158920288
+c_maize_fao,2,0,1,Static,0.0011763146612793207
+c_maize_fao,2,0,1,Temporal,0.0038497112691402435
+c_maize_fao,2,0,1,Vegetation,0.0016500132624059916
+c_maize_fao,2,0,2,Autoregressive,0.9065214991569519
+c_maize_fao,2,0,2,Climate Index,0.00665107648819685
+c_maize_fao,2,0,2,Conflict,0.0008223358308896422
+c_maize_fao,2,0,2,FLDAS,0.00690663093701005
+c_maize_fao,2,0,2,Spatial ID,0.06973118335008621
+c_maize_fao,2,0,2,Static,0.001986750168725848
+c_maize_fao,2,0,2,Temporal,0.004868095275014639
+c_maize_fao,2,0,2,Vegetation,0.002512312727048993
+c_maize_fao,2,1,0,Autoregressive,0.7586777210235596
+c_maize_fao,2,1,0,Climate Index,0.0465969555079937
+c_maize_fao,2,1,0,Conflict,0.0008155729155987501
+c_maize_fao,2,1,0,FLDAS,0.01900363527238369
+c_maize_fao,2,1,0,Spatial ID,0.14873811602592468
+c_maize_fao,2,1,0,Static,0.003409836906939745
+c_maize_fao,2,1,0,Temporal,0.019220789894461632
+c_maize_fao,2,1,0,Vegetation,0.0035373754799365997
+c_maize_fao,2,1,1,Autoregressive,0.9121062159538269
+c_maize_fao,2,1,1,Climate Index,0.01972484216094017
+c_maize_fao,2,1,1,Conflict,0.0014862222597002983
+c_maize_fao,2,1,1,FLDAS,0.010824714787304401
+c_maize_fao,2,1,1,Spatial ID,0.041612960398197174
+c_maize_fao,2,1,1,Static,0.0021145271603018045
+c_maize_fao,2,1,1,Temporal,0.009266451932489872
+c_maize_fao,2,1,1,Vegetation,0.0028641424141824245
+c_maize_fao,2,1,2,Autoregressive,0.9232013821601868
+c_maize_fao,2,1,2,Climate Index,0.01574784703552723
+c_maize_fao,2,1,2,Conflict,0.0013082351069897413
+c_maize_fao,2,1,2,FLDAS,0.009707015939056873
+c_maize_fao,2,1,2,Spatial ID,0.03732207790017128
+c_maize_fao,2,1,2,Static,0.002241584239527583
+c_maize_fao,2,1,2,Temporal,0.007635666988790035
+c_maize_fao,2,1,2,Vegetation,0.0028362241573631763
+c_maize_fao,2,2,0,Autoregressive,0.4115993082523346
+c_maize_fao,2,2,0,Climate Index,0.0168655663728714
+c_maize_fao,2,2,0,Conflict,0.0006856642430648208
+c_maize_fao,2,2,0,FLDAS,0.01052879448980093
+c_maize_fao,2,2,0,Spatial ID,0.5426152348518372
+c_maize_fao,2,2,0,Static,0.0024516223929822445
+c_maize_fao,2,2,0,Temporal,0.012028345838189125
+c_maize_fao,2,2,0,Vegetation,0.0032254690304398537
+c_maize_fao,2,2,1,Autoregressive,0.3558283746242523
+c_maize_fao,2,2,1,Climate Index,0.006348130293190479
+c_maize_fao,2,2,1,Conflict,0.000397365540266037
+c_maize_fao,2,2,1,FLDAS,0.0034582638181746006
+c_maize_fao,2,2,1,Spatial ID,0.6275660395622253
+c_maize_fao,2,2,1,Static,0.0008640475571155548
+c_maize_fao,2,2,1,Temporal,0.0040478575974702835
+c_maize_fao,2,2,1,Vegetation,0.0014899186789989471
+c_maize_fao,2,2,2,Autoregressive,0.8809694051742554
+c_maize_fao,2,2,2,Climate Index,0.006569176912307739
+c_maize_fao,2,2,2,Conflict,0.000835307699162513
+c_maize_fao,2,2,2,FLDAS,0.005743823945522308
+c_maize_fao,2,2,2,Spatial ID,0.09833294153213501
+c_maize_fao,2,2,2,Static,0.0012867902405560017
+c_maize_fao,2,2,2,Temporal,0.0038945567794144154
+c_maize_fao,2,2,2,Vegetation,0.0023679379373788834
+c_maize_fao,2,3,0,Autoregressive,0.41143035888671875
+c_maize_fao,2,3,0,Climate Index,0.025546524673700333
+c_maize_fao,2,3,0,Conflict,0.0008561968570575118
+c_maize_fao,2,3,0,FLDAS,0.01667139120399952
+c_maize_fao,2,3,0,Spatial ID,0.526013195514679
+c_maize_fao,2,3,0,Static,0.0019181250827386975
+c_maize_fao,2,3,0,Temporal,0.01519947499036789
+c_maize_fao,2,3,0,Vegetation,0.002364757936447859
+c_maize_fao,2,3,1,Autoregressive,0.8070366382598877
+c_maize_fao,2,3,1,Climate Index,0.015192203223705292
+c_maize_fao,2,3,1,Conflict,0.000993313966318965
+c_maize_fao,2,3,1,FLDAS,0.00853823870420456
+c_maize_fao,2,3,1,Spatial ID,0.15347854793071747
+c_maize_fao,2,3,1,Static,0.001457893056795001
+c_maize_fao,2,3,1,Temporal,0.010760650038719177
+c_maize_fao,2,3,1,Vegetation,0.002542587462812662
+c_maize_fao,2,3,2,Autoregressive,0.9259719848632812
+c_maize_fao,2,3,2,Climate Index,0.012272752821445465
+c_maize_fao,2,3,2,Conflict,0.0011210334487259388
+c_maize_fao,2,3,2,FLDAS,0.009426974691450596
+c_maize_fao,2,3,2,Spatial ID,0.03897552192211151
+c_maize_fao,2,3,2,Static,0.001655961968936026
+c_maize_fao,2,3,2,Temporal,0.007989102974534035
+c_maize_fao,2,3,2,Vegetation,0.0025867680087685585
+c_maize_fao,2,4,0,Autoregressive,0.309463769197464
+c_maize_fao,2,4,0,Climate Index,0.019015640020370483
+c_maize_fao,2,4,0,Conflict,0.0005187222268432379
+c_maize_fao,2,4,0,FLDAS,0.008116289041936398
+c_maize_fao,2,4,0,Spatial ID,0.6496999859809875
+c_maize_fao,2,4,0,Static,0.001431913347914815
+c_maize_fao,2,4,0,Temporal,0.010303087532520294
+c_maize_fao,2,4,0,Vegetation,0.0014505743747577071
+c_maize_fao,2,4,1,Autoregressive,0.8880113363265991
+c_maize_fao,2,4,1,Climate Index,0.015486224554479122
+c_maize_fao,2,4,1,Conflict,0.0011103857541456819
+c_maize_fao,2,4,1,FLDAS,0.00846591591835022
+c_maize_fao,2,4,1,Spatial ID,0.07331421226263046
+c_maize_fao,2,4,1,Static,0.0014808264095336199
+c_maize_fao,2,4,1,Temporal,0.009310003370046616
+c_maize_fao,2,4,1,Vegetation,0.0028210440650582314
+c_maize_fao,2,4,2,Autoregressive,0.9328904747962952
+c_maize_fao,2,4,2,Climate Index,0.011003123596310616
+c_maize_fao,2,4,2,Conflict,0.00116759876254946
+c_maize_fao,2,4,2,FLDAS,0.008197903633117676
+c_maize_fao,2,4,2,Spatial ID,0.035429324954748154
+c_maize_fao,2,4,2,Static,0.0014661054592579603
+c_maize_fao,2,4,2,Temporal,0.007371482905000448
+c_maize_fao,2,4,2,Vegetation,0.002474036533385515
+c_maize_fao,3,0,0,Autoregressive,0.03851450979709625
+c_maize_fao,3,0,0,Climate Index,0.005210799630731344
+c_maize_fao,3,0,0,Conflict,0.0001779541198629886
+c_maize_fao,3,0,0,FLDAS,0.003997537307441235
+c_maize_fao,3,0,0,Spatial ID,0.946662962436676
+c_maize_fao,3,0,0,Static,0.0010414310963824391
+c_maize_fao,3,0,0,Temporal,0.0033810101449489594
+c_maize_fao,3,0,0,Vegetation,0.001013823552057147
+c_maize_fao,3,0,1,Autoregressive,0.21626023948192596
+c_maize_fao,3,0,1,Climate Index,0.005525828339159489
+c_maize_fao,3,0,1,Conflict,0.00036859180545434356
+c_maize_fao,3,0,1,FLDAS,0.00452344911172986
+c_maize_fao,3,0,1,Spatial ID,0.7655583024024963
+c_maize_fao,3,0,1,Static,0.0013992689782753587
+c_maize_fao,3,0,1,Temporal,0.004366769455373287
+c_maize_fao,3,0,1,Vegetation,0.0019974536262452602
+c_maize_fao,3,0,2,Autoregressive,0.770203173160553
+c_maize_fao,3,0,2,Climate Index,0.009913698770105839
+c_maize_fao,3,0,2,Conflict,0.0009420582791790366
+c_maize_fao,3,0,2,FLDAS,0.010012010112404823
+c_maize_fao,3,0,2,Spatial ID,0.19441719353199005
+c_maize_fao,3,0,2,Static,0.0029065064154565334
+c_maize_fao,3,0,2,Temporal,0.007825185544788837
+c_maize_fao,3,0,2,Vegetation,0.0037802758160978556
+c_maize_fao,3,1,0,Autoregressive,0.44980400800704956
+c_maize_fao,3,1,0,Climate Index,0.03963404893875122
+c_maize_fao,3,1,0,Conflict,0.0006748921587131917
+c_maize_fao,3,1,0,FLDAS,0.023993857204914093
+c_maize_fao,3,1,0,Spatial ID,0.453594833612442
+c_maize_fao,3,1,0,Static,0.004106130916625261
+c_maize_fao,3,1,0,Temporal,0.02516363188624382
+c_maize_fao,3,1,0,Vegetation,0.0030285557731986046
+c_maize_fao,3,1,1,Autoregressive,0.7654275894165039
+c_maize_fao,3,1,1,Climate Index,0.026015453040599823
+c_maize_fao,3,1,1,Conflict,0.0013883026549592614
+c_maize_fao,3,1,1,FLDAS,0.016304612159729004
+c_maize_fao,3,1,1,Spatial ID,0.16595153510570526
+c_maize_fao,3,1,1,Static,0.0032819481566548347
+c_maize_fao,3,1,1,Temporal,0.01726778969168663
+c_maize_fao,3,1,1,Vegetation,0.004362827632576227
+c_maize_fao,3,1,2,Autoregressive,0.8803504705429077
+c_maize_fao,3,1,2,Climate Index,0.022017773240804672
+c_maize_fao,3,1,2,Conflict,0.0017448626458644867
+c_maize_fao,3,1,2,FLDAS,0.014464478008449078
+c_maize_fao,3,1,2,Spatial ID,0.05781874433159828
+c_maize_fao,3,1,2,Static,0.003288223873823881
+c_maize_fao,3,1,2,Temporal,0.015243835747241974
+c_maize_fao,3,1,2,Vegetation,0.005071582272648811
+c_maize_fao,3,2,0,Autoregressive,0.031331926584243774
+c_maize_fao,3,2,0,Climate Index,0.0050386786460876465
+c_maize_fao,3,2,0,Conflict,0.00018635157903190702
+c_maize_fao,3,2,0,FLDAS,0.0025654786732047796
+c_maize_fao,3,2,0,Spatial ID,0.9548905491828918
+c_maize_fao,3,2,0,Static,0.0009291456080973148
+c_maize_fao,3,2,0,Temporal,0.003888336941599846
+c_maize_fao,3,2,0,Vegetation,0.0011694692075252533
+c_maize_fao,3,2,1,Autoregressive,0.14067111909389496
+c_maize_fao,3,2,1,Climate Index,0.00474970880895853
+c_maize_fao,3,2,1,Conflict,0.0002907352172769606
+c_maize_fao,3,2,1,FLDAS,0.00336441770195961
+c_maize_fao,3,2,1,Spatial ID,0.8446105122566223
+c_maize_fao,3,2,1,Static,0.0009900368750095367
+c_maize_fao,3,2,1,Temporal,0.003595466958358884
+c_maize_fao,3,2,1,Vegetation,0.001728088827803731
+c_maize_fao,3,2,2,Autoregressive,0.6690635681152344
+c_maize_fao,3,2,2,Climate Index,0.009240617044270039
+c_maize_fao,3,2,2,Conflict,0.0009002898004837334
+c_maize_fao,3,2,2,FLDAS,0.006644323468208313
+c_maize_fao,3,2,2,Spatial ID,0.30289286375045776
+c_maize_fao,3,2,2,Static,0.0016783226747065783
+c_maize_fao,3,2,2,Temporal,0.006424733437597752
+c_maize_fao,3,2,2,Vegetation,0.0031552352011203766
+c_maize_fao,3,3,0,Autoregressive,0.03132644295692444
+c_maize_fao,3,3,0,Climate Index,0.005594373214989901
+c_maize_fao,3,3,0,Conflict,0.0001752197276800871
+c_maize_fao,3,3,0,FLDAS,0.004092693794518709
+c_maize_fao,3,3,0,Spatial ID,0.9537695050239563
+c_maize_fao,3,3,0,Static,0.00039711949648335576
+c_maize_fao,3,3,0,Temporal,0.004125470295548439
+c_maize_fao,3,3,0,Vegetation,0.0005191988311707973
+c_maize_fao,3,3,1,Autoregressive,0.7507896423339844
+c_maize_fao,3,3,1,Climate Index,0.02216240204870701
+c_maize_fao,3,3,1,Conflict,0.001533116097562015
+c_maize_fao,3,3,1,FLDAS,0.013303854502737522
+c_maize_fao,3,3,1,Spatial ID,0.1876441389322281
+c_maize_fao,3,3,1,Static,0.0024211080744862556
+c_maize_fao,3,3,1,Temporal,0.01783994771540165
+c_maize_fao,3,3,1,Vegetation,0.004305655602365732
+c_maize_fao,3,3,2,Autoregressive,0.8556181192398071
+c_maize_fao,3,3,2,Climate Index,0.018047062680125237
+c_maize_fao,3,3,2,Conflict,0.0013811924727633595
+c_maize_fao,3,3,2,FLDAS,0.013223227113485336
+c_maize_fao,3,3,2,Spatial ID,0.09158150851726532
+c_maize_fao,3,3,2,Static,0.0024477005936205387
+c_maize_fao,3,3,2,Temporal,0.013253830373287201
+c_maize_fao,3,3,2,Vegetation,0.0044472236186265945
+c_maize_fao,3,4,0,Autoregressive,0.05046870559453964
+c_maize_fao,3,4,0,Climate Index,0.006864109076559544
+c_maize_fao,3,4,0,Conflict,0.00021237728651612997
+c_maize_fao,3,4,0,FLDAS,0.004312719218432903
+c_maize_fao,3,4,0,Spatial ID,0.9302387237548828
+c_maize_fao,3,4,0,Static,0.0008844695403240621
+c_maize_fao,3,4,0,Temporal,0.006229153834283352
+c_maize_fao,3,4,0,Vegetation,0.0007897089817561209
+c_maize_fao,3,4,1,Autoregressive,0.7347267270088196
+c_maize_fao,3,4,1,Climate Index,0.020580703392624855
+c_maize_fao,3,4,1,Conflict,0.0013651869958266616
+c_maize_fao,3,4,1,FLDAS,0.01246272586286068
+c_maize_fao,3,4,1,Spatial ID,0.20841018855571747
+c_maize_fao,3,4,1,Static,0.002412792993709445
+c_maize_fao,3,4,1,Temporal,0.015862397849559784
+c_maize_fao,3,4,1,Vegetation,0.004179446958005428
+c_maize_fao,3,4,2,Autoregressive,0.8548064827919006
+c_maize_fao,3,4,2,Climate Index,0.016155796125531197
+c_maize_fao,3,4,2,Conflict,0.0015156182926148176
+c_maize_fao,3,4,2,FLDAS,0.01213464792817831
+c_maize_fao,3,4,2,Spatial ID,0.09630756080150604
+c_maize_fao,3,4,2,Static,0.002469665138050914
+c_maize_fao,3,4,2,Temporal,0.012080125510692596
+c_maize_fao,3,4,2,Vegetation,0.00453020166605711
+c_sorghum,1,0,0,Autoregressive,0.9334689378738403
+c_sorghum,1,0,0,Climate Index,0.015680070966482162
+c_sorghum,1,0,0,Conflict,0.0014915047213435173
+c_sorghum,1,0,0,FLDAS,0.024587124586105347
+c_sorghum,1,0,0,Spatial ID,0.0021717743948101997
+c_sorghum,1,0,0,Static,0.0048285131342709064
+c_sorghum,1,0,0,Temporal,0.011424841359257698
+c_sorghum,1,0,0,Vegetation,0.0063471365720033646
+c_sorghum,1,0,1,Autoregressive,0.9415457248687744
+c_sorghum,1,0,1,Climate Index,0.014951873570680618
+c_sorghum,1,0,1,Conflict,0.0016904881922528148
+c_sorghum,1,0,1,FLDAS,0.02127007581293583
+c_sorghum,1,0,1,Spatial ID,0.002069571753963828
+c_sorghum,1,0,1,Static,0.003978188615292311
+c_sorghum,1,0,1,Temporal,0.006557370536029339
+c_sorghum,1,0,1,Vegetation,0.007936812937259674
+c_sorghum,1,0,2,Autoregressive,0.960493266582489
+c_sorghum,1,0,2,Climate Index,0.008542229421436787
+c_sorghum,1,0,2,Conflict,0.0016578268259763718
+c_sorghum,1,0,2,FLDAS,0.015482127666473389
+c_sorghum,1,0,2,Spatial ID,0.002122354693710804
+c_sorghum,1,0,2,Static,0.002564898692071438
+c_sorghum,1,0,2,Temporal,0.004600902553647757
+c_sorghum,1,0,2,Vegetation,0.0045363036915659904
+c_sorghum,1,1,0,Autoregressive,0.960580587387085
+c_sorghum,1,1,0,Climate Index,0.009085897356271744
+c_sorghum,1,1,0,Conflict,0.0008222403703257442
+c_sorghum,1,1,0,FLDAS,0.014178902842104435
+c_sorghum,1,1,0,Spatial ID,0.0022054307628422976
+c_sorghum,1,1,0,Static,0.0037376717664301395
+c_sorghum,1,1,0,Temporal,0.0055205803364515305
+c_sorghum,1,1,0,Vegetation,0.0038686729967594147
+c_sorghum,1,1,1,Autoregressive,0.9627164006233215
+c_sorghum,1,1,1,Climate Index,0.009314727038145065
+c_sorghum,1,1,1,Conflict,0.0016617181245237589
+c_sorghum,1,1,1,FLDAS,0.013370934873819351
+c_sorghum,1,1,1,Spatial ID,0.001164542743936181
+c_sorghum,1,1,1,Static,0.002938278717920184
+c_sorghum,1,1,1,Temporal,0.003764927387237549
+c_sorghum,1,1,1,Vegetation,0.005068404134362936
+c_sorghum,1,1,2,Autoregressive,0.975489616394043
+c_sorghum,1,1,2,Climate Index,0.005754050798714161
+c_sorghum,1,1,2,Conflict,0.0009173387661576271
+c_sorghum,1,1,2,FLDAS,0.009262287057936192
+c_sorghum,1,1,2,Spatial ID,0.001201380742713809
+c_sorghum,1,1,2,Static,0.0015190265839919448
+c_sorghum,1,1,2,Temporal,0.0027480630669742823
+c_sorghum,1,1,2,Vegetation,0.0031082388013601303
+c_sorghum,1,2,0,Autoregressive,0.9020054340362549
+c_sorghum,1,2,0,Climate Index,0.017464306205511093
+c_sorghum,1,2,0,Conflict,0.002800589194521308
+c_sorghum,1,2,0,FLDAS,0.04380565136671066
+c_sorghum,1,2,0,Spatial ID,0.002937108976766467
+c_sorghum,1,2,0,Static,0.008270329795777798
+c_sorghum,1,2,0,Temporal,0.013332602567970753
+c_sorghum,1,2,0,Vegetation,0.009384064003825188
+c_sorghum,1,2,1,Autoregressive,0.9435567855834961
+c_sorghum,1,2,1,Climate Index,0.015115403570234776
+c_sorghum,1,2,1,Conflict,0.0019086380489170551
+c_sorghum,1,2,1,FLDAS,0.020600687712430954
+c_sorghum,1,2,1,Spatial ID,0.0019558959174901247
+c_sorghum,1,2,1,Static,0.0037384112365543842
+c_sorghum,1,2,1,Temporal,0.006154871545732021
+c_sorghum,1,2,1,Vegetation,0.0069692088291049
+c_sorghum,1,2,2,Autoregressive,0.9636584520339966
+c_sorghum,1,2,2,Climate Index,0.009017868898808956
+c_sorghum,1,2,2,Conflict,0.0016395930433645844
+c_sorghum,1,2,2,FLDAS,0.013110474683344364
+c_sorghum,1,2,2,Spatial ID,0.0013227848103269935
+c_sorghum,1,2,2,Static,0.0021544655319303274
+c_sorghum,1,2,2,Temporal,0.004859692882746458
+c_sorghum,1,2,2,Vegetation,0.004236601758748293
+c_sorghum,1,3,0,Autoregressive,0.917569100856781
+c_sorghum,1,3,0,Climate Index,0.016284439712762833
+c_sorghum,1,3,0,Conflict,0.002883687149733305
+c_sorghum,1,3,0,FLDAS,0.04040534049272537
+c_sorghum,1,3,0,Spatial ID,0.005372081883251667
+c_sorghum,1,3,0,Static,0.0030233568977564573
+c_sorghum,1,3,0,Temporal,0.010530171915888786
+c_sorghum,1,3,0,Vegetation,0.003931882791221142
+c_sorghum,1,3,1,Autoregressive,0.9332595467567444
+c_sorghum,1,3,1,Climate Index,0.014558617025613785
+c_sorghum,1,3,1,Conflict,0.002189182909205556
+c_sorghum,1,3,1,FLDAS,0.02312605082988739
+c_sorghum,1,3,1,Spatial ID,0.003252920927479863
+c_sorghum,1,3,1,Static,0.003002497600391507
+c_sorghum,1,3,1,Temporal,0.014951084740459919
+c_sorghum,1,3,1,Vegetation,0.005660127382725477
+c_sorghum,1,3,2,Autoregressive,0.950968861579895
+c_sorghum,1,3,2,Climate Index,0.010968508198857307
+c_sorghum,1,3,2,Conflict,0.0027071028016507626
+c_sorghum,1,3,2,FLDAS,0.015305130742490292
+c_sorghum,1,3,2,Spatial ID,0.002767374273389578
+c_sorghum,1,3,2,Static,0.005410138983279467
+c_sorghum,1,3,2,Temporal,0.007380292285233736
+c_sorghum,1,3,2,Vegetation,0.0044926488772034645
+c_sorghum,1,4,0,Autoregressive,0.9455382227897644
+c_sorghum,1,4,0,Climate Index,0.011411497369408607
+c_sorghum,1,4,0,Conflict,0.0022891946136951447
+c_sorghum,1,4,0,FLDAS,0.020380200818181038
+c_sorghum,1,4,0,Spatial ID,0.0027208770625293255
+c_sorghum,1,4,0,Static,0.0052368370816111565
+c_sorghum,1,4,0,Temporal,0.007603717967867851
+c_sorghum,1,4,0,Vegetation,0.0048193852417171
+c_sorghum,1,4,1,Autoregressive,0.9530835151672363
+c_sorghum,1,4,1,Climate Index,0.012076016515493393
+c_sorghum,1,4,1,Conflict,0.001516129239462316
+c_sorghum,1,4,1,FLDAS,0.015841593965888023
+c_sorghum,1,4,1,Spatial ID,0.0025146144907921553
+c_sorghum,1,4,1,Static,0.003405363764613867
+c_sorghum,1,4,1,Temporal,0.004761446267366409
+c_sorghum,1,4,1,Vegetation,0.006801276467740536
+c_sorghum,1,4,2,Autoregressive,0.969931423664093
+c_sorghum,1,4,2,Climate Index,0.006734368856996298
+c_sorghum,1,4,2,Conflict,0.001501123420894146
+c_sorghum,1,4,2,FLDAS,0.010980131104588509
+c_sorghum,1,4,2,Spatial ID,0.0016507450491189957
+c_sorghum,1,4,2,Static,0.002098828088492155
+c_sorghum,1,4,2,Temporal,0.003167077898979187
+c_sorghum,1,4,2,Vegetation,0.0039362250827252865
+c_sorghum,2,0,0,Autoregressive,0.8142210245132446
+c_sorghum,2,0,0,Climate Index,0.04686347022652626
+c_sorghum,2,0,0,Conflict,0.002995415823534131
+c_sorghum,2,0,0,FLDAS,0.07432276010513306
+c_sorghum,2,0,0,Spatial ID,0.00805419310927391
+c_sorghum,2,0,0,Static,0.009839540347456932
+c_sorghum,2,0,0,Temporal,0.029300138354301453
+c_sorghum,2,0,0,Vegetation,0.01440353598445654
+c_sorghum,2,0,1,Autoregressive,0.8805136680603027
+c_sorghum,2,0,1,Climate Index,0.03528115153312683
+c_sorghum,2,0,1,Conflict,0.002891294891014695
+c_sorghum,2,0,1,FLDAS,0.041209831833839417
+c_sorghum,2,0,1,Spatial ID,0.003680336754769087
+c_sorghum,2,0,1,Static,0.008660905994474888
+c_sorghum,2,0,1,Temporal,0.015328933484852314
+c_sorghum,2,0,1,Vegetation,0.01243377011269331
+c_sorghum,2,0,2,Autoregressive,0.928917646408081
+c_sorghum,2,0,2,Climate Index,0.01892174780368805
+c_sorghum,2,0,2,Conflict,0.002660944126546383
+c_sorghum,2,0,2,FLDAS,0.025391191244125366
+c_sorghum,2,0,2,Spatial ID,0.0034456681460142136
+c_sorghum,2,0,2,Static,0.00421129260212183
+c_sorghum,2,0,2,Temporal,0.009216275066137314
+c_sorghum,2,0,2,Vegetation,0.007235280238091946
+c_sorghum,2,1,0,Autoregressive,0.905073344707489
+c_sorghum,2,1,0,Climate Index,0.024128397926688194
+c_sorghum,2,1,0,Conflict,0.003041024086996913
+c_sorghum,2,1,0,FLDAS,0.03740721195936203
+c_sorghum,2,1,0,Spatial ID,0.0040005785413086414
+c_sorghum,2,1,0,Static,0.009992280043661594
+c_sorghum,2,1,0,Temporal,0.01141290832310915
+c_sorghum,2,1,0,Vegetation,0.004944233223795891
+c_sorghum,2,1,1,Autoregressive,0.9255759119987488
+c_sorghum,2,1,1,Climate Index,0.019237980246543884
+c_sorghum,2,1,1,Conflict,0.001989204902201891
+c_sorghum,2,1,1,FLDAS,0.02992440015077591
+c_sorghum,2,1,1,Spatial ID,0.0025567749980837107
+c_sorghum,2,1,1,Static,0.007213525474071503
+c_sorghum,2,1,1,Temporal,0.007237762678414583
+c_sorghum,2,1,1,Vegetation,0.006264557596296072
+c_sorghum,2,1,2,Autoregressive,0.9541124701499939
+c_sorghum,2,1,2,Climate Index,0.010794313624501228
+c_sorghum,2,1,2,Conflict,0.0012724004918709397
+c_sorghum,2,1,2,FLDAS,0.018658263608813286
+c_sorghum,2,1,2,Spatial ID,0.0026822001673281193
+c_sorghum,2,1,2,Static,0.003828279674053192
+c_sorghum,2,1,2,Temporal,0.004856583662331104
+c_sorghum,2,1,2,Vegetation,0.0037954370491206646
+c_sorghum,2,2,0,Autoregressive,0.7950268983840942
+c_sorghum,2,2,0,Climate Index,0.050294797867536545
+c_sorghum,2,2,0,Conflict,0.002874500583857298
+c_sorghum,2,2,0,FLDAS,0.09251606464385986
+c_sorghum,2,2,0,Spatial ID,0.0034730713814496994
+c_sorghum,2,2,0,Static,0.01256647426635027
+c_sorghum,2,2,0,Temporal,0.02884075790643692
+c_sorghum,2,2,0,Vegetation,0.014407439157366753
+c_sorghum,2,2,1,Autoregressive,0.8673385977745056
+c_sorghum,2,2,1,Climate Index,0.0356820672750473
+c_sorghum,2,2,1,Conflict,0.0034849224612116814
+c_sorghum,2,2,1,FLDAS,0.05050159990787506
+c_sorghum,2,2,1,Spatial ID,0.004348739981651306
+c_sorghum,2,2,1,Static,0.01019633561372757
+c_sorghum,2,2,1,Temporal,0.01510840654373169
+c_sorghum,2,2,1,Vegetation,0.013339459896087646
+c_sorghum,2,2,2,Autoregressive,0.9261037707328796
+c_sorghum,2,2,2,Climate Index,0.020058730617165565
+c_sorghum,2,2,2,Conflict,0.0025799160357564688
+c_sorghum,2,2,2,FLDAS,0.026289192959666252
+c_sorghum,2,2,2,Spatial ID,0.003790895454585552
+c_sorghum,2,2,2,Static,0.004815099760890007
+c_sorghum,2,2,2,Temporal,0.00955992005765438
+c_sorghum,2,2,2,Vegetation,0.006802555173635483
+c_sorghum,2,3,0,Autoregressive,0.7441298961639404
+c_sorghum,2,3,0,Climate Index,0.04634101316332817
+c_sorghum,2,3,0,Conflict,0.004064585082232952
+c_sorghum,2,3,0,FLDAS,0.1478433459997177
+c_sorghum,2,3,0,Spatial ID,0.013683820143342018
+c_sorghum,2,3,0,Static,0.005895969923585653
+c_sorghum,2,3,0,Temporal,0.02855611965060234
+c_sorghum,2,3,0,Vegetation,0.009485149756073952
+c_sorghum,2,3,1,Autoregressive,0.8400324583053589
+c_sorghum,2,3,1,Climate Index,0.03905647248029709
+c_sorghum,2,3,1,Conflict,0.003128277137875557
+c_sorghum,2,3,1,FLDAS,0.05372066795825958
+c_sorghum,2,3,1,Spatial ID,0.006347042508423328
+c_sorghum,2,3,1,Static,0.005155039019882679
+c_sorghum,2,3,1,Temporal,0.04105795547366142
+c_sorghum,2,3,1,Vegetation,0.011502073146402836
+c_sorghum,2,3,2,Autoregressive,0.9003799557685852
+c_sorghum,2,3,2,Climate Index,0.026548851281404495
+c_sorghum,2,3,2,Conflict,0.0036916639655828476
+c_sorghum,2,3,2,FLDAS,0.031281813979148865
+c_sorghum,2,3,2,Spatial ID,0.006552880629897118
+c_sorghum,2,3,2,Static,0.007724398747086525
+c_sorghum,2,3,2,Temporal,0.016109827905893326
+c_sorghum,2,3,2,Vegetation,0.007710639853030443
+c_sorghum,2,4,0,Autoregressive,0.8304546475410461
+c_sorghum,2,4,0,Climate Index,0.03837435320019722
+c_sorghum,2,4,0,Conflict,0.004070447292178869
+c_sorghum,2,4,0,FLDAS,0.06984677910804749
+c_sorghum,2,4,0,Spatial ID,0.007522396743297577
+c_sorghum,2,4,0,Static,0.010844510048627853
+c_sorghum,2,4,0,Temporal,0.02454189956188202
+c_sorghum,2,4,0,Vegetation,0.014344864524900913
+c_sorghum,2,4,1,Autoregressive,0.9056450724601746
+c_sorghum,2,4,1,Climate Index,0.026806702837347984
+c_sorghum,2,4,1,Conflict,0.002609310206025839
+c_sorghum,2,4,1,FLDAS,0.03230947628617287
+c_sorghum,2,4,1,Spatial ID,0.004522792529314756
+c_sorghum,2,4,1,Static,0.0072103869169950485
+c_sorghum,2,4,1,Temporal,0.009312205947935581
+c_sorghum,2,4,1,Vegetation,0.011583936400711536
+c_sorghum,2,4,2,Autoregressive,0.9394522309303284
+c_sorghum,2,4,2,Climate Index,0.014394105412065983
+c_sorghum,2,4,2,Conflict,0.002488603349775076
+c_sorghum,2,4,2,FLDAS,0.022227145731449127
+c_sorghum,2,4,2,Spatial ID,0.004301861859858036
+c_sorghum,2,4,2,Static,0.0040928758680820465
+c_sorghum,2,4,2,Temporal,0.006371273659169674
+c_sorghum,2,4,2,Vegetation,0.0066718147136271
+c_sorghum,3,0,0,Autoregressive,0.6542667746543884
+c_sorghum,3,0,0,Climate Index,0.11095412820577621
+c_sorghum,3,0,0,Conflict,0.005827347282320261
+c_sorghum,3,0,0,FLDAS,0.10991297662258148
+c_sorghum,3,0,0,Spatial ID,0.00906471535563469
+c_sorghum,3,0,0,Static,0.019787851721048355
+c_sorghum,3,0,0,Temporal,0.06877724826335907
+c_sorghum,3,0,0,Vegetation,0.021408945322036743
+c_sorghum,3,0,1,Autoregressive,0.777032196521759
+c_sorghum,3,0,1,Climate Index,0.07472235709428787
+c_sorghum,3,0,1,Conflict,0.0036140759475529194
+c_sorghum,3,0,1,FLDAS,0.06831099838018417
+c_sorghum,3,0,1,Spatial ID,0.007327191531658173
+c_sorghum,3,0,1,Static,0.019780874252319336
+c_sorghum,3,0,1,Temporal,0.030196450650691986
+c_sorghum,3,0,1,Vegetation,0.019015800207853317
+c_sorghum,3,0,2,Autoregressive,0.8747736811637878
+c_sorghum,3,0,2,Climate Index,0.0333322137594223
+c_sorghum,3,0,2,Conflict,0.006959044840186834
+c_sorghum,3,0,2,FLDAS,0.044013120234012604
+c_sorghum,3,0,2,Spatial ID,0.004934289492666721
+c_sorghum,3,0,2,Static,0.007996448315680027
+c_sorghum,3,0,2,Temporal,0.014118404127657413
+c_sorghum,3,0,2,Vegetation,0.013872751966118813
+c_sorghum,3,1,0,Autoregressive,0.8197745084762573
+c_sorghum,3,1,0,Climate Index,0.05446663498878479
+c_sorghum,3,1,0,Conflict,0.0047263652086257935
+c_sorghum,3,1,0,FLDAS,0.0684022530913353
+c_sorghum,3,1,0,Spatial ID,0.003905476536601782
+c_sorghum,3,1,0,Static,0.02124522067606449
+c_sorghum,3,1,0,Temporal,0.020610159263014793
+c_sorghum,3,1,0,Vegetation,0.0068694353103637695
+c_sorghum,3,1,1,Autoregressive,0.8786003589630127
+c_sorghum,3,1,1,Climate Index,0.035074666142463684
+c_sorghum,3,1,1,Conflict,0.002506772754713893
+c_sorghum,3,1,1,FLDAS,0.04546009749174118
+c_sorghum,3,1,1,Spatial ID,0.004408902954310179
+c_sorghum,3,1,1,Static,0.013298416510224342
+c_sorghum,3,1,1,Temporal,0.013208230957388878
+c_sorghum,3,1,1,Vegetation,0.00744251161813736
+c_sorghum,3,1,2,Autoregressive,0.9305640459060669
+c_sorghum,3,1,2,Climate Index,0.018969006836414337
+c_sorghum,3,1,2,Conflict,0.0017874022014439106
+c_sorghum,3,1,2,FLDAS,0.02629873901605606
+c_sorghum,3,1,2,Spatial ID,0.005013385787606239
+c_sorghum,3,1,2,Static,0.004336395300924778
+c_sorghum,3,1,2,Temporal,0.007674103602766991
+c_sorghum,3,1,2,Vegetation,0.005356912966817617
+c_sorghum,3,2,0,Autoregressive,0.6368573904037476
+c_sorghum,3,2,0,Climate Index,0.10250968486070633
+c_sorghum,3,2,0,Conflict,0.00542855728417635
+c_sorghum,3,2,0,FLDAS,0.12719765305519104
+c_sorghum,3,2,0,Spatial ID,0.007862146943807602
+c_sorghum,3,2,0,Static,0.02474672719836235
+c_sorghum,3,2,0,Temporal,0.07386919856071472
+c_sorghum,3,2,0,Vegetation,0.021528668701648712
+c_sorghum,3,2,1,Autoregressive,0.762151837348938
+c_sorghum,3,2,1,Climate Index,0.07188798487186432
+c_sorghum,3,2,1,Conflict,0.004732985515147448
+c_sorghum,3,2,1,FLDAS,0.08336268365383148
+c_sorghum,3,2,1,Spatial ID,0.006282324902713299
+c_sorghum,3,2,1,Static,0.020181240513920784
+c_sorghum,3,2,1,Temporal,0.030911535024642944
+c_sorghum,3,2,1,Vegetation,0.020489508286118507
+c_sorghum,3,2,2,Autoregressive,0.874115526676178
+c_sorghum,3,2,2,Climate Index,0.03714096173644066
+c_sorghum,3,2,2,Conflict,0.00419028103351593
+c_sorghum,3,2,2,FLDAS,0.041389480233192444
+c_sorghum,3,2,2,Spatial ID,0.006397229619324207
+c_sorghum,3,2,2,Static,0.009042210876941681
+c_sorghum,3,2,2,Temporal,0.016969794407486916
+c_sorghum,3,2,2,Vegetation,0.010754513554275036
+c_sorghum,3,3,0,Autoregressive,0.5410398244857788
+c_sorghum,3,3,0,Climate Index,0.11826415359973907
+c_sorghum,3,3,0,Conflict,0.007339860312640667
+c_sorghum,3,3,0,FLDAS,0.16173794865608215
+c_sorghum,3,3,0,Spatial ID,0.1064448356628418
+c_sorghum,3,3,0,Static,0.009313873946666718
+c_sorghum,3,3,0,Temporal,0.046321600675582886
+c_sorghum,3,3,0,Vegetation,0.00953793153166771
+c_sorghum,3,3,1,Autoregressive,0.7216672301292419
+c_sorghum,3,3,1,Climate Index,0.09067675471305847
+c_sorghum,3,3,1,Conflict,0.004282995127141476
+c_sorghum,3,3,1,FLDAS,0.068837009370327
+c_sorghum,3,3,1,Spatial ID,0.011048898100852966
+c_sorghum,3,3,1,Static,0.008754663169384003
+c_sorghum,3,3,1,Temporal,0.07872797548770905
+c_sorghum,3,3,1,Vegetation,0.016004538163542747
+c_sorghum,3,3,2,Autoregressive,0.8169040083885193
+c_sorghum,3,3,2,Climate Index,0.0643412172794342
+c_sorghum,3,3,2,Conflict,0.005950885359197855
+c_sorghum,3,3,2,FLDAS,0.04335903376340866
+c_sorghum,3,3,2,Spatial ID,0.011799829080700874
+c_sorghum,3,3,2,Static,0.01126993540674448
+c_sorghum,3,3,2,Temporal,0.034249186515808105
+c_sorghum,3,3,2,Vegetation,0.012126031331717968
+c_sorghum,3,4,0,Autoregressive,0.7223354578018188
+c_sorghum,3,4,0,Climate Index,0.08859582245349884
+c_sorghum,3,4,0,Conflict,0.004729163367301226
+c_sorghum,3,4,0,FLDAS,0.09601939469575882
+c_sorghum,3,4,0,Spatial ID,0.01653910055756569
+c_sorghum,3,4,0,Static,0.018864717334508896
+c_sorghum,3,4,0,Temporal,0.033333465456962585
+c_sorghum,3,4,0,Vegetation,0.0195828378200531
+c_sorghum,3,4,1,Autoregressive,0.821754515171051
+c_sorghum,3,4,1,Climate Index,0.06400329619646072
+c_sorghum,3,4,1,Conflict,0.0029334863647818565
+c_sorghum,3,4,1,FLDAS,0.054162729531526566
+c_sorghum,3,4,1,Spatial ID,0.007342482917010784
+c_sorghum,3,4,1,Static,0.012537490576505661
+c_sorghum,3,4,1,Temporal,0.017920633777976036
+c_sorghum,3,4,1,Vegetation,0.019345371052622795
+c_sorghum,3,4,2,Autoregressive,0.8980074524879456
+c_sorghum,3,4,2,Climate Index,0.028896328061819077
+c_sorghum,3,4,2,Conflict,0.0049996282905340195
+c_sorghum,3,4,2,FLDAS,0.03225497156381607
+c_sorghum,3,4,2,Spatial ID,0.007459274493157864
+c_sorghum,3,4,2,Static,0.006350641138851643
+c_sorghum,3,4,2,Temporal,0.011631153523921967
+c_sorghum,3,4,2,Vegetation,0.010400621220469475
