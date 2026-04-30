@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EA Food Price Prediction",
-  description: "East Africa food price prediction dashboard",
+  title: "East Africa food price prediction prototype",
+  description: "East Africa food price prediction prototype dashboard",
 };
 
 export default function RootLayout({

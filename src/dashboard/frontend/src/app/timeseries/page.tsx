@@ -191,15 +191,20 @@ export default function TimeSeriesPage() {
   }, [momData]);
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center gap-4">
-        <h2 className="text-xl font-bold">
-          Time Series: {TARGET_DISPLAY[target]} h={horizon}
-        </h2>
+    <div className="p-8 space-y-6 max-w-7xl">
+      <div className="flex items-center gap-4 flex-wrap">
+        <div>
+          <p className="text-[11px] font-semibold tracking-[0.18em] text-blue-600 uppercase">
+            Time Series
+          </p>
+          <h2 className="text-2xl font-semibold text-slate-900 mt-1">
+            {TARGET_DISPLAY[target]} · h={horizon}
+          </h2>
+        </div>
         <select
           value={selectedRegion}
           onChange={(e) => setSelectedRegion(e.target.value)}
-          className="border rounded px-3 py-1.5 text-sm"
+          className="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500"
         >
           {regions.map((r) => (
             <option key={r} value={r}>
@@ -210,12 +215,12 @@ export default function TimeSeriesPage() {
       </div>
 
       {loading ? (
-        <p className="text-gray-500">Loading...</p>
+        <p className="text-slate-500">Loading...</p>
       ) : (
         <>
           {/* Actual vs Predicted line chart */}
-          <div className="bg-white rounded-lg shadow p-4">
-            <h3 className="text-sm font-semibold mb-2 text-gray-600">
+          <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5">
+            <h3 className="text-sm font-semibold mb-3 text-slate-700">
               Actual vs Predicted — {selectedRegion}
             </h3>
             <ResponsiveContainer width="100%" height={350}>
@@ -254,8 +259,8 @@ export default function TimeSeriesPage() {
           </div>
 
           {/* Error bar chart */}
-          <div className="bg-white rounded-lg shadow p-4">
-            <h3 className="text-sm font-semibold mb-2 text-gray-600">
+          <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5">
+            <h3 className="text-sm font-semibold mb-3 text-slate-700">
               Prediction Error — {selectedRegion}
             </h3>
             <ResponsiveContainer width="100%" height={250}>
@@ -287,24 +292,26 @@ export default function TimeSeriesPage() {
       )}
 
       {/* ── Per-Month Analytics ─────────────────────────────────── */}
-      <div className="border-t pt-6">
-        <h2 className="text-xl font-bold mb-4">
+      <div className="border-t border-slate-200 pt-8">
+        <h2 className="text-xl font-semibold text-slate-900 mb-4">
           Per-Month Analytics: All Regions
         </h2>
 
         {/* Date slider */}
-        <div className="bg-white rounded-lg shadow p-4 mb-4">
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5 mb-4">
           <div className="flex items-center gap-4">
-            <span className="text-lg font-bold w-28">{currentScatterDate}</span>
+            <span className="text-lg font-semibold text-slate-900 w-28">
+              {currentScatterDate}
+            </span>
             <input
               type="range"
               min={0}
               max={Math.max(0, scatterDates.length - 1)}
               value={scatterDateIdx}
               onChange={(e) => setScatterDateIdx(Number(e.target.value))}
-              className="flex-1"
+              className="flex-1 accent-blue-600"
             />
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-slate-400">
               {scatterDates[0] || "..."} ~{" "}
               {scatterDates[scatterDates.length - 1] || "..."}
             </span>
@@ -312,29 +319,33 @@ export default function TimeSeriesPage() {
 
           {/* Monthly stats */}
           {monthlyStats && (
-            <div className="flex gap-6 mt-3 text-sm">
+            <div className="flex gap-6 mt-3 text-sm text-slate-600">
               <span>
-                <b>N:</b> {monthlyStats.n}
+                <b className="text-slate-900">N:</b> {monthlyStats.n}
               </span>
               <span>
-                <b>R²:</b> {monthlyStats.r2.toFixed(4)}
+                <b className="text-slate-900">R²:</b>{" "}
+                {monthlyStats.r2.toFixed(4)}
               </span>
               <span>
-                <b>MAPE:</b> {(monthlyStats.mape * 100).toFixed(1)}%
+                <b className="text-slate-900">MAPE:</b>{" "}
+                {(monthlyStats.mape * 100).toFixed(1)}%
               </span>
               <span>
-                <b>RMSE:</b> {monthlyStats.rmse.toFixed(2)}
+                <b className="text-slate-900">RMSE:</b>{" "}
+                {monthlyStats.rmse.toFixed(2)}
               </span>
               <span>
-                <b>MAE:</b> {monthlyStats.mae.toFixed(2)}
+                <b className="text-slate-900">MAE:</b>{" "}
+                {monthlyStats.mae.toFixed(2)}
               </span>
             </div>
           )}
         </div>
 
         {/* Scatter plot: Actual (Y) vs Predicted (X), per region */}
-        <div className="bg-white rounded-lg shadow p-4">
-          <h3 className="text-sm font-semibold mb-2 text-gray-600">
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5">
+          <h3 className="text-sm font-semibold mb-3 text-slate-700">
             Predicted vs Actual — {currentScatterDate} (each dot = 1 admin2)
           </h3>
           <ResponsiveContainer width="100%" height={500}>
@@ -409,18 +420,18 @@ export default function TimeSeriesPage() {
         </div>
 
         {/* MoM Change Rate scatter */}
-        <div className="bg-white rounded-lg shadow p-4">
-          <h3 className="text-sm font-semibold mb-2 text-gray-600">
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5 mt-4">
+          <h3 className="text-sm font-semibold mb-3 text-slate-700">
             MoM Change Rate — {currentScatterDate} vs previous month
             (each dot = 1 admin2)
             {momCorr !== null && (
-              <span className="ml-3 font-normal text-gray-400">
+              <span className="ml-3 font-normal text-slate-400">
                 Correlation: {momCorr.toFixed(3)}
               </span>
             )}
           </h3>
           {scatterDateIdx === 0 ? (
-            <p className="text-gray-400 text-sm py-8 text-center">
+            <p className="text-slate-400 text-sm py-8 text-center">
               Move the slider to the 2nd month or later to see MoM changes.
             </p>
           ) : (

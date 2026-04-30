@@ -22,9 +22,9 @@ export default function LogoutButton() {
       type="button"
       onClick={onClick}
       disabled={busy}
-      className="w-full text-left text-xs text-gray-400 hover:text-white disabled:text-gray-600"
+      className="w-full text-left text-xs text-slate-500 hover:text-slate-900 disabled:text-slate-300 transition-colors"
     >
-      {busy ? "로그아웃 중..." : "로그아웃 →"}
+      {busy ? "Signing out..." : "Sign out →"}
     </button>
   );
 }

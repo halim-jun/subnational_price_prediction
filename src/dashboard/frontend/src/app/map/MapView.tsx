@@ -286,40 +286,49 @@ export default function MapView() {
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
       {/* Header */}
-      <div className="flex items-center gap-4 p-4 bg-white border-b shrink-0 flex-wrap">
-        <h2 className="text-lg font-bold">
-          {TARGET_DISPLAY[target]} &middot; h={horizon}
-        </h2>
-        <div className="flex gap-1 ml-4 flex-wrap">
+      <div className="flex items-center gap-4 px-6 py-4 bg-white border-b border-slate-200 shrink-0 flex-wrap">
+        <div>
+          <p className="text-[11px] font-semibold tracking-[0.18em] text-blue-600 uppercase">
+            Prediction Map
+          </p>
+          <h2 className="text-lg font-semibold text-slate-900 mt-0.5">
+            {TARGET_DISPLAY[target]} &middot; h={horizon}
+          </h2>
+        </div>
+        <div className="flex gap-1.5 ml-4 flex-wrap">
           {viewLabels.map((v) => (
             <button
               key={v.key}
               onClick={() => setMapView(v.key)}
-              className={`px-3 py-1 rounded text-sm ${
+              className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
                 mapView === v.key
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "bg-slate-100 text-slate-700 hover:bg-slate-200"
               }`}
             >
               {v.label}
             </button>
           ))}
         </div>
-        {loading && <span className="text-sm text-gray-400 ml-4">Loading...</span>}
+        {loading && (
+          <span className="text-sm text-slate-400 ml-4">Loading...</span>
+        )}
       </div>
 
       {/* Date slider */}
-      <div className="px-4 py-3 bg-gray-50 border-b flex items-center gap-4 shrink-0">
-        <span className="text-sm font-bold w-24">{currentDate}</span>
+      <div className="px-6 py-3 bg-[#f5f7fb] border-b border-slate-200 flex items-center gap-4 shrink-0">
+        <span className="text-sm font-semibold text-slate-900 w-24">
+          {currentDate}
+        </span>
         <input
           type="range"
           min={0}
           max={Math.max(0, dates.length - 1)}
           value={dateIdx}
           onChange={(e) => setDateIdx(Number(e.target.value))}
-          className="flex-1"
+          className="flex-1 accent-blue-600"
         />
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-slate-400">
           {dates[0] || "..."} ~ {dates[dates.length - 1] || "..."}
         </span>
       </div>
@@ -328,15 +337,17 @@ export default function MapView() {
       <div ref={mapContainer} style={{ flex: 1, minHeight: "500px" }} />
 
       {/* Legend */}
-      <div className="px-4 py-2 bg-white border-t flex items-center gap-2 text-xs shrink-0">
+      <div className="px-6 py-2.5 bg-white border-t border-slate-200 flex items-center gap-3 text-xs text-slate-600 shrink-0">
         <span>{legendMin}</span>
         <div
-          className="h-3 flex-1 rounded"
+          className="h-2.5 flex-1 rounded-full"
           style={{ background: legendGradient }}
         />
         <span>{legendMax}</span>
         {isSpike && (
-          <span className="ml-2 text-gray-400">(month-over-month % change)</span>
+          <span className="ml-2 text-slate-400">
+            (month-over-month % change)
+          </span>
         )}
       </div>
     </div>
