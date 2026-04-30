@@ -8,9 +8,9 @@ import type { Target, Horizon } from "@/types";
 import LogoutButton from "@/components/LogoutButton";
 
 const NAV = [
-  { href: "/", label: "Overview" },
-  { href: "/map", label: "Prediction Map" },
+  { href: "/", label: "Prediction Map" },
   { href: "/timeseries", label: "Time Series" },
+  { href: "/performance", label: "Performance Evaluation" },
 ];
 
 export default function Sidebar() {
