@@ -109,6 +109,19 @@ pytest
 - `scripts/export_static_data.py` exports the same FastAPI responses to `src/dashboard/frontend/public/data/` for static prototype builds.
 - `deploy/cloudflare/` contains a separate static deployment copy. Do not assume it is the same app as `src/dashboard/frontend/`.
 
+## Dashboard Metrics Workflow
+
+- Treat dashboard performance metrics as evaluation outputs, not display-only UI data.
+- Before changing dashboard metric aggregation, confirm whether the values come from:
+  - holdout test artifacts under `artifact/model_output_holdout/`; or
+  - spatio-temporal CV artifacts under `artifact/model_output_stcv/`.
+- The current performance dashboard should show holdout test metrics from `holdout_predictions.parquet` and related holdout outputs unless explicitly changed.
+- Keep target, horizon, country, date, and admin keys intact when aggregating metrics. Do not mix Kenya and Somalia evaluation results into a single headline metric unless the UI labels it clearly as combined.
+- For dashboard metric aggregation changes, add or update focused pytest coverage that verifies the expected grouping and metric calculations.
+- After backend/API metric changes, run the relevant pytest target, for example `pytest tests/test_dashboard_metrics.py`.
+- After frontend performance page changes, run `cd src/dashboard/frontend && npm run build`.
+- If the static dashboard prototype is affected, run `python scripts/export_static_data.py` and verify the relevant JSON under `src/dashboard/frontend/public/data/`.
+
 ## Cleanup Guidance
 
 - Safe cleanup candidates are generated caches/build outputs: `node_modules/`, `.next/`, `out/`, `__pycache__/`, `*.pyc`, and `.DS_Store`.

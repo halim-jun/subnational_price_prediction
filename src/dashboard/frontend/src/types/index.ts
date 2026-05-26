@@ -13,6 +13,7 @@ export interface PredictionRow {
 export interface MetricSummary {
   target: string;
   horizon: number;
+  country_name?: string;
   r2: number;
   mape: number;
   rmse: number;

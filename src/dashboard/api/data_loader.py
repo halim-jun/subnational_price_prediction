@@ -19,6 +19,41 @@ from .config import (
 logger = logging.getLogger(__name__)
 
 
+def build_country_metric_summary(predictions: pd.DataFrame) -> pd.DataFrame:
+    """Compute holdout metrics separately for each country/target/horizon."""
+    required = {"target", "horizon", "country_name", "actual", "predicted"}
+    missing = required - set(predictions.columns)
+    if missing:
+        raise ValueError(f"Missing prediction columns for metrics: {sorted(missing)}")
+
+    rows = []
+    grouped = predictions.groupby(["target", "horizon", "country_name"], sort=True)
+    for (target, horizon, country_name), group in grouped:
+        actual = group["actual"].astype(float)
+        predicted = group["predicted"].astype(float)
+        error = predicted - actual
+        nonzero_actual = actual != 0
+        ss_res = float(np.sum(np.square(error)))
+        ss_tot = float(np.sum(np.square(actual - actual.mean())))
+
+        rows.append(
+            {
+                "target": target,
+                "horizon": int(horizon),
+                "country_name": country_name,
+                "rmse": float(np.sqrt(np.mean(np.square(error)))),
+                "mae": float(np.mean(np.abs(error))),
+                "mape": float(
+                    np.mean(np.abs(error[nonzero_actual] / actual[nonzero_actual]))
+                ),
+                "r2": float(1 - ss_res / ss_tot) if ss_tot else np.nan,
+                "n": int(len(group)),
+            }
+        )
+
+    return pd.DataFrame(rows)
+
+
 class DataStore:
     """Singleton that loads all data at startup and caches in memory."""
 
@@ -27,6 +62,7 @@ class DataStore:
         # Holdout predictions (primary — clean train/test split)
         self.predictions: dict[str, pd.DataFrame] = {}
         self.holdout_metrics: pd.DataFrame | None = None
+        self.country_holdout_metrics: pd.DataFrame | None = None
         self.holdout_config: dict | None = None
         self.per_admin: dict[str, pd.DataFrame] = {}
         # CV results (secondary)
@@ -78,6 +114,7 @@ class DataStore:
             return
 
         df = pd.read_parquet(path)
+        self.country_holdout_metrics = build_country_metric_summary(df)
 
         for target in TARGETS:
             for h in HORIZONS:

@@ -12,7 +12,9 @@ def get_summary(
     horizon: int = Query(None),
 ):
     """Holdout test metrics."""
-    df = store.holdout_metrics
+    df = store.country_holdout_metrics
+    if df is None:
+        df = store.holdout_metrics
     if df is None:
         # Fallback to CV metrics
         df = store.cv_aggregated

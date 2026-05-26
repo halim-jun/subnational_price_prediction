@@ -23,9 +23,26 @@ export default function PerformanceEvaluationPage() {
   const current = metrics.find(
     (m) => m.target === target && m.horizon === horizon
   );
+  const currentByCountry = metrics.filter(
+    (m) => m.target === target && m.horizon === horizon && m.country_name
+  );
+  const countries = Array.from(
+    new Set([
+      ...currentByCountry.map((m) => m.country_name as string),
+      ...perAdmin.map((r) => r.country_name),
+    ])
+  ).sort();
 
-  const best = [...perAdmin].sort((a, b) => a.mape - b.mape).slice(0, 10);
-  const worst = [...perAdmin].sort((a, b) => b.mape - a.mape).slice(0, 10);
+  const bestByCountry = (country: string) =>
+    perAdmin
+      .filter((r) => r.country_name === country)
+      .sort((a, b) => a.mape - b.mape)
+      .slice(0, 5);
+  const worstByCountry = (country: string) =>
+    perAdmin
+      .filter((r) => r.country_name === country)
+      .sort((a, b) => b.mape - a.mape)
+      .slice(0, 5);
 
   return (
     <div className="p-8 space-y-8 max-w-7xl">
@@ -41,19 +58,31 @@ export default function PerformanceEvaluationPage() {
         </p>
       </div>
 
-      {current && (
-        <div className="grid grid-cols-5 gap-4">
+      {currentByCountry.length > 0 ? (
+        <div className="grid grid-cols-2 gap-4">
+          {currentByCountry.map((m) => (
+            <div
+              key={`${m.country_name}-${m.target}-${m.horizon}`}
+              className="space-y-3"
+            >
+              <p className="text-[11px] font-semibold tracking-[0.16em] text-slate-500 uppercase">
+                {m.country_name}
+              </p>
+              <div className="grid grid-cols-4 gap-3">
+                <KpiCard title="R²" value={m.r2.toFixed(4)} />
+                <KpiCard title="MAPE" value={`${(m.mape * 100).toFixed(1)}%`} />
+                <KpiCard title="RMSE" value={m.rmse.toFixed(2)} />
+                <KpiCard title="N" value={String(m.n)} />
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : current && (
+        <div className="grid grid-cols-4 gap-4">
           <KpiCard title="R²" value={current.r2.toFixed(4)} />
-          <KpiCard
-            title="MAPE"
-            value={`${(current.mape * 100).toFixed(1)}%`}
-          />
+          <KpiCard title="MAPE" value={`${(current.mape * 100).toFixed(1)}%`} />
           <KpiCard title="RMSE" value={current.rmse.toFixed(2)} />
           <KpiCard title="N" value={String(current.n)} />
-          <KpiCard
-            title="By Country"
-            value={`KEN ${((current.KEN_mape ?? 0) * 100).toFixed(1)}% / SOM ${((current.SOM_mape ?? 0) * 100).toFixed(1)}%`}
-          />
         </div>
       )}
 
@@ -66,12 +95,11 @@ export default function PerformanceEvaluationPage() {
             <thead className="bg-slate-50 text-slate-500 uppercase text-[11px] tracking-wide">
               <tr>
                 <th className="px-4 py-3 text-left font-medium">Target</th>
+                <th className="px-4 py-3 font-medium">Country</th>
                 <th className="px-4 py-3 font-medium">Horizon</th>
                 <th className="px-4 py-3 font-medium">R²</th>
                 <th className="px-4 py-3 font-medium">MAPE</th>
                 <th className="px-4 py-3 font-medium">RMSE</th>
-                <th className="px-4 py-3 font-medium">KEN MAPE</th>
-                <th className="px-4 py-3 font-medium">SOM MAPE</th>
                 <th className="px-4 py-3 font-medium">N</th>
               </tr>
             </thead>
@@ -89,6 +117,9 @@ export default function PerformanceEvaluationPage() {
                     {TARGET_DISPLAY[m.target as keyof typeof TARGET_DISPLAY] ||
                       m.target}
                   </td>
+                  <td className="px-4 py-2.5 text-center">
+                    {m.country_name ?? "All"}
+                  </td>
                   <td className="px-4 py-2.5 text-center">{m.horizon}</td>
                   <td className="px-4 py-2.5 text-center">
                     {m.r2.toFixed(3)}
@@ -99,12 +130,6 @@ export default function PerformanceEvaluationPage() {
                   <td className="px-4 py-2.5 text-center">
                     {m.rmse.toFixed(2)}
                   </td>
-                  <td className="px-4 py-2.5 text-center">
-                    {((m.KEN_mape ?? 0) * 100).toFixed(1)}%
-                  </td>
-                  <td className="px-4 py-2.5 text-center">
-                    {((m.SOM_mape ?? 0) * 100).toFixed(1)}%
-                  </td>
                   <td className="px-4 py-2.5 text-center">{m.n}</td>
                 </tr>
               ))}
@@ -114,57 +139,60 @@ export default function PerformanceEvaluationPage() {
       </div>
 
       <div className="grid grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-          <h3 className="text-base font-semibold text-slate-900 px-5 pt-5 pb-3">
-            Best 10 Regions
-          </h3>
-          <table className="w-full text-sm">
-            <thead className="bg-slate-50 text-slate-500 uppercase text-[11px] tracking-wide">
-              <tr>
-                <th className="px-4 py-2.5 text-left font-medium">Region</th>
-                <th className="px-4 py-2.5 font-medium">Country</th>
-                <th className="px-4 py-2.5 font-medium">MAPE</th>
-              </tr>
-            </thead>
-            <tbody className="text-slate-700">
-              {best.map((r, i) => (
-                <tr key={i} className="border-t border-slate-100 hover:bg-slate-50">
-                  <td className="px-4 py-2">{r.admin2_name}</td>
-                  <td className="px-4 py-2 text-center">{r.country_name}</td>
-                  <td className="px-4 py-2 text-center text-emerald-700 font-medium">
-                    {(r.mape * 100).toFixed(1)}%
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-          <h3 className="text-base font-semibold text-slate-900 px-5 pt-5 pb-3">
-            Worst 10 Regions
-          </h3>
-          <table className="w-full text-sm">
-            <thead className="bg-slate-50 text-slate-500 uppercase text-[11px] tracking-wide">
-              <tr>
-                <th className="px-4 py-2.5 text-left font-medium">Region</th>
-                <th className="px-4 py-2.5 font-medium">Country</th>
-                <th className="px-4 py-2.5 font-medium">MAPE</th>
-              </tr>
-            </thead>
-            <tbody className="text-slate-700">
-              {worst.map((r, i) => (
-                <tr key={i} className="border-t border-slate-100 hover:bg-slate-50">
-                  <td className="px-4 py-2">{r.admin2_name}</td>
-                  <td className="px-4 py-2 text-center">{r.country_name}</td>
-                  <td className="px-4 py-2 text-center text-rose-700 font-medium">
-                    {(r.mape * 100).toFixed(1)}%
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {countries.map((country) => (
+          <div
+            key={country}
+            className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden"
+          >
+            <h3 className="text-base font-semibold text-slate-900 px-5 pt-5 pb-3">
+              {country} Regional Performance
+            </h3>
+            <div className="grid grid-cols-2 border-t border-slate-100">
+              <RegionTable title="Best 5" rows={bestByCountry(country)} tone="best" />
+              <RegionTable title="Worst 5" rows={worstByCountry(country)} tone="worst" />
+            </div>
+          </div>
+        ))}
       </div>
+    </div>
+  );
+}
+
+function RegionTable({
+  title,
+  rows,
+  tone,
+}: {
+  title: string;
+  rows: PerAdminRow[];
+  tone: "best" | "worst";
+}) {
+  const valueClass =
+    tone === "best" ? "text-emerald-700 font-medium" : "text-rose-700 font-medium";
+
+  return (
+    <div className="overflow-hidden border-r border-slate-100 last:border-r-0">
+      <h4 className="px-4 py-2.5 bg-slate-50 text-[11px] font-semibold tracking-wide text-slate-500 uppercase">
+        {title}
+      </h4>
+      <table className="w-full text-sm">
+        <thead className="sr-only">
+          <tr>
+            <th>Region</th>
+            <th>MAPE</th>
+          </tr>
+        </thead>
+        <tbody className="text-slate-700">
+          {rows.map((r, i) => (
+            <tr key={i} className="border-t border-slate-100 hover:bg-slate-50">
+              <td className="px-4 py-2">{r.admin2_name}</td>
+              <td className={`px-4 py-2 text-right ${valueClass}`}>
+                {(r.mape * 100).toFixed(1)}%
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
