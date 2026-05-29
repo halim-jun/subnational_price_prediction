@@ -1,0 +1,15 @@
+{
+  "holdout_year": 2024,
+  "targets": [
+    "c_food_price_index",
+    "c_maize_fao",
+    "c_sorghum"
+  ],
+  "horizons": [
+    1,
+    2,
+    3
+  ],
+  "train_label_rule": "train label_date must be before holdout_start",
+  "objective": "multi:softprob"
+}
